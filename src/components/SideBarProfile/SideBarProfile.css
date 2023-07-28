@@ -1,0 +1,33 @@
+.profileContainer{
+    display: flex;
+    padding: 24px 32px 0px 24px;
+    align-items:center;
+    align-self: stretch;
+    margin-bottom: 20px;
+    border-top: 1px solid #E2E2E2;
+}
+
+.nameAndMail{
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    padding-right: 5px;
+}
+.name{
+    color: #505887;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mailID{
+    color: #718EBF;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+.profilePicAndLogOutButton{
+    cursor: pointer;
+}
