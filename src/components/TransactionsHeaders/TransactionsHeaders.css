@@ -1,0 +1,44 @@
+
+.transactionsBG::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+.transactionsFieldsConatiner{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-size: 16px;
+    background-color: white;
+    color: #343C6A;
+    font-weight: 500;
+    position: sticky;
+    top: 0px;
+    border-bottom:2px solid #E2E2E2;
+    margin-bottom: 10px;
+    
+}
+
+.spanElements{
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.transactionName{
+    width:40% ;
+}
+.category{
+    width:15% ;
+}
+
+.date{
+    width: 20%;
+}
+
+.amount{
+    width: 15%;
+}
+
+
+.horizantalLine{
+    background-color:#E2E2E2;
+    border-width: 1px;
+}
