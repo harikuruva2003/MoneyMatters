@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './SideBarItems.css'
 
-function ReturnSidebarBoardNameAndIcon({boardID,icon: Icon, boardname,currenctActiveBoardID, onChangeTab}){
+function ReturnSidebarBoardNameAndIcon({boardID,icon: Icon, boardname,currentActiveBoardID, onChangeTab}){
 
     
     return (
         <>
-        {boardID === currenctActiveBoardID ? <button className='boardNameButtons'><div className='boardHighLighter' ></div> <div className='boardName selectedBoardstyling'>
+        {boardID === currentActiveBoardID ? <button className='boardNameButtons'><div className='boardHighLighter' ></div> <div className='boardName selectedBoardstyling'>
        <Icon fill = '#2D60FF'/>
         <span className='boardNameText' style={{color:'#2D60FF'}}>{boardname}</span>
     </div> </button>    
@@ -24,14 +24,13 @@ function ReturnSidebarBoardNameAndIcon({boardID,icon: Icon, boardname,currenctAc
     )    
 }
 
-export function ReturnSidebaritem({sideBarBoards}){
+export function ReturnSidebarItem({sideBarBoards}){
 
-    const [currenctActiveBoardID, setCurrenctActiveBoardID] = useState('DashBoard')
-
+    const [currentActiveBoardID, setCurrentActiveBoardID] = useState('DashBoard')
     let IconAndBoardName = [];
-
+    
     const onChangeTab = (boardID) => {
-        setCurrenctActiveBoardID(boardID)
+        setCurrentActiveBoardID(boardID)
     }
 
     sideBarBoards.forEach(board =>{
@@ -41,7 +40,7 @@ export function ReturnSidebaritem({sideBarBoards}){
             boardID = {board.id}
             icon = {board.icon}
             boardname = {board.boardName} key={board.boardName}
-            currenctActiveBoardID = {currenctActiveBoardID}
+            currentActiveBoardID = {currentActiveBoardID}
             onChangeTab={onChangeTab}         
             />)
     })

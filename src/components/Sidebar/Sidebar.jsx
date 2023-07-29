@@ -1,4 +1,4 @@
-import {ReturnSidebaritem} from '../SideBarItems/SideBarItems'
+import {ReturnSidebarItem} from '../SideBarItems/SideBarItems'
 import {Profile} from '../SideBarProfile/SIdeBarProfile'
 import './Sidebar.css'
 
@@ -17,6 +17,8 @@ function Logo({logo_MoneyMatters}){
     )
 }
 
+
+
 export function SideBar ({sideBarBoards, logo, profile}){
     return (        
         <div className='sideBarCompenentsContainer'>
@@ -24,7 +26,7 @@ export function SideBar ({sideBarBoards, logo, profile}){
                 <div>
                 <Logo logo_MoneyMatters = {logo}/>
                 </div>
-                <ReturnSidebaritem sideBarBoards = {sideBarBoards}/>
+                <ReturnSidebarItem sideBarBoards = {sideBarBoards}/>
             </div>        
             <div>
                 <Profile profile = {profile}/>
