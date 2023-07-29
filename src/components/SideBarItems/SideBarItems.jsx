@@ -4,7 +4,7 @@ import "./SideBarItems.css";
 function ReturnSidebarBoardNameAndIcon({
   boardID,
   icon: Icon,
-  boardname,
+  boardname: boardName,
   currentActiveBoardID,
   onChangeTab,
 }) {
@@ -16,7 +16,7 @@ function ReturnSidebarBoardNameAndIcon({
           <div className="boardName selectedBoardstyling">
             <Icon fill="#2D60FF" />
             <span className="boardNameText" style={{ color: "#2D60FF" }}>
-              {boardname}
+              {boardName}
             </span>
           </div>
         </button>
@@ -29,7 +29,7 @@ function ReturnSidebarBoardNameAndIcon({
         >
           <div className="boardName">
             <Icon />
-            <span className="boardNameText">{boardname}</span>
+            <span className="boardNameText">{boardName}</span>
           </div>
         </button>
       )}
