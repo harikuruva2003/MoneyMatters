@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Data } from "../TransactionPageData/TransactionPageData";
-import { TransactionsHeaders } from "../TransactionsHeaders/TransactionsHeaders";
+import { TransactionsHeaders } from "../TransactionsDataHeaders/TransactionsDataHeaders";
 import "./TransactionsPageTransactions.css";
 import { ActivePageContext } from "../../App";
 
@@ -312,7 +312,7 @@ export function TransactionsPageTransactions() {
   }
 
   return (
-    <div className="transactionsBG">
+    <div className="transactionsBG bg-red-500">
       <TransactionsHeaders />
       <div>
         <Data activepage={getActivePageData()} />

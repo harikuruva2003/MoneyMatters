@@ -1,12 +1,12 @@
-.transactionsBG{
-    background-color: white;
-    margin-left:40px;
-    margin-right: 40px;
-    margin-top: 32px;
-    border-radius: 25px;
-    min-height: 83.5%;    
-    max-height: 83.5vh;  
-    padding-left: 30px;
-    padding-right: 30px;
-    overflow: auto;
+.transactionsBG {
+  background-color: white;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 32px;
+  border-radius: 25px;
+  min-height: 0;
+  max-height: 83.5vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  overflow: auto;
 }

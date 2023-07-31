@@ -5,15 +5,18 @@ import TransactionsIcon from "./icons/TransactionIcon/Transaction";
 import ProfileIcon from "./icons/ProfileIcon/profileIcon";
 import LogOutIcon from "./icons/LogOutIcon/logoutIcon";
 import Logo from "./icons/Logo/Logo";
-import { TransactionHeader } from "./components/TransctionsPageHeader/TransactionHeader";
+import { TransactionHeader } from "./components/TransctionsPageHeader/TransctionsPageHeader";
 import { TransactionsPageTransactions } from "./components/TransactionsPageTransactions/TransactionsPageTransactions";
 import { createContext, useState } from "react";
 
 export const ActivePageContext = createContext(null);
-function App() {
-  const [currentActivePageID, setcurrentActivePageID] =
-    useState("AllTransactions");
+export const CurrentActiveBoard = createContext(null);
 
+function App() {
+  const [currentActivePageID, setCurrentActivePageID] =
+    useState("AllTransactions");
+  const [currentActiveBoardID, setCurrentActiveBoardID] =
+    useState("TransactionsBoard");
   const sideBarBoards = [
     {
       id: "DashBoard",
@@ -50,19 +53,24 @@ function App() {
 
   return (
     <div className="MoneyMatters_AllTransactions">
-      <div className="sidBar">
-        <SideBar
-          sideBarBoards={sideBarBoards}
-          logo={Logo_MoneyMatters}
-          profile={PROFILE}
-        />
-      </div>
-      <div className="transactionPage">
-        <ActivePageContext.Provider value={currentActivePageID}>
-          <TransactionHeader setcurrentActivePageID={setcurrentActivePageID} />
-          <TransactionsPageTransactions />
-        </ActivePageContext.Provider>
-      </div>
+      <CurrentActiveBoard.Provider value={currentActiveBoardID}>
+        <div className="sidBar">
+          <SideBar
+            sideBarBoards={sideBarBoards}
+            logo={Logo_MoneyMatters}
+            profile={PROFILE}
+            setCurrentActiveBoardID={setCurrentActiveBoardID}
+          />
+        </div>
+        <div className="transactionPage bg-red-200">
+          <ActivePageContext.Provider value={currentActivePageID}>
+            <TransactionHeader
+              setCurrentActivePageID={setCurrentActivePageID}
+            />
+            <TransactionsPageTransactions />
+          </ActivePageContext.Provider>
+        </div>
+      </CurrentActiveBoard.Provider>
     </div>
   );
 }

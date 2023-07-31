@@ -1,4 +1,4 @@
-import "./TransactionsHeaders.css";
+import "./TransactionsDataHeaders.css";
 
 export function TransactionsHeaders() {
   const transactionFields = ["Transaction Name", "Category", "Date", "Amount"];

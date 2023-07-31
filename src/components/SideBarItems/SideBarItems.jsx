@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext } from "react";
 import "./SideBarItems.css";
+import { CurrentActiveBoard } from "../../App";
 
 function ReturnSidebarBoardNameAndIcon({
   boardID,
@@ -37,9 +38,9 @@ function ReturnSidebarBoardNameAndIcon({
   );
 }
 
-export function ReturnSidebarItem({ sideBarBoards }) {
-  const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
+export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
   let IconAndBoardName = [];
+  let currentActiveBoardID = useContext(CurrentActiveBoard);
 
   const onChangeTab = (boardID) => {
     setCurrentActiveBoardID(boardID);
