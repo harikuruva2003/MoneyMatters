@@ -26,9 +26,7 @@ export function SideBar({
   return (
     <div className="sideBarComponentsContainer">
       <div className="logoAndBoards">
-        <div>
-          <Logo logo_MoneyMatters={logo} />
-        </div>
+        <Logo logo_MoneyMatters={logo} />
         <ReturnSidebarItem
           sideBarBoards={sideBarBoards}
           setCurrentActiveBoardID={setCurrentActiveBoardID}

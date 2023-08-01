@@ -28,10 +28,10 @@ export function DashBoardPage() {
     );
   }
   return (
-    <div>
-      <div className="transactionHeader">
+    <>
+      <div className="dashBoardHeader">
         <DataPageHeader
-          TransactionHeading={"Accounts"}
+          transactionHeading={"Accounts"}
           addTransactionButton={"+ Add Transaction"}
         />
       </div>
@@ -39,6 +39,6 @@ export function DashBoardPage() {
       <div>
         <LastTransaction />
       </div>
-    </div>
+    </>
   );
 }

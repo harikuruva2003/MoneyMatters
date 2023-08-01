@@ -3,7 +3,7 @@ import "./TransactionsDataHeaders.css";
 export function TransactionsHeaders() {
   const transactionFields = ["Transaction Name", "Category", "Date", "Amount"];
   return (
-    <div className="transactionsFieldsConatiner">
+    <div className="transactionsFieldsContainer">
       <span className="spanElements transactionName">
         {transactionFields[0]}
       </span>

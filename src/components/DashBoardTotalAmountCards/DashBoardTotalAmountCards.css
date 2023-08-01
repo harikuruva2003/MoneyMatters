@@ -16,18 +16,18 @@
 
 .creditAndDebitText {
   font-size: 20px;
-  font-family: inner;
+  font-family: inter;
   color: #718ebf;
 }
 .creditMoney {
   color: #16dbaa;
   font-size: 36px;
-  font-family: inner;
+  font-family: inter;
   font-weight: 600;
 }
 .debitMoney {
   color: #fe5c73;
   font-size: 30px;
   font-weight: 600;
-  font-family: inner;
+  font-family: inter;
 }

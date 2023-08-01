@@ -1,3 +1,7 @@
+.page {
+  display: flex;
+  justify-content: center;
+}
 .profilePageForm {
   display: flex;
   background-color: white;
@@ -5,25 +9,24 @@
   width: 60vw;
   border-radius: 25px;
   padding: 40px;
-  gap: 20px;
   flex-direction: row;
+  margin-top: 50px;
 }
-
-.profileFormDiv {
+.profilePicAndForm {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  flex-direction: column;
+  gap: 50px;
 }
-
-.profilePic {
-  border-radius: 100px;
+.twoInputsDiv {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
 }
-
 .inputDiv {
   display: flex;
   flex-direction: column;
+}
+.spanElement {
+  color: #505887;
 }
 input {
   border-color: #dfeaf2;
@@ -32,21 +35,7 @@ input {
   height: 50px;
   border-radius: 5px;
   text-indent: 10px;
-  color: #718ebf;
+  color: black;
   margin-top: 10px;
-}
-
-.twoInputsDiv {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-.spanElement {
-  color: #505887;
+  font-family: inter;
 }

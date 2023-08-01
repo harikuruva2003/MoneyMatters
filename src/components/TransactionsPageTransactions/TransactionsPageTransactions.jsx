@@ -314,9 +314,7 @@ export function TransactionsPageTransactions() {
   return (
     <div className="transactionsBG">
       <TransactionsHeaders />
-      <div>
-        <Data pageData={getActivePageData()} />
-      </div>
+      <Data pageData={getActivePageData()} />
     </div>
   );
 }

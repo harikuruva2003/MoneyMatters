@@ -1,44 +1,41 @@
-
 .transactionsBG::-webkit-scrollbar {
-    width: 0px;
-  }
-  
-.transactionsFieldsConatiner{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    font-size: 16px;
-    background-color: white;
-    color: #343C6A;
-    font-weight: 500;
-    position: sticky;
-    top: 0px;
-    border-bottom:2px solid #E2E2E2;
-    margin-bottom: 10px;
-    
+  width: 0px;
 }
 
-.spanElements{
-    padding-top: 16px;
-    padding-bottom: 16px;
-}
-.transactionName{
-    width:40% ;
-}
-.category{
-    width:15% ;
-}
-
-.date{
-    width: 20%;
-}
-
-.amount{
-    width: 15%;
+.transactionsFieldsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 16px;
+  background-color: white;
+  color: #343c6a;
+  font-weight: 500;
+  position: sticky;
+  top: 0px;
+  border-bottom: 2px solid #e2e2e2;
+  margin-bottom: 10px;
 }
 
+.spanElements {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.transactionName {
+  width: 40%;
+}
+.category {
+  width: 15%;
+}
 
-.horizantalLine{
-    background-color:#E2E2E2;
-    border-width: 1px;
+.date {
+  width: 20%;
+}
+
+.amount {
+  width: 15%;
+}
+
+.horizontalLine {
+  background-color: #e2e2e2;
+  border-width: 1px;
 }

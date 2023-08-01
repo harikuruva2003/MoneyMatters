@@ -12,7 +12,7 @@ export function ReturnSidebarBoardNameAndIcon({
       {boardID === currentActiveBoardID ? (
         <button className="boardNameButtons">
           <div className="boardHighLighter"></div>
-          <div className="boardName selectedBoardstyling">
+          <div className="boardName selectedBoardStyling">
             <Icon fill="#2D60FF" />
             <span className="boardNameText" style={{ color: "#2D60FF" }}>
               {boardName}

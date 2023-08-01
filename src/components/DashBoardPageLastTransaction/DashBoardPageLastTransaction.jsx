@@ -8,6 +8,7 @@ export function LastTransaction() {
       Date: "30-08-2004",
       Amount: "$5432.5",
       isProfit: false,
+      upArrow: false,
     },
     {
       name: "Name of the person",
@@ -15,6 +16,7 @@ export function LastTransaction() {
       Date: "20-10-2003",
       Amount: "$5432.5",
       isProfit: true,
+      upArrow: false,
     },
     {
       name: "Name of the person",
@@ -22,6 +24,7 @@ export function LastTransaction() {
       Date: "30-08-2004",
       Amount: "$5432.5",
       isProfit: false,
+      upArrow: false,
     },
   ];
   return (

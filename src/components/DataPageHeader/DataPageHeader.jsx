@@ -1,8 +1,8 @@
 import "./DataPageHeader.css";
-export function DataPageHeader({ TransactionHeading, addTransactionButton }) {
+export function DataPageHeader({ transactionHeading, addTransactionButton }) {
   return (
     <div className="transactionHeadingAndButton">
-      <span className="transactionHeading">{TransactionHeading}</span>
+      <span className="transactionHeading">{transactionHeading}</span>
       <button className="addTransactionButton">{addTransactionButton}</button>
     </div>
   );

@@ -5,7 +5,7 @@ export function ProfilePageHeader() {
   return (
     <div className="profileHeader">
       <DataPageHeader
-        TransactionHeading={"Profile"}
+        transactionHeading={"Profile"}
         addTransactionButton={"+Add Transaction"}
       />
     </div>

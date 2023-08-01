@@ -1,0 +1,49 @@
+.transaction {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: inter;
+  font-weight: 400;
+  margin: 10px 0 10px 0;
+}
+
+.editOption {
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.iconAndTransactionName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dataStyles {
+  color: #505887;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.transactionNamePaddingLeft {
+  padding-left: 16px;
+}
+
+.transactionName {
+  width: 40%;
+}
+
+._category {
+  width: 15%;
+}
+
+._Date {
+  width: 20%;
+}
+
+._amount {
+  width: 15%;
+}
+.deleteIcon {
+  cursor: pointer;
+}

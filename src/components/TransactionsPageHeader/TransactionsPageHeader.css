@@ -5,8 +5,7 @@
 }
 
 .transactionHeader {
-  min-height: 10%;
-  max-height: 10%;
+  min-height: 13%;
   background-color: white;
   display: flex;
   flex-direction: column;

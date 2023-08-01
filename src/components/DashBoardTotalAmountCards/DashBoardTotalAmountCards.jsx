@@ -8,7 +8,7 @@ export function Card({ amount, text, image }) {
         </span>
         <span className="creditAndDebitText">{text}</span>
       </div>
-      <img src={image} alt="" width={200} />
+      <img src={image} alt="CreditImage" width={200} />
     </div>
   );
 }

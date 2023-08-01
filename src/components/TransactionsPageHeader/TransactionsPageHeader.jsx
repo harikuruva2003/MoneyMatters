@@ -69,7 +69,7 @@ export function TransactionHeader({ setCurrentActivePageID }) {
   return (
     <div className="transactionHeader">
       <DataPageHeader
-        TransactionHeading={TractionsHeaderArray[0]}
+        transactionHeading={TractionsHeaderArray[0]}
         addTransactionButton={TractionsHeaderArray[1]}
       />
       <div className="transactionPagesContainer">

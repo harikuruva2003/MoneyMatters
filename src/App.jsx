@@ -8,14 +8,15 @@ import Logo from "./icons/Logo/Logo";
 import { createContext, useRef, useState } from "react";
 import { TransactionBoardDataPage } from "./components/TransactionBoardDataPage/TransactionBoardDataPage";
 import { DashBoardPage } from "./components/DashBoardPage/DashBoardPage";
-import { ProfilePage } from "./components/Profilepage/ProfilePage";
+import { ProfilePage } from "./components/ProfilePage/ProfilePage";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
 
 function App() {
   let activeBoardRef = useRef(null);
-  const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
+  const [currentActiveBoardID, setCurrentActiveBoardID] =
+    useState("ProfileBoard");
   activeBoardRef.current = currentActiveBoardID;
 
   const sideBarBoards = [
@@ -79,10 +80,7 @@ function App() {
             setCurrentActiveBoardID={setCurrentActiveBoardID}
           />
         </div>
-        <div className="transactionPage">
-          {currentBoardData()}
-          {/* <TransactionBoardDataPage /> */}
-        </div>
+        <div className="transactionPage">{currentBoardData()}</div>
       </CurrentActiveBoardID.Provider>
     </div>
   );

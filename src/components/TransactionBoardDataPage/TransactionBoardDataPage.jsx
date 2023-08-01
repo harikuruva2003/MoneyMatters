@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { TransactionsPageTransactions } from "../TransactionsPageTransactions/TransactionsPageTransactions";
-import { TransactionHeader } from "../TransctionsPageHeader/TransactionsPageHeader";
+import { TransactionHeader } from "../TransactionsPageHeader/TransactionsPageHeader";
 
 export const ActivePageContext = createContext(null);
 
