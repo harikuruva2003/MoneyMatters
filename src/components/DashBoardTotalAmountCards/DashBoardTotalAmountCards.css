@@ -1,0 +1,33 @@
+.creditedMoneyAndCreditText {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 0 40px;
+}
+
+.creditAndDebitCards {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  background-color: white;
+  border-radius: 25px;
+  height: 168px;
+  padding: 5px;
+}
+
+.creditAndDebitText {
+  font-size: 20px;
+  font-family: inner;
+  color: #718ebf;
+}
+.creditMoney {
+  color: #16dbaa;
+  font-size: 36px;
+  font-family: inner;
+  font-weight: 600;
+}
+.debitMoney {
+  color: #fe5c73;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: inner;
+}

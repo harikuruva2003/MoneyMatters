@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Data } from "../TransactionPageData/TransactionPageData";
 import { TransactionsHeaders } from "../TransactionsDataHeaders/TransactionsDataHeaders";
 import "./TransactionsPageTransactions.css";
-import { ActivePageContext } from "../../App";
+import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 
-const transactionData = [
+const allTransactionData = [
   {
     name: "Name of the person",
     category: "something",
@@ -298,7 +298,7 @@ export function TransactionsPageTransactions() {
   function getActivePageData() {
     switch (currentActivePage) {
       case "AllTransactions":
-        return transactionData;
+        return allTransactionData;
 
       case "Debit":
         return debitData;
@@ -312,10 +312,10 @@ export function TransactionsPageTransactions() {
   }
 
   return (
-    <div className="transactionsBG bg-red-500">
+    <div className="transactionsBG">
       <TransactionsHeaders />
       <div>
-        <Data activepage={getActivePageData()} />
+        <Data pageData={getActivePageData()} />
       </div>
     </div>
   );

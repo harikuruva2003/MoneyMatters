@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./SideBarItems.css";
-import { CurrentActiveBoard } from "../../App";
+import { CurrentActiveBoardID } from "../../App";
 
 function ReturnSidebarBoardNameAndIcon({
   boardID,
@@ -40,7 +40,7 @@ function ReturnSidebarBoardNameAndIcon({
 
 export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
   let IconAndBoardName = [];
-  let currentActiveBoardID = useContext(CurrentActiveBoard);
+  let currentActiveBoardID = useContext(CurrentActiveBoardID);
 
   const onChangeTab = (boardID) => {
     setCurrentActiveBoardID(boardID);

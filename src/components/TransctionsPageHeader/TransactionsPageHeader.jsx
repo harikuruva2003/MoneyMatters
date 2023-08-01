@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import "./TransactionHeader.css";
-import { ActivePageContext } from "../../App";
+import "./TransactionsPageHeader.css";
+import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
+import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 
 const TractionsHeaderArray = ["Transactions", "+ Add Transaction"];
 
@@ -46,17 +47,17 @@ function TransactionPage({
   );
 }
 
-export function TransactionHeader({ setcurrentActivePageID }) {
+export function TransactionHeader({ setCurrentActivePageID }) {
   let onChangePage = (pageID) => {
-    setcurrentActivePageID(pageID);
+    setCurrentActivePageID(pageID);
   };
-  const currenctActivePage = useContext(ActivePageContext);
+  const currentActivePage = useContext(ActivePageContext);
 
   let formattedTransactionPages = transactionPages.map((transactionPage) => {
     return (
       <TransactionPage
         transactionPage={transactionPage}
-        currentActivePageID={currenctActivePage}
+        currentActivePageID={currentActivePage}
         transactionPageID={transactionPage.id}
         onChangePage={onChangePage}
       />
@@ -65,12 +66,10 @@ export function TransactionHeader({ setcurrentActivePageID }) {
 
   return (
     <div className="transactionHeader">
-      <div className="transactionHeadingAndButton">
-        <span className="transactionHeading">{TractionsHeaderArray[0]}</span>
-        <button className="addTransactionButton">
-          {TractionsHeaderArray[1]}
-        </button>
-      </div>
+      <DataPageHeader
+        TransactionHeading={TractionsHeaderArray[0]}
+        addTransactionButton={TractionsHeaderArray[1]}
+      />
       <div className="transactionPagesContainer">
         {formattedTransactionPages}
       </div>

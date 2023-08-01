@@ -1,0 +1,15 @@
+.lastTransactionData {
+  padding: 10px 40px;
+  background-color: white;
+  border-radius: 25px;
+}
+.lastTransactionHeading {
+  font-size: 30px;
+  color: #333b69;
+  font-weight: 600;
+  font-family: Inner;
+  padding-bottom: 10px;
+}
+.lastTransaction {
+  margin: 0 40px 0 40px;
+}

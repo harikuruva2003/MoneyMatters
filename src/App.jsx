@@ -5,18 +5,19 @@ import TransactionsIcon from "./icons/TransactionIcon/Transaction";
 import ProfileIcon from "./icons/ProfileIcon/profileIcon";
 import LogOutIcon from "./icons/LogOutIcon/logoutIcon";
 import Logo from "./icons/Logo/Logo";
-import { TransactionHeader } from "./components/TransctionsPageHeader/TransctionsPageHeader";
-import { TransactionsPageTransactions } from "./components/TransactionsPageTransactions/TransactionsPageTransactions";
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
+import { TransactionBoardDataPage } from "./components/TransactionBoardDataPage/TransactionBoardDataPage";
+import { DashBoardPage } from "./components/DashBoardPage/DashBoardPage";
+import { ProfilePage } from "./components/Profilepage/ProfilePage";
 
 export const ActivePageContext = createContext(null);
-export const CurrentActiveBoard = createContext(null);
+export const CurrentActiveBoardID = createContext(null);
 
 function App() {
-  const [currentActivePageID, setCurrentActivePageID] =
-    useState("AllTransactions");
-  const [currentActiveBoardID, setCurrentActiveBoardID] =
-    useState("TransactionsBoard");
+  let activeBoardRef = useRef(null);
+  const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
+  activeBoardRef.current = currentActiveBoardID;
+
   const sideBarBoards = [
     {
       id: "DashBoard",
@@ -51,9 +52,25 @@ function App() {
     logOutIcon: <LogOutIcon />,
   };
 
+  function currentBoardData() {
+    switch (activeBoardRef.current) {
+      case "DashBoard":
+        return <DashBoardPage />;
+
+      case "TransactionsBoard":
+        return <TransactionBoardDataPage />;
+
+      case "ProfileBoard":
+        return <ProfilePage />;
+
+      default:
+        return [];
+    }
+  }
+
   return (
     <div className="MoneyMatters_AllTransactions">
-      <CurrentActiveBoard.Provider value={currentActiveBoardID}>
+      <CurrentActiveBoardID.Provider value={currentActiveBoardID}>
         <div className="sidBar">
           <SideBar
             sideBarBoards={sideBarBoards}
@@ -62,15 +79,11 @@ function App() {
             setCurrentActiveBoardID={setCurrentActiveBoardID}
           />
         </div>
-        <div className="transactionPage bg-red-200">
-          <ActivePageContext.Provider value={currentActivePageID}>
-            <TransactionHeader
-              setCurrentActivePageID={setCurrentActivePageID}
-            />
-            <TransactionsPageTransactions />
-          </ActivePageContext.Provider>
+        <div className="transactionPage">
+          {currentBoardData()}
+          {/* <TransactionBoardDataPage /> */}
         </div>
-      </CurrentActiveBoard.Provider>
+      </CurrentActiveBoardID.Provider>
     </div>
   );
 }

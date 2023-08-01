@@ -1,0 +1,25 @@
+.transactionHeadingAndButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.transactionHeading {
+  color: #343c6a;
+  font-size: 28px;
+  font-weight: 600;
+  font-family: inter;
+}
+
+.addTransactionButton {
+  background-color: #2d60ff;
+  font-family: inter;
+  border: 0px;
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}

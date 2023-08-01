@@ -1,0 +1,15 @@
+.transactionHeader {
+  min-height: 13vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 26px;
+}
+.cards {
+  display: flex;
+  gap: 24px;
+  margin: 40px;
+}
