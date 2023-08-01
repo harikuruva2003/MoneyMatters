@@ -4,7 +4,7 @@ import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArro
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
 import TransactionDelete from "../../icons/TransactionDelete/TransactionDelete";
 
-export function FinalData({ transaction, pageData }) {
+export function FinalData({ transaction, pageData, redColor, greenColor }) {
   let indexOfTransaction;
   indexOfTransaction = pageData.indexOf(transaction);
   let arrowAndPrice = {};
@@ -12,7 +12,7 @@ export function FinalData({ transaction, pageData }) {
   if (transaction.isProfit) {
     arrowAndPrice.arrow = (
       <span>
-        <TransactionUpArrow />{" "}
+        <TransactionUpArrow color={greenColor} />
       </span>
     );
     arrowAndPrice.Amount = (
@@ -21,7 +21,7 @@ export function FinalData({ transaction, pageData }) {
   } else {
     arrowAndPrice.arrow = (
       <span>
-        <TransactionDownArrow />{" "}
+        <TransactionDownArrow color={redColor} />
       </span>
     );
     arrowAndPrice.Amount = (

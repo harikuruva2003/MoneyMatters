@@ -15,8 +15,7 @@ export const CurrentActiveBoardID = createContext(null);
 
 function App() {
   let activeBoardRef = useRef(null);
-  const [currentActiveBoardID, setCurrentActiveBoardID] =
-    useState("ProfileBoard");
+  const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
   activeBoardRef.current = currentActiveBoardID;
 
   const sideBarBoards = [

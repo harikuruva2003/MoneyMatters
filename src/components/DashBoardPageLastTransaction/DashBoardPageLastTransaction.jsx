@@ -31,7 +31,11 @@ export function LastTransaction() {
     <div className="lastTransaction">
       <h1 className="lastTransactionHeading">Last Transaction</h1>
       <div className="lastTransactionData">
-        <Data pageData={lastTransactionData} />
+        <Data
+          pageData={lastTransactionData}
+          redColor="#FE5C73"
+          greenColor="#16DBAA"
+        />
       </div>
     </div>
   );
