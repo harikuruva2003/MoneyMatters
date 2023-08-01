@@ -5,26 +5,26 @@ import "./Sidebar.css";
 
 export const CurrentActiveBoardID = createContext(null);
 
-function Logo({ logo_MoneyMatters }) {
-  return (
-    <div className="logo">
-      <span>{logo_MoneyMatters.logo}</span>
-      <div className="moneyMatters">
-        <span className="money">{logo_MoneyMatters.money}</span>
-        <span className="matters">{logo_MoneyMatters.matters}</span>
-      </div>
-    </div>
-  );
-}
-
 export function SideBar({
   sideBarBoards,
   logo,
   profile,
   setCurrentActiveBoardID,
 }) {
+  function Logo({ logo_MoneyMatters }) {
+    return (
+      <div className="logo">
+        <span>{logo_MoneyMatters.logo}</span>
+        <div className="moneyMatters">
+          <span className="money">{logo_MoneyMatters.money}</span>
+          <span className="matters">{logo_MoneyMatters.matters}</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="sideBarCompenentsContainer">
+    <div className="sideBarComponentsContainer">
       <div className="logoAndBoards">
         <div>
           <Logo logo_MoneyMatters={logo} />

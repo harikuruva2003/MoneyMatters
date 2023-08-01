@@ -1,0 +1,36 @@
+.boardName {
+  font-size: 18px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.boardNameButtons {
+  border-width: 0px;
+  background-color: white;
+  display: flex;
+  align-items: stretch;
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.boardHighLighter {
+  width: 6px;
+  background-color: #2d60ff;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.selectedBoardstyling {
+  padding-left: 24px;
+}
+
+.boardNameText {
+  padding-left: 26px;
+  padding-top: 5px;
+  color: #505887;
+  font-family: inter;
+  font-weight: 500;
+}
