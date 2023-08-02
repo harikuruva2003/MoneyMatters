@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "./TransactionsPageHeader.css";
 import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
+import React from "react";
 
 const TractionsHeaderArray = ["Transactions", "+ Add Transaction"];
 

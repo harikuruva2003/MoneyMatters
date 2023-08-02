@@ -1,5 +1,6 @@
 import { Data } from "../TransactionPageData/TransactionPageData";
 import "./DashBoardPageLastTransaction.css";
+import React from "react";
 export function LastTransaction() {
   let lastTransactionData = [
     {

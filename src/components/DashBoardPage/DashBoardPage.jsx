@@ -3,14 +3,25 @@ import { LastTransaction } from "../DashBoardPageLastTransaction/DashBoardPageLa
 import { Card } from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
 import { useEffect, useState } from "react";
+import React from "react";
+import { Audio as Loader } from "react-loader-spinner";
 
 export function DashBoardPage() {
-  const [debitData, setDebitData] = useState("");
-  console.log();
+  const [fetchedData, SetFetchedData] = useState(null);
+  let [isLoading, setIsLoading] = useState(true);
+
   const creditAndDebitCardsData = [
-    { money: "$12,750", text: "Credit", image: "/images/image1.png" },
     {
-      money: "$434",
+      money: !isLoading
+        ? `$ ${fetchedData.totals_credit_debit_transactions[1].sum} `
+        : "Loading",
+      text: "Credit",
+      image: "/images/image1.png",
+    },
+    {
+      money: !isLoading
+        ? `$ ${fetchedData.totals_credit_debit_transactions[0].sum} `
+        : `Loading`,
       text: "Debit",
       image: "/images/image2.png",
     },
@@ -32,7 +43,8 @@ export function DashBoardPage() {
     )
       .then((data) => data.json())
       .then((data) => {
-        setDebitData(data);
+        SetFetchedData(data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log("Error" + err);

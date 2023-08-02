@@ -9,6 +9,7 @@ import { createContext, useRef, useState } from "react";
 import { TransactionBoardDataPage } from "./components/TransactionBoardDataPage/TransactionBoardDataPage";
 import { DashBoardPage } from "./components/DashBoardPage/DashBoardPage";
 import { ProfilePage } from "./components/ProfilePage/ProfilePage";
+import React from "react";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);

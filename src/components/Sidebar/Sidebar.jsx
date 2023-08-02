@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { ReturnSidebarItem } from "../SideBarItems/SideBarItems";
 import { Profile } from "../SideBarProfile/SIdeBarProfile";
 import "./Sidebar.css";
+import React from "react";
 
 export const CurrentActiveBoardID = createContext(null);
 

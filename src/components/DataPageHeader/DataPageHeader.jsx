@@ -1,4 +1,5 @@
 import "./DataPageHeader.css";
+import React from "react";
 export function DataPageHeader({ transactionHeading, addTransactionButton }) {
   return (
     <div className="transactionHeadingAndButton">

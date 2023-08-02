@@ -3,6 +3,7 @@ import { Data } from "../TransactionPageData/TransactionPageData";
 import { TransactionsHeaders } from "../TransactionsDataHeaders/TransactionsDataHeaders";
 import "./TransactionsPageTransactions.css";
 import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
+import React from "react";
 
 const allTransactionData = [
   {

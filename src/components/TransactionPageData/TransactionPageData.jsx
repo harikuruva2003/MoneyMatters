@@ -1,5 +1,6 @@
 import "./TransactionPageData.css";
 import { FinalData } from "../Transaction/Transaction";
+import React from "react";
 
 export function Data({ pageData, redColor, greenColor }) {
   let data = [];

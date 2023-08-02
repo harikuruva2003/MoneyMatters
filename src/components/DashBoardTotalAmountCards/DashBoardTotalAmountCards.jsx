@@ -1,4 +1,5 @@
 import "./DashBoardTotalAmountCards.css";
+import React from "react";
 export function Card({ amount, text, image }) {
   return (
     <div className="creditAndDebitCards">

@@ -1,4 +1,5 @@
 import "./TransactionsDataHeaders.css";
+import React from "react";
 
 export function TransactionsHeaders() {
   const transactionFields = ["Transaction Name", "Category", "Date", "Amount"];

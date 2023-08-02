@@ -1,4 +1,6 @@
 import "./Transaction.css";
+import React from "react";
+
 import TransactionDownArrow from "../../icons/TransactionDownArrow/TransactionDownArrow";
 import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArrow";
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";

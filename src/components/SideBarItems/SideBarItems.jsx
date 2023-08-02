@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "./SideBarItems.css";
 import { CurrentActiveBoardID } from "../../App";
 import { ReturnSidebarBoardNameAndIcon } from "../Board/Board";
+import React from "react";
 
 export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
   let IconAndBoardName = [];
