@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Data } from "../TransactionPageData/TransactionPageData";
 import { TransactionsHeaders } from "../TransactionsDataHeaders/TransactionsDataHeaders";
 import "./TransactionsPageTransactions.css";
@@ -295,6 +295,26 @@ const debitData = [
 ];
 export function TransactionsPageTransactions() {
   const currentActivePage = useContext(ActivePageContext);
+
+  useEffect(() => {
+    fetch("https://bursting-gelding-24.hasura.app/api/rest/all-transactions", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        "x-hasura-admin-secret":
+          "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+        "x-hasura-role": "user",
+        "x-hasura-user-id": "1",
+      },
+      body: JSON.stringify({
+        limit: 2,
+        offSet: 0,
+      }),
+    })
+      .then((data) => data.json())
+      .then((data) => console.log("then " + data))
+      .catch((err) => console.log("error " + err));
+  }, []);
 
   function getActivePageData() {
     switch (currentActivePage) {
