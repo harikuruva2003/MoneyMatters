@@ -5,7 +5,11 @@ import { TransactionHeader } from "../TransactionsPageHeader/TransactionsPageHea
 
 export const ActivePageContext = createContext(null);
 
-export function TransactionBoardDataPage() {
+export function TransactionBoardDataPage({
+  allTransactionsData,
+  debitData,
+  creditData,
+}) {
   const [currentActivePageID, setCurrentActivePageID] = useState(
     "AllTransactions"
   );
@@ -13,7 +17,11 @@ export function TransactionBoardDataPage() {
     <div>
       <ActivePageContext.Provider value={currentActivePageID}>
         <TransactionHeader setCurrentActivePageID={setCurrentActivePageID} />
-        <TransactionsPageTransactions />
+        <TransactionsPageTransactions
+          allTransactionsData={allTransactionsData}
+          debitData={debitData}
+          creditData={creditData}
+        />
       </ActivePageContext.Provider>
     </div>
   );

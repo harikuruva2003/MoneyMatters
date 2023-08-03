@@ -5,7 +5,7 @@ import "./DashBoardPage.css";
 import { useEffect, useState } from "react";
 import React from "react";
 
-export function DashBoardPage() {
+export function DashBoardPage(lastTransactions) {
   const [fetchedData, SetFetchedData] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
 
@@ -76,7 +76,7 @@ export function DashBoardPage() {
       </div>
       <div className="cards">{returnCard()}</div>
       <div>
-        <LastTransaction />
+        <LastTransaction lastTransactions={lastTransactions} />
       </div>
     </>
   );
