@@ -22,7 +22,6 @@ function App() {
   const [creditData, setCreditData] = useState(null);
   const [debitData, setDebitData] = useState(null);
   const [lastTransactions, setLastTransactions] = useState(null);
-  console.log(lastTransactions);
 
   const sideBarBoards = [
     {
