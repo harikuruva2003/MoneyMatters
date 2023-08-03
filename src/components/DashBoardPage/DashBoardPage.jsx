@@ -4,7 +4,6 @@ import { Card } from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
 import { useEffect, useState } from "react";
 import React from "react";
-// import { Audio as Loader } from "react-loader-spinner";
 
 export function DashBoardPage() {
   const [fetchedData, SetFetchedData] = useState(null);

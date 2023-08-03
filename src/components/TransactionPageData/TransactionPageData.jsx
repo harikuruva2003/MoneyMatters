@@ -5,7 +5,6 @@ import { Audio as Loader } from "react-loader-spinner";
 
 export function Data({ pageData, redColor, greenColor }) {
   let data = [];
-  console.log(pageData);
   pageData
     ? pageData.forEach((transaction) => {
         data.push(
