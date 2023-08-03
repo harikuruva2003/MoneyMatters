@@ -7,7 +7,7 @@ export function LastTransaction({ lastTransactions }) {
       <h1 className="lastTransactionHeading">Last Transaction</h1>
       <div className="lastTransactionData">
         <Data
-          pageData={lastTransactions.lastTransactions}
+          pageData={lastTransactions}
           redColor="#FE5C73"
           greenColor="#16DBAA"
         />

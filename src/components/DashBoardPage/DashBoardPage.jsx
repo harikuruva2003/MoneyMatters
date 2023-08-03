@@ -4,11 +4,19 @@ import { Card } from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
 import { useEffect, useState } from "react";
 import React from "react";
+import {
+  AllTransactionsDataAPI,
+  CreditAndDebitDataAPI,
+} from "../../utils/utils";
 
-export function DashBoardPage(lastTransactions) {
+export function DashBoardPage({
+  lastTransactions,
+  isAllTransactionsError,
+  setIsAllTransactionsError,
+}) {
   const [fetchedData, SetFetchedData] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
-
+  let [isError, setIsError] = useState(false);
   const creditAndDebitCardsData = [
     {
       money: !isLoading
@@ -27,27 +35,11 @@ export function DashBoardPage(lastTransactions) {
   ];
 
   useEffect(() => {
-    fetch(
-      "https://bursting-gelding-24.hasura.app/api/rest/credit-debit-totals",
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          "x-hasura-admin-secret":
-            "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-          "x-hasura-role": "user",
-          "x-hasura-user-id": "1",
-        },
-      }
-    )
-      .then((data) => data.json())
-      .then((data) => {
-        SetFetchedData(data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log("Error" + err);
-      });
+    CreditAndDebitDataAPI({
+      SetFetchedData,
+      setIsLoading,
+      setIsError,
+    });
   }, []);
 
   function returnCard() {
@@ -66,6 +58,23 @@ export function DashBoardPage(lastTransactions) {
       </>
     );
   }
+  function setTotalAmountError() {
+    setIsError(false);
+    CreditAndDebitDataAPI({
+      SetFetchedData,
+      setIsLoading,
+      setIsError,
+    });
+  }
+
+  function setLastTransactionError() {
+    setIsAllTransactionsError(false);
+    console.log(isAllTransactionsError);
+    AllTransactionsDataAPI({
+      setIsAllTransactionsError,
+    });
+  }
+
   return (
     <>
       <div className="dashBoardHeader">
@@ -74,9 +83,25 @@ export function DashBoardPage(lastTransactions) {
           addTransactionButton={"+ Add Transaction"}
         />
       </div>
-      <div className="cards">{returnCard()}</div>
+      <div className="cards">
+        {!isError ? (
+          returnCard()
+        ) : (
+          <div>
+            <h1>Something went wrong</h1>
+            <button onClick={setTotalAmountError}>Try Again!</button>
+          </div>
+        )}
+      </div>
       <div>
-        <LastTransaction lastTransactions={lastTransactions} />
+        {!isAllTransactionsError ? (
+          <LastTransaction lastTransactions={lastTransactions} />
+        ) : (
+          <div>
+            <h1>Something went wrong</h1>{" "}
+            <button onClick={setLastTransactionError}>Try Again</button>{" "}
+          </div>
+        )}
       </div>
     </>
   );

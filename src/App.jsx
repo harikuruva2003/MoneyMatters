@@ -10,9 +10,11 @@ import { TransactionBoardDataPage } from "./components/TransactionBoardDataPage/
 import { DashBoardPage } from "./components/DashBoardPage/DashBoardPage";
 import { ProfilePage } from "./components/ProfilePage/ProfilePage";
 import React from "react";
+import { AllTransactionsDataAPI } from "./utils/utils";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
+export const Error = createContext(null);
 function App() {
   let activeBoardRef = useRef(null);
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
@@ -22,7 +24,7 @@ function App() {
   const [creditData, setCreditData] = useState(null);
   const [debitData, setDebitData] = useState(null);
   const [lastTransactions, setLastTransactions] = useState(null);
-
+  const [isAllTransactionsError, setIsAllTransactionsError] = useState(false);
   const sideBarBoards = [
     {
       id: "DashBoard",
@@ -54,50 +56,27 @@ function App() {
     profileMail: "harikuruva2003@gmail.com",
     logOutIcon: <LogOutIcon />,
   };
+
   useEffect(() => {
-    fetch(
-      "https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=20&offset=0",
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          "x-hasura-admin-secret":
-            "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-          "x-hasura-role": "user",
-          "x-hasura-user-id": "1",
-        },
-      }
-    )
-      .then((data) => data.json())
-
-      .then((data) => {
-        setAllTransactionsData(data);
-        let debit_Data = [];
-        let credit_Data = [];
-        let transactions = [];
-        data.transactions.forEach((transaction) => {
-          transaction.type === "credit"
-            ? credit_Data.push(transaction)
-            : debit_Data.push(transaction);
-        });
-        setDebitData(debit_Data);
-        setCreditData(credit_Data);
-
-        data.transactions
-          .slice(data.transactions.length - 3, data.transactions.length)
-          .forEach((transaction) => {
-            transactions.push(transaction);
-          });
-        setLastTransactions(transactions);
-      })
-
-      .catch((err) => console.log("error " + err));
+    AllTransactionsDataAPI({
+      setAllTransactionsData,
+      setDebitData,
+      setCreditData,
+      setLastTransactions,
+      setIsAllTransactionsError,
+    });
   }, []);
 
   function currentBoardData() {
     switch (activeBoardRef.current) {
       case "DashBoard":
-        return <DashBoardPage lastTransactions={lastTransactions} />;
+        return (
+          <DashBoardPage
+            lastTransactions={lastTransactions}
+            isAllTransactionsError={isAllTransactionsError}
+            setIsAllTransactionsError={setIsAllTransactionsError}
+          />
+        );
 
       case "TransactionsBoard":
         return (
