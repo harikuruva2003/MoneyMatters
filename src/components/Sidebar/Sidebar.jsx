@@ -1,10 +1,7 @@
-import { createContext } from "react";
-import { ReturnSidebarItem } from "../SideBarItems/SideBarItems";
+import { SidebarItem } from "../SideBarItems/SideBarItems";
 import { Profile } from "../SideBarProfile/SIdeBarProfile";
 import "./Sidebar.css";
 import React from "react";
-
-export const CurrentActiveBoardID = createContext(null);
 
 export function SideBar({
   sideBarBoards,
@@ -12,13 +9,13 @@ export function SideBar({
   profile,
   setCurrentActiveBoardID,
 }) {
-  function Logo({ logo_MoneyMatters }) {
+  function Logo({ logoMoneyMatters }) {
     return (
       <div className="logo">
-        <span>{logo_MoneyMatters.logo}</span>
+        <span>{logoMoneyMatters.logo}</span>
         <div className="moneyMatters">
-          <span className="money">{logo_MoneyMatters.money}</span>
-          <span className="matters">{logo_MoneyMatters.matters}</span>
+          <span className="money">{logoMoneyMatters.money}</span>
+          <span className="matters">{logoMoneyMatters.matters}</span>
         </div>
       </div>
     );
@@ -27,8 +24,8 @@ export function SideBar({
   return (
     <div className="sideBarComponentsContainer">
       <div className="logoAndBoards">
-        <Logo logo_MoneyMatters={logo} />
-        <ReturnSidebarItem
+        <Logo logoMoneyMatters={logo} />
+        <SidebarItem
           sideBarBoards={sideBarBoards}
           setCurrentActiveBoardID={setCurrentActiveBoardID}
         />

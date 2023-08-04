@@ -3,6 +3,7 @@ import "./TransactionsPageHeader.css";
 import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 import React from "react";
+import { TransactionPage } from "../TransactionBoardPage/TransactionsBoardpage";
 
 const TractionsHeaderArray = ["Transactions", "+ Add Transaction"];
 
@@ -13,44 +14,6 @@ const transactionPages = [
 ];
 
 export function TransactionHeader({ setCurrentActivePageID }) {
-  function TransactionPage({
-    transactionPage,
-    currentActivePageID,
-    transactionPageID,
-    onChangePage,
-  }) {
-    return (
-      <>
-        {currentActivePageID === transactionPageID ? (
-          <button className="transactionPagesButton transactionPageAndHighlighter">
-            <div>
-              <span
-                className="transactionPageText"
-                style={{ color: "#2D60FF" }}
-              >
-                {transactionPage.transactionPageName}
-              </span>
-            </div>
-            <div className="transactionPageHighLighter"></div>
-          </button>
-        ) : (
-          <button
-            className="transactionPagesButton transactionPageAndHighlighter"
-            onClick={() => {
-              onChangePage(transactionPageID);
-            }}
-          >
-            <div>
-              <span className="transactionPageText">
-                {transactionPage.transactionPageName}
-              </span>
-            </div>
-            <div className=""></div>
-          </button>
-        )}
-      </>
-    );
-  }
   let onChangePage = (pageID) => {
     setCurrentActivePageID(pageID);
   };

@@ -1,0 +1,53 @@
+.transactionHeadingAndButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.transactionHeading {
+  color: #343c6a;
+  font-size: 28px;
+  font-weight: 600;
+  font-family: inter;
+}
+
+.addTransactionButton {
+  background-color: #2d60ff;
+  font-family: inter;
+  border: 0px;
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.transactionPagesButton {
+  background-color: white;
+  border-width: 0px;
+}
+
+.transactionPageAndHighlighter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.transactionPageHighLighter {
+  height: 3px;
+  background-color: #2d60ff;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 10px;
+}
+
+.transactionPageText {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #718ebf;
+  cursor: pointer;
+  font-family: inter;
+}

@@ -33,15 +33,15 @@
   width: 40%;
 }
 
-._category {
+.category {
   width: 15%;
 }
 
-._Date {
+.date {
   width: 20%;
 }
 
-._amount {
+.amount {
   width: 15%;
 }
 .deleteIcon {

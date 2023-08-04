@@ -4,8 +4,8 @@ import { SidebarBoardNameAndIcon } from "../Board/Board";
 import React from "react";
 import { CurrentActiveBoardID } from "../MoneyMattersApp/MoneyMattersApp";
 
-export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
-  let IconAndBoardName = [];
+export function SidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
+  let iconAndBoardName = [];
   let currentActiveBoardID = useContext(CurrentActiveBoardID);
 
   const onChangeTab = (boardID) => {
@@ -13,7 +13,7 @@ export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
   };
 
   sideBarBoards.forEach((board) => {
-    IconAndBoardName.push(
+    iconAndBoardName.push(
       <SidebarBoardNameAndIcon
         boardID={board.id}
         icon={board.icon}
@@ -25,5 +25,5 @@ export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
     );
   });
 
-  return <div className="boardContainer">{IconAndBoardName}</div>;
+  return <div className="boardContainer">{iconAndBoardName}</div>;
 }

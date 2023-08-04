@@ -3,7 +3,7 @@ import React from "react";
 import TransactionDownArrow from "../../icons/TransactionDownArrow/TransactionDownArrow";
 import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArrow";
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
-import TransactionDelete from "../../icons/TransactionDelete/TransactionDelete";
+import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDelete";
 
 export function FinalData({ transaction, pageData, redColor, greenColor }) {
   let indexOfTransaction;
@@ -38,15 +38,15 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
           </span>
         </div>
 
-        <span className="_category dataStyles">{transaction.category}</span>
-        <span className="_Date dataStyles">
+        <span className="category dataStyles">{transaction.category}</span>
+        <span className="date dataStyles">
           {transaction.date.substr(0, 10)}
         </span>
-        <span className="_amount dataStyles">{arrowAndPrice.Amount}</span>
+        <span className="amount dataStyles">{arrowAndPrice.Amount}</span>
         <div className="editOption dataStyles">
           <TransactionPencil />
         </div>
-        <TransactionDelete className="deleteIcon" />
+        <TransactionDeleteIcon className="deleteIcon" />
       </div>
       {indexOfTransaction !== pageData.length - 1 ? (
         <hr className="horizontalLine"></hr>

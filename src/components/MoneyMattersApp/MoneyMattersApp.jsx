@@ -32,27 +32,24 @@ export function MoneyMattersApp() {
       id: "DashBoard",
       boardName: "Dashboard",
       icon: HomeIcon,
-      isSelected: false,
     },
     {
       id: "TransactionsBoard",
       boardName: "Transactions",
       icon: TransactionsIcon,
-      isSelected: true,
     },
     {
       id: "ProfileBoard",
       boardName: "Profile",
       icon: ProfileIcon,
-      isSelected: false,
     },
   ];
-  const Logo_MoneyMatters = {
+  const logoMoneyMatters = {
     logo: <Logo />,
     money: "Money",
     matters: "Matters",
   };
-  const PROFILE = {
+  const profile = {
     profilePic: <ProfileIcon />,
     profileName: "Hari Kuruva",
     profileMail: "harikuruva2003@gmail.com",
@@ -110,13 +107,13 @@ export function MoneyMattersApp() {
   }
 
   return (
-    <div className="MoneyMatters_AllTransactions">
+    <div className="moneyMattersAllTransactions">
       <CurrentActiveBoardID.Provider value={currentActiveBoardID}>
         <div className="sidBar">
           <SideBar
             sideBarBoards={sideBarBoards}
-            logo={Logo_MoneyMatters}
-            profile={PROFILE}
+            logo={logoMoneyMatters}
+            profile={profile}
             setCurrentActiveBoardID={setCurrentActiveBoardID}
           />
         </div>
