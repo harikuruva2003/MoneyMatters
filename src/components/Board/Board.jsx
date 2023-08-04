@@ -1,7 +1,7 @@
 import React from "react";
 import "./Board.css";
 
-export function ReturnSidebarBoardNameAndIcon({
+export function SidebarBoardNameAndIcon({
   boardID,
   icon: Icon,
   boardName,

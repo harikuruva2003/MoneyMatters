@@ -2,20 +2,14 @@ import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 import { LastTransaction } from "../DashBoardPageLastTransaction/DashBoardPageLastTransaction";
 import { Card } from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
-import {
-  allTransactionsDataAPI,
-  totalCreditAndDebitDataAPI,
-} from "../../utils/utils";
-import { allTransactionsError, setAllTransactionsError } from "../../App";
+import { totalCreditAndDebitDataAPI } from "../../utils/utils";
 
-export function DashBoardPage({ lastTransactions }) {
+export function DashBoardPage() {
   const [fetchedData, setFetchedData] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
   let [isLastTransactionsError, setIsLastTransactionsError] = useState(false);
-  let setTransactionsError = useContext(setAllTransactionsError);
-  let transactionsError = useContext(allTransactionsError);
 
   const creditAndDebitCardsData = [
     {
@@ -68,11 +62,6 @@ export function DashBoardPage({ lastTransactions }) {
     });
   }
 
-  function setAllTransactionsAPIError() {
-    setTransactionsError(false);
-    allTransactionsDataAPI(setTransactionsError);
-  }
-
   return (
     <>
       <div className="dashBoardHeader">
@@ -92,14 +81,7 @@ export function DashBoardPage({ lastTransactions }) {
         )}
       </div>
       <div>
-        {!transactionsError ? (
-          <LastTransaction lastTransactions={lastTransactions} />
-        ) : (
-          <div>
-            <h1>Something went wrong</h1>{" "}
-            <button onClick={setAllTransactionsAPIError}>Try Again</button>{" "}
-          </div>
-        )}
+        <LastTransaction />
       </div>
     </>
   );

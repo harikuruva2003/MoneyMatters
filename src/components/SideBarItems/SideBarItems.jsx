@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./SideBarItems.css";
-import { ReturnSidebarBoardNameAndIcon } from "../Board/Board";
+import { SidebarBoardNameAndIcon } from "../Board/Board";
 import React from "react";
 import { CurrentActiveBoardID } from "../MoneyMattersApp/MoneyMattersApp";
 
@@ -14,7 +14,7 @@ export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
 
   sideBarBoards.forEach((board) => {
     IconAndBoardName.push(
-      <ReturnSidebarBoardNameAndIcon
+      <SidebarBoardNameAndIcon
         boardID={board.id}
         icon={board.icon}
         boardName={board.boardName}
