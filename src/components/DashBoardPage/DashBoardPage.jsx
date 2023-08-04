@@ -2,21 +2,21 @@ import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 import { LastTransaction } from "../DashBoardPageLastTransaction/DashBoardPageLastTransaction";
 import { Card } from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import React from "react";
 import {
-  AllTransactionsDataAPI,
-  CreditAndDebitDataAPI,
+  allTransactionsDataAPI,
+  totalCreditAndDebitDataAPI,
 } from "../../utils/utils";
+import { allTransactionsError, setAllTransactionsError } from "../../App";
 
-export function DashBoardPage({
-  lastTransactions,
-  isAllTransactionsError,
-  setIsAllTransactionsError,
-}) {
-  const [fetchedData, SetFetchedData] = useState(null);
+export function DashBoardPage({ lastTransactions }) {
+  const [fetchedData, setFetchedData] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
-  let [isError, setIsError] = useState(false);
+  let [isLastTransactionsError, setIsLastTransactionsError] = useState(false);
+  let setTransactionsError = useContext(setAllTransactionsError);
+  let transactionsError = useContext(allTransactionsError);
+
   const creditAndDebitCardsData = [
     {
       money: !isLoading
@@ -35,10 +35,10 @@ export function DashBoardPage({
   ];
 
   useEffect(() => {
-    CreditAndDebitDataAPI({
-      SetFetchedData,
+    totalCreditAndDebitDataAPI({
+      setFetchedData,
       setIsLoading,
-      setIsError,
+      setIsLastTransactionsError,
     });
   }, []);
 
@@ -58,21 +58,19 @@ export function DashBoardPage({
       </>
     );
   }
-  function setTotalAmountError() {
-    setIsError(false);
-    CreditAndDebitDataAPI({
-      SetFetchedData,
+
+  function setTotalAmountAPIError() {
+    setIsLastTransactionsError(false);
+    totalCreditAndDebitDataAPI({
+      setFetchedData,
       setIsLoading,
-      setIsError,
+      setIsLastTransactionsError,
     });
   }
 
-  function setLastTransactionError() {
-    setIsAllTransactionsError(false);
-    console.log(isAllTransactionsError);
-    AllTransactionsDataAPI({
-      setIsAllTransactionsError,
-    });
+  function setAllTransactionsAPIError() {
+    setTransactionsError(false);
+    allTransactionsDataAPI(setTransactionsError);
   }
 
   return (
@@ -84,22 +82,22 @@ export function DashBoardPage({
         />
       </div>
       <div className="cards">
-        {!isError ? (
+        {!isLastTransactionsError ? (
           returnCard()
         ) : (
           <div>
             <h1>Something went wrong</h1>
-            <button onClick={setTotalAmountError}>Try Again!</button>
+            <button onClick={setTotalAmountAPIError}>Try Again!</button>
           </div>
         )}
       </div>
       <div>
-        {!isAllTransactionsError ? (
+        {!transactionsError ? (
           <LastTransaction lastTransactions={lastTransactions} />
         ) : (
           <div>
             <h1>Something went wrong</h1>{" "}
-            <button onClick={setLastTransactionError}>Try Again</button>{" "}
+            <button onClick={setAllTransactionsAPIError}>Try Again</button>{" "}
           </div>
         )}
       </div>

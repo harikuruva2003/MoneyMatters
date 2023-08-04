@@ -39,7 +39,9 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         </div>
 
         <span className="_category dataStyles">{transaction.category}</span>
-        <span className="_Date dataStyles">{transaction.date}</span>
+        <span className="_Date dataStyles">
+          {transaction.date.substr(0, 10)}
+        </span>
         <span className="_amount dataStyles">{arrowAndPrice.Amount}</span>
         <div className="editOption dataStyles">
           <TransactionPencil />

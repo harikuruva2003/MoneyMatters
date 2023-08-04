@@ -1,9 +1,9 @@
-export function AllTransactionsDataAPI({
+export function allTransactionsDataAPI({
   setAllTransactionsData,
   setDebitData,
   setCreditData,
   setLastTransactions,
-  setIsAllTransactionsError,
+  setTransactionsError,
 }) {
   fetch(
     "https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=20&offset=0",
@@ -42,14 +42,14 @@ export function AllTransactionsDataAPI({
     })
 
     .catch((err) => {
-      setIsAllTransactionsError(true);
+      setTransactionsError(true);
     });
 }
 
-export function CreditAndDebitDataAPI({
-  SetFetchedData,
+export function totalCreditAndDebitDataAPI({
+  setFetchedData,
   setIsLoading,
-  setIsError,
+  setIsLastTransactionsError,
 }) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/credit-debit-totals", {
     method: "GET",
@@ -63,10 +63,10 @@ export function CreditAndDebitDataAPI({
   })
     .then((data) => data.json())
     .then((data) => {
-      SetFetchedData(data);
+      setFetchedData(data);
       setIsLoading(false);
     })
     .catch((err) => {
-      setIsError(true);
+      setIsLastTransactionsError(true);
     });
 }

@@ -1,0 +1,14 @@
+.MoneyMatters_AllTransactions {
+  display: flex;
+  background-color: #f5f7fa;
+}
+
+.sidBar {
+  width: 18%;
+}
+
+.transactionPage {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}

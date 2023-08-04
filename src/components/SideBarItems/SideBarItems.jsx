@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import "./SideBarItems.css";
-import { CurrentActiveBoardID } from "../../App";
 import { ReturnSidebarBoardNameAndIcon } from "../Board/Board";
 import React from "react";
+import { CurrentActiveBoardID } from "../MoneyMattersApp/MoneyMattersApp";
 
 export function ReturnSidebarItem({ sideBarBoards, setCurrentActiveBoardID }) {
   let IconAndBoardName = [];
