@@ -1,7 +1,7 @@
 import "./TransactionPageData.css";
 import { FinalData } from "../Transaction/Transaction";
 import React from "react";
-import { Audio as Loader } from "react-loader-spinner";
+import { Oval as Loader } from "react-loader-spinner";
 
 export function Data({ pageData, redColor, greenColor }) {
   let data = [];
