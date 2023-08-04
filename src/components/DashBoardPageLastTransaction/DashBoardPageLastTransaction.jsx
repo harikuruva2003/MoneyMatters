@@ -3,16 +3,12 @@ import { Data } from "../TransactionPageData/TransactionPageData";
 import "./DashBoardPageLastTransaction.css";
 import { lastThreeTransactions } from "../../utils/utils";
 export function LastTransaction() {
-  let limit = 3;
-  let offSetValue = 0;
   let [lastTransactions, setLastTransactions] = useState(null);
   let [isError, setIsError] = useState(false);
 
   useEffect(() => {
     lastThreeTransactions({
       setLastTransactions,
-      limit,
-      offSetValue,
       setIsError,
     });
   }, []);
@@ -21,8 +17,6 @@ export function LastTransaction() {
     setIsError(false);
     lastThreeTransactions({
       setLastTransactions,
-      limit,
-      offSetValue,
       setIsError,
     });
   }

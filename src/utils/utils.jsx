@@ -1,3 +1,5 @@
+import { headers } from "../components/Constants/Constants";
+
 export function allTransactionsDataAPI({
   setAllTransactionsData,
   setDebitData,
@@ -10,13 +12,7 @@ export function allTransactionsDataAPI({
     `https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=${limit}&offset=${offSetValue}`,
     {
       method: "GET",
-      headers: {
-        "content-type": "application/json",
-        "x-hasura-admin-secret":
-          "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-        "x-hasura-role": "user",
-        "x-hasura-user-id": "1",
-      },
+      headers: headers,
     }
   )
     .then((data) => data.json())
@@ -39,23 +35,12 @@ export function allTransactionsDataAPI({
     });
 }
 
-export function lastThreeTransactions({
-  setLastTransactions,
-  limit,
-  offSetValue,
-  setIsError,
-}) {
+export function lastThreeTransactions({ setLastTransactions, setIsError }) {
   fetch(
-    `https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=${limit}&offset=${offSetValue}`,
+    "https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=3&offset=0",
     {
       method: "GET",
-      headers: {
-        "content-type": "application/json",
-        "x-hasura-admin-secret":
-          "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-        "x-hasura-role": "user",
-        "x-hasura-user-id": "1",
-      },
+      headers: headers,
     }
   )
     .then((data) => data.json())
@@ -76,13 +61,7 @@ export function totalCreditAndDebitDataAPI({
 }) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/credit-debit-totals", {
     method: "GET",
-    headers: {
-      "content-type": "application/json",
-      "x-hasura-admin-secret":
-        "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-      "x-hasura-role": "user",
-      "x-hasura-user-id": "1",
-    },
+    headers: headers,
   })
     .then((data) => data.json())
     .then((data) => {
