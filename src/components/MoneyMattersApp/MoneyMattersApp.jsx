@@ -27,6 +27,7 @@ export function MoneyMattersApp() {
   const [creditData, setCreditData] = useState(null);
   const [debitData, setDebitData] = useState(null);
   const [allTransactionsError, setAllTransactionsError] = useState(false);
+
   const sideBarBoards = [
     {
       id: "DashBoard",

@@ -1,0 +1,38 @@
+.mainDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addTransactionLayout {
+  width: 30vw;
+  height: 70vh;
+  background-color: lightblue;
+  border-radius: 25px;
+}
+
+.inputDIv {
+  display: flex;
+  flex-direction: column;
+}
+
+.addTransaction {
+  grid-column: 1 /-1;
+  background-color: #2d60ff;
+  border-radius: 10px;
+}
+.addTransactionModal {
+  width: 30px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeButton {
+  background-color: white;
+  border-width: 0px;
+  height: 0px;
+  width: 0px;
+  cursor: pointer;
+}
