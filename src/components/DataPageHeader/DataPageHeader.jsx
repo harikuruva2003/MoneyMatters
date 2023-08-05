@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { AddTransactionModal } from "../../App";
 import "./DataPageHeader.css";
 import React from "react";
 
-export function DataPageHeader({ transactionHeading, addTransactionButton }) {
-  let modal = useContext(AddTransactionModal);
-
+export function DataPageHeader({
+  transactionHeading,
+  addTransactionButton,
+  setIsModalOpen,
+}) {
   function openModal() {
-    modal.setIsModalOpen(true);
+    setIsModalOpen(true);
   }
   return (
     <div className="transactionHeadingAndButton">

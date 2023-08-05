@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import "./TransactionsPageHeader.css";
 import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
-import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 import React from "react";
 import { TransactionPage } from "../TransactionBoardPage/TransactionsBoardpage";
+import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
 
 const TractionsHeaderArray = ["Transactions", "+ Add Transaction"];
 
@@ -32,7 +32,7 @@ export function TransactionHeader({ setCurrentActivePageID }) {
 
   return (
     <div className="transactionHeader">
-      <DataPageHeader
+      <HeaderAndAddTransaction
         transactionHeading={TractionsHeaderArray[0]}
         addTransactionButton={TractionsHeaderArray[1]}
       />

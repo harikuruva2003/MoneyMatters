@@ -20,6 +20,7 @@ export function MoneyMattersApp() {
   let limit = 20;
   let offSetValue = 0;
   let activeBoardRef = useRef(null);
+
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
   activeBoardRef.current = currentActiveBoardID;
 

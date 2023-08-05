@@ -1,10 +1,10 @@
-import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 import { LastTransaction } from "../DashBoardPageLastTransaction/DashBoardPageLastTransaction";
 import { Card } from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
 import { useEffect, useState } from "react";
 import React from "react";
 import { totalCreditAndDebitDataAPI } from "../../utils/utils";
+import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
 
 export function DashBoardPage() {
   const [fetchedData, setFetchedData] = useState(null);
@@ -65,7 +65,7 @@ export function DashBoardPage() {
   return (
     <>
       <div className="dashBoardHeader">
-        <DataPageHeader
+        <HeaderAndAddTransaction
           transactionHeading={"Accounts"}
           addTransactionButton={"+ Add Transaction"}
         />
