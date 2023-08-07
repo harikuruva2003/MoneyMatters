@@ -72,3 +72,30 @@ export function totalCreditAndDebitDataAPI({
       setIsLastTransactionsError(true);
     });
 }
+
+export function addTransactionDataAPI(formData, setIsModalOpen) {
+  fetch("https://bursting-gelding-24.hasura.app/api/rest/add-transaction", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-hasura-admin-secret":
+        "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+      "x-hasura-role": "user",
+      "x-hasura-user-id": "1",
+    },
+    body: JSON.stringify({
+      name: formData.name,
+      type: formData.type,
+      category: formData.category,
+      amount: formData.amount,
+      date: formData.date,
+      user_id: 1,
+    }),
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      setIsModalOpen(false);
+      console.log(data);
+    })
+    .catch((err) => console.log(err));
+}

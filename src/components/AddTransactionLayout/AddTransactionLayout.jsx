@@ -1,6 +1,9 @@
 import Modal from "react-modal";
 import React from "react";
 import "./AddTransactionLayout.css";
+import { addTransactionDataAPI } from "../../utils/utils";
+import { useState } from "react";
+import { Oval as Loader } from "react-loader-spinner";
 
 const customStyles = {
   content: {
@@ -17,14 +20,33 @@ const customStyles = {
   },
 };
 export function AddTransaction({ isModalOpen, setIsModalOpen }) {
+  let [formData, setFormData] = useState({
+    name: "",
+    type: "credit",
+    category: "Youtube Premium",
+    amount: "",
+    date: "",
+  });
+  let [text, setText] = useState("Add Transaction");
+
   function closeModal() {
     setIsModalOpen(false);
   }
 
+  function onChangeHandler(event) {
+    const { name, value } = event.target;
+    setFormData((prevData) => {
+      return {
+        ...prevData,
+        [name]: value,
+      };
+    });
+  }
+
   function onSubmitHandler(event) {
     event.preventDefault();
-    console.log(event.target);
-    setIsModalOpen(false);
+    setText(<Loader />);
+    addTransactionDataAPI(formData, setIsModalOpen);
   }
 
   return (
@@ -37,16 +59,33 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
           </button>
         </div>
 
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} id="form">
           <div className="inputDIv">
             <span>Transaction Name</span>
-            <input className="field" type="text" placeholder="Enter Name" />
+            <input
+              className="field"
+              type="text"
+              placeholder="Enter Name"
+              name="name"
+              onChange={onChangeHandler}
+            />
           </div>
 
           <div className="inputDIv">
             <span>Transaction Type</span>
-            <select className="field" placeholder="Select Transaction Type">
-              <option>Shopping</option>
+            <select className="field" name="type" onChange={onChangeHandler}>
+              <option>credit</option>
+              <option>debit</option>
+            </select>
+          </div>
+
+          <div className="inputDIv">
+            <span>Category</span>
+            <select
+              className="field"
+              name="category"
+              onChange={onChangeHandler}
+            >
               <option>Youtube Premium</option>
               <option>Phone Recharge</option>
               <option>Electricity Bill</option>
@@ -56,44 +95,29 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
           </div>
 
           <div className="inputDIv">
-            <span>Category</span>
-            <select className="field">
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-              <option>kjhsfd</option>
-            </select>
-          </div>
-
-          <div className="inputDIv">
             <span>Amount</span>
             <input
               className="field"
               type="text"
+              name="amount"
+              onChange={onChangeHandler}
               placeholder="Enter Your Amount"
             />
           </div>
 
           <div className="inputDIv">
             <span>Date</span>
-            <input className="field" type="date" placeholder="Select Date" />
+            <input
+              className="field"
+              type="date"
+              placeholder="Select Date"
+              name="date"
+              onChange={onChangeHandler}
+            />
           </div>
 
           <button className="addTransaction" type="submit">
-            Add Transaction
+            {text}
           </button>
         </form>
       </div>
