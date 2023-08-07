@@ -22,7 +22,9 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
   }
 
   function onSubmitHandler(event) {
-    console.log("onSubmitHandler", event);
+    event.preventDefault();
+    console.log(event.target);
+    setIsModalOpen(false);
   }
 
   return (
@@ -35,7 +37,7 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
           </button>
         </div>
 
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <div className="inputDIv">
             <span>Transaction Name</span>
             <input className="field" type="text" placeholder="Enter Name" />
@@ -90,11 +92,7 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
             <input className="field" type="date" placeholder="Select Date" />
           </div>
 
-          <button
-            className="addTransaction"
-            // type="submit"
-            onClick={onSubmitHandler}
-          >
+          <button className="addTransaction" type="submit">
             Add Transaction
           </button>
         </form>
