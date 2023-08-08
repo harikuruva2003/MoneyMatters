@@ -16,6 +16,12 @@ export function TransactionsPageTransactions() {
   const offSetValue = 0;
   const transactionsStoreContext = useContext(TransactionsStoreContext);
 
+  // transactionsStoreContext.transactionsList.forEach((transaction) => {
+  //   transaction.type === "credit"
+  //     ? credit_Data.push(transaction)
+  //     : debit_Data.push(transaction);
+  // });
+
   function getActivePageData() {
     switch (currentActivePage) {
       case "AllTransactions":

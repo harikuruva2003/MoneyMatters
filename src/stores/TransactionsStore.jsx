@@ -12,12 +12,14 @@ class TransactionsStore {
       addTransactionToTransactionLIst: action,
       updateTransaction: action,
       deleteTransaction: action,
+      differentiateCredAndDebitData: action,
     });
   }
 
   addTransactionDataToTransactionList(transactionsData) {
     this.transactionsList = [...this.transactionsList, ...transactionsData];
   }
+  differentiateCredAndDebitData() {}
   addTransactionToTransactionLIst() {}
   updateTransaction() {}
   deleteTransaction() {}
