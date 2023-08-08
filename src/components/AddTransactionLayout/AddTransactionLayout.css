@@ -29,3 +29,8 @@
   border-width: 1px;
   border-color: #dfeaf2;
 }
+
+.transactionHeading {
+  color: #333b69;
+  font-family: Inter;
+}

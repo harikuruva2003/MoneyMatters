@@ -1,12 +1,12 @@
 import { headers } from "../components/Constants/Constants";
 
 export function allTransactionsDataAPI({
-  setAllTransactionsData,
   setDebitData,
   setCreditData,
   setAllTransactionsError,
   limit,
   offSetValue,
+  transactionsStoreContext,
 }) {
   fetch(
     `https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=${limit}&offset=${offSetValue}`,
@@ -18,7 +18,10 @@ export function allTransactionsDataAPI({
     .then((data) => data.json())
 
     .then((data) => {
-      setAllTransactionsData(data);
+      transactionsStoreContext.addTransactionDataToTransactionList(
+        data.transactions
+      );
+
       let debit_Data = [];
       let credit_Data = [];
       data.transactions.forEach((transaction) => {

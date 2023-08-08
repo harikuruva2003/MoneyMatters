@@ -4,13 +4,14 @@ import HomeIcon from "../../icons/HomeIcon/HomeIcon";
 import TransactionsIcon from "../../icons/TransactionIcon/Transaction";
 import ProfileIcon from "../../icons/ProfileIcon/profileIcon";
 import Logo from "../../icons/Logo/Logo";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { TransactionBoardDataPage } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 import { ProfilePage } from "../ProfilePage/ProfilePage";
 import React from "react";
 import { allTransactionsDataAPI } from "../../utils/utils";
 import { DashBoardPage } from "../DashBoardPage/DashBoardPage";
 import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
+import { TransactionsStoreContext } from "../../App";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
@@ -24,10 +25,10 @@ export function MoneyMattersApp() {
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
   activeBoardRef.current = currentActiveBoardID;
 
-  const [allTransactionsData, setAllTransactionsData] = useState(null);
   const [creditData, setCreditData] = useState(null);
   const [debitData, setDebitData] = useState(null);
   const [allTransactionsError, setAllTransactionsError] = useState(false);
+  const transactionsStoreContext = useContext(TransactionsStoreContext);
 
   const sideBarBoards = [
     {
@@ -60,24 +61,24 @@ export function MoneyMattersApp() {
 
   useEffect(() => {
     allTransactionsDataAPI({
-      setAllTransactionsData,
       setDebitData,
       setCreditData,
       setAllTransactionsError,
       limit,
       offSetValue,
+      transactionsStoreContext,
     });
   }, []);
 
   function setError() {
     setAllTransactionsError(false);
     allTransactionsDataAPI({
-      setAllTransactionsData,
       setDebitData,
       setCreditData,
       setAllTransactionsError,
       limit,
       offSetValue,
+      transactionsStoreContext,
     });
   }
 
@@ -88,11 +89,7 @@ export function MoneyMattersApp() {
 
       case "TransactionsBoard":
         return !allTransactionsError ? (
-          <TransactionBoardDataPage
-            allTransactionsData={allTransactionsData}
-            debitData={debitData}
-            creditData={creditData}
-          />
+          <TransactionBoardDataPage />
         ) : (
           <div>
             <h1>Something went wrong</h1>

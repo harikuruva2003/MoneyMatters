@@ -53,7 +53,7 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
     <Modal isOpen={isModalOpen} style={customStyles}>
       <div>
         <div className="head">
-          <h1>Add Transaction</h1>
+          <h1 className="transactionHeading">Add Transaction</h1>
           <button className="closeButton" onClick={closeModal}>
             X
           </button>
