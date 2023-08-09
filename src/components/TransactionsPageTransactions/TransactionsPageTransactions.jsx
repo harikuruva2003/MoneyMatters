@@ -8,19 +8,11 @@ import { allTransactionsDataAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
 
 export function TransactionsPageTransactions() {
-  const [creditData, setCreditData] = useState(null);
-  const [debitData, setDebitData] = useState(null);
   const [allTransactionsError, setAllTransactionsError] = useState(false);
   const currentActivePage = useContext(ActivePageContext);
   const limit = 20;
   const offSetValue = 0;
   const transactionsStoreContext = useContext(TransactionsStoreContext);
-
-  // transactionsStoreContext.transactionsList.forEach((transaction) => {
-  //   transaction.type === "credit"
-  //     ? credit_Data.push(transaction)
-  //     : debit_Data.push(transaction);
-  // });
 
   function getActivePageData() {
     switch (currentActivePage) {
@@ -29,10 +21,14 @@ export function TransactionsPageTransactions() {
           ? transactionsStoreContext.transactionsList
           : null;
       case "Debit":
-        return transactionsStoreContext ? debitData : null;
+        return transactionsStoreContext
+          ? transactionsStoreContext.debitData
+          : null;
 
       case "Credit":
-        return transactionsStoreContext ? creditData : null;
+        return transactionsStoreContext
+          ? transactionsStoreContext.creditData
+          : null;
 
       default:
         return [];
@@ -41,8 +37,6 @@ export function TransactionsPageTransactions() {
 
   useEffect(() => {
     allTransactionsDataAPI({
-      setDebitData,
-      setCreditData,
       setAllTransactionsError,
       limit,
       offSetValue,
@@ -53,8 +47,6 @@ export function TransactionsPageTransactions() {
   function setError() {
     setAllTransactionsError(false);
     allTransactionsDataAPI({
-      setDebitData,
-      setCreditData,
       setAllTransactionsError,
       limit,
       offSetValue,

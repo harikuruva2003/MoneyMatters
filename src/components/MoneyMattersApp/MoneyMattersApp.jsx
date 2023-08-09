@@ -25,8 +25,6 @@ export function MoneyMattersApp() {
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
   activeBoardRef.current = currentActiveBoardID;
 
-  const [creditData, setCreditData] = useState(null);
-  const [debitData, setDebitData] = useState(null);
   const [allTransactionsError, setAllTransactionsError] = useState(false);
   const transactionsStoreContext = useContext(TransactionsStoreContext);
 
@@ -61,8 +59,6 @@ export function MoneyMattersApp() {
 
   useEffect(() => {
     allTransactionsDataAPI({
-      setDebitData,
-      setCreditData,
       setAllTransactionsError,
       limit,
       offSetValue,
@@ -73,8 +69,6 @@ export function MoneyMattersApp() {
   function setError() {
     setAllTransactionsError(false);
     allTransactionsDataAPI({
-      setDebitData,
-      setCreditData,
       setAllTransactionsError,
       limit,
       offSetValue,

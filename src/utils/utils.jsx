@@ -1,8 +1,6 @@
 import { headers } from "../components/Constants/Constants";
 
 export function allTransactionsDataAPI({
-  setDebitData,
-  setCreditData,
   setAllTransactionsError,
   limit,
   offSetValue,
@@ -21,16 +19,6 @@ export function allTransactionsDataAPI({
       transactionsStoreContext.addTransactionDataToTransactionList(
         data.transactions
       );
-
-      let debit_Data = [];
-      let credit_Data = [];
-      data.transactions.forEach((transaction) => {
-        transaction.type === "credit"
-          ? credit_Data.push(transaction)
-          : debit_Data.push(transaction);
-      });
-      setDebitData(debit_Data);
-      setCreditData(credit_Data);
     })
 
     .catch((err) => {
