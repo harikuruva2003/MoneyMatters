@@ -46,7 +46,9 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         <div className="editOption dataStyles">
           <TransactionPencil />
         </div>
-        <TransactionDeleteIcon className="deleteIcon" />
+        <button className="trashBin">
+          {<TransactionDeleteIcon className="deleteIcon" />}{" "}
+        </button>
       </div>
       {indexOfTransaction !== pageData.length - 1 ? (
         <hr className="horizontalLine"></hr>

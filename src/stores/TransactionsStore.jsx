@@ -17,6 +17,7 @@ class TransactionsStore {
       transactionsList: observable,
       creditTotalAmount: observable,
       debitTotalAmount: observable,
+      lastTransactionsList: observable,
 
       creditData: computed,
       debitData: computed,
@@ -27,6 +28,7 @@ class TransactionsStore {
       debitTotalAmountAction: action,
       updateTransaction: action,
       deleteTransaction: action,
+      addLastTransactionDataToLastTransactionList: action,
     });
   }
 
@@ -64,6 +66,7 @@ class TransactionsStore {
     this.lastTransactionsList = [
       ...this.lastTransactionsList,
       ...lastTransactionsData,
+      console.log(lastTransactionsData),
     ];
   }
 

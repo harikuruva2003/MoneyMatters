@@ -1,0 +1,53 @@
+.deleteTransactionMainDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.errorImage {
+  margin: 32px 24px 0px 24px;
+}
+.topHeading {
+  margin: 0;
+  padding-top: 32px;
+  color: #333b69;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+}
+.para {
+  color: #505887;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+}
+.yesDeleteButton {
+  border-radius: 8px;
+  background: #dc2626;
+  padding: 8px 16px;
+  border-width: 0;
+  cursor: pointer;
+}
+.noLeaveButton {
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 8px 16px;
+  border-width: 0.5px;
+  border-color: #cbd5e1;
+  cursor: pointer;
+}
+
+.closeButton {
+  background-color: white;
+  border-color: white;
+}

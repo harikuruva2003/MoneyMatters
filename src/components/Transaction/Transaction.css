@@ -47,3 +47,8 @@
 .deleteIcon {
   cursor: pointer;
 }
+.trashBin {
+  background-color: white;
+  border-color: white;
+  border-width: 0;
+}

@@ -1,4 +1,7 @@
-import { headers } from "../components/Constants/Constants";
+import {
+  deleteTransactionHeader,
+  headers,
+} from "../components/Constants/Constants";
 
 export function allTransactionsDataAPI({
   setAllTransactionsError,
@@ -28,6 +31,7 @@ export function allTransactionsDataAPI({
 
 export function lastThreeTransactions({
   transactionsStoreContext,
+  setLast,
   setIsError,
 }) {
   fetch(
@@ -43,6 +47,7 @@ export function lastThreeTransactions({
       transactionsStoreContext.addLastTransactionDataToLastTransactionList(
         data.transactions
       );
+      setLast(data.transactions);
     })
 
     .catch((err) => {
@@ -105,4 +110,12 @@ export function addTransactionDataAPI(
       );
     })
     .catch((err) => console.log(err));
+}
+
+export function deleteTransactionAPI() {
+  fetch("https://bursting-gelding-24.hasura.app/api/rest/delete-transaction", {
+    method: "DELETE",
+    headers: deleteTransactionHeader,
+    body: { id: "14" },
+  });
 }
