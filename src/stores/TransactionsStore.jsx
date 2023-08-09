@@ -38,7 +38,8 @@ class TransactionsStore {
     this.transactionsList = [...this.transactionsList, ...transactionsData];
   }
   addTransactionToTransactionLIst(transaction) {
-    this.transactionsList = [...this.transactionsList, ...transaction];
+    this.transactionsList = [...this.transactionsList, transaction];
+    console.log(transaction);
   }
   updateTransaction() {}
   deleteTransaction() {}
