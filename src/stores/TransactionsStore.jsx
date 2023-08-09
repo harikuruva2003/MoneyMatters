@@ -38,8 +38,11 @@ class TransactionsStore {
     this.transactionsList = [...this.transactionsList, ...transactionsData];
   }
   addTransactionToTransactionLIst(transaction) {
-    this.transactionsList = [...this.transactionsList, transaction];
-    console.log(transaction);
+    this.transactionsList = [
+      ...this.transactionsList,
+      transaction.insert_transactions_one,
+    ];
+    console.log(transaction.insert_transactions_one);
   }
   updateTransaction() {}
   deleteTransaction() {}
