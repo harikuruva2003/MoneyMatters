@@ -1,27 +1,28 @@
 import { LastTransaction } from "../DashBoardPageLastTransaction/DashBoardPageLastTransaction";
-import { Card } from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
+import Card from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import React from "react";
 import { totalCreditAndDebitDataAPI } from "../../utils/utils";
 import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
+import { TransactionsStoreContext } from "../../App";
 
 export function DashBoardPage() {
-  const [fetchedData, setFetchedData] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
   let [isLastTransactionsError, setIsLastTransactionsError] = useState(false);
+  const transactionsStoreContext = useContext(TransactionsStoreContext);
 
   const creditAndDebitCardsData = [
     {
       money: !isLoading
-        ? `$ ${fetchedData.totals_credit_debit_transactions[1].sum} `
+        ? `$ ${transactionsStoreContext.creditTotalAmount} `
         : "",
       text: "Credit",
       image: "/images/image1.png",
     },
     {
       money: !isLoading
-        ? `$ ${fetchedData.totals_credit_debit_transactions[0].sum} `
+        ? `$ ${transactionsStoreContext.debitTotalAmount} `
         : "",
       text: "Debit",
       image: "/images/image2.png",
@@ -30,7 +31,7 @@ export function DashBoardPage() {
 
   useEffect(() => {
     totalCreditAndDebitDataAPI({
-      setFetchedData,
+      transactionsStoreContext,
       setIsLoading,
       setIsLastTransactionsError,
     });
@@ -56,7 +57,7 @@ export function DashBoardPage() {
   function setTotalAmountAPIError() {
     setIsLastTransactionsError(false);
     totalCreditAndDebitDataAPI({
-      setFetchedData,
+      transactionsStoreContext,
       setIsLoading,
       setIsLastTransactionsError,
     });

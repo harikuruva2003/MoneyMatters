@@ -2,19 +2,29 @@ import { observable, makeObservable, computed, action } from "mobx";
 
 class TransactionsStore {
   transactionsList;
-  debitData;
+  debitTotalAmount;
+  creditTotalAmount;
+  lastTransactionsList;
 
   constructor() {
     this.transactionsList = [];
+    this.lastTransactionsList = [];
+
+    this.debitTotalAmount = "";
+    this.creditTotalAmount = "";
 
     makeObservable(this, {
       transactionsList: observable,
+      creditTotalAmount: observable,
+      debitTotalAmount: observable,
 
       creditData: computed,
       debitData: computed,
 
       addTransactionDataToTransactionList: action,
       addTransactionToTransactionLIst: action,
+      creditTotalAmountAction: action,
+      debitTotalAmountAction: action,
       updateTransaction: action,
       deleteTransaction: action,
     });
@@ -37,13 +47,26 @@ class TransactionsStore {
   addTransactionDataToTransactionList(transactionsData) {
     this.transactionsList = [...this.transactionsList, ...transactionsData];
   }
+
   addTransactionToTransactionLIst(transaction) {
-    this.transactionsList = [
-      ...this.transactionsList,
-      transaction.insert_transactions_one,
-    ];
-    console.log(transaction.insert_transactions_one);
+    this.transactionsList = [...this.transactionsList, transaction];
   }
+
+  creditTotalAmountAction(creditTotal) {
+    this.creditTotalAmount = creditTotal;
+  }
+
+  debitTotalAmountAction(debitTotal) {
+    this.debitTotalAmount = debitTotal;
+  }
+
+  addLastTransactionDataToLastTransactionList(lastTransactionsData) {
+    this.lastTransactionsList = [
+      ...this.lastTransactionsList,
+      ...lastTransactionsData,
+    ];
+  }
+
   updateTransaction() {}
   deleteTransaction() {}
 }

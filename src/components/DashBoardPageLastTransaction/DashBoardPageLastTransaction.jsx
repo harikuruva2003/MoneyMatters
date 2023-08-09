@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Data } from "../TransactionPageData/TransactionPageData";
 import "./DashBoardPageLastTransaction.css";
 import { lastThreeTransactions } from "../../utils/utils";
+import { TransactionsStoreContext } from "../../App";
 export function LastTransaction() {
-  let [lastTransactions, setLastTransactions] = useState(null);
   let [isError, setIsError] = useState(false);
+  const transactionsStoreContext = useContext(TransactionsStoreContext);
 
   useEffect(() => {
     lastThreeTransactions({
-      setLastTransactions,
+      transactionsStoreContext,
       setIsError,
     });
   }, []);
@@ -16,7 +17,7 @@ export function LastTransaction() {
   function setError() {
     setIsError(false);
     lastThreeTransactions({
-      setLastTransactions,
+      transactionsStoreContext,
       setIsError,
     });
   }
@@ -27,7 +28,7 @@ export function LastTransaction() {
       <div className="lastTransactionData">
         {!isError ? (
           <Data
-            pageData={lastTransactions}
+            pageData={transactionsStoreContext.lastTransactionsList}
             redColor="#FE5C73"
             greenColor="#16DBAA"
           />

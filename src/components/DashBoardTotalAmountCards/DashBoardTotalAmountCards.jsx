@@ -1,8 +1,9 @@
+import { observer } from "mobx-react";
 import "./DashBoardTotalAmountCards.css";
 import React from "react";
 import { Oval as Loader } from "react-loader-spinner";
 
-export function Card({ amount, text, image }) {
+function Card({ amount, text, image }) {
   return (
     <div className="creditAndDebitCards">
       <div className="creditedMoneyAndCreditText">
@@ -15,3 +16,4 @@ export function Card({ amount, text, image }) {
     </div>
   );
 }
+export default observer(Card);

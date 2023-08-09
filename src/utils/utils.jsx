@@ -26,7 +26,10 @@ export function allTransactionsDataAPI({
     });
 }
 
-export function lastThreeTransactions({ setLastTransactions, setIsError }) {
+export function lastThreeTransactions({
+  transactionsStoreContext,
+  setIsError,
+}) {
   fetch(
     "https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=3&offset=0",
     {
@@ -37,7 +40,9 @@ export function lastThreeTransactions({ setLastTransactions, setIsError }) {
     .then((data) => data.json())
 
     .then((data) => {
-      setLastTransactions(data.transactions);
+      transactionsStoreContext.addLastTransactionDataToLastTransactionList(
+        data.transactions
+      );
     })
 
     .catch((err) => {
@@ -46,7 +51,7 @@ export function lastThreeTransactions({ setLastTransactions, setIsError }) {
 }
 
 export function totalCreditAndDebitDataAPI({
-  setFetchedData,
+  transactionsStoreContext,
   setIsLoading,
   setIsLastTransactionsError,
 }) {
@@ -56,7 +61,12 @@ export function totalCreditAndDebitDataAPI({
   })
     .then((data) => data.json())
     .then((data) => {
-      setFetchedData(data);
+      transactionsStoreContext.creditTotalAmountAction(
+        data.totals_credit_debit_transactions[0].sum
+      );
+      transactionsStoreContext.debitTotalAmountAction(
+        data.totals_credit_debit_transactions[1].sum
+      );
       setIsLoading(false);
     })
     .catch((err) => {
@@ -90,7 +100,9 @@ export function addTransactionDataAPI(
     .then((data) => data.json())
     .then((data) => {
       setIsModalOpen(false);
-      transactionsStoreContext.addTransactionToTransactionLIst(data);
+      transactionsStoreContext.addTransactionToTransactionLIst(
+        data.insert_transactions_one
+      );
     })
     .catch((err) => console.log(err));
 }
