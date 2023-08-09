@@ -12,12 +12,13 @@ import { allTransactionsDataAPI } from "../../utils/utils";
 import { DashBoardPage } from "../DashBoardPage/DashBoardPage";
 import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
 import { TransactionsStoreContext } from "../../App";
+import { observer } from "mobx-react";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
 export const Error = createContext(null);
 
-export function MoneyMattersApp() {
+function MoneyMattersApp() {
   let limit = 20;
   let offSetValue = 0;
   let activeBoardRef = useRef(null);
@@ -115,3 +116,4 @@ export function MoneyMattersApp() {
     </div>
   );
 }
+export default observer(MoneyMattersApp);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import { AddTransaction } from "../AddTransactionLayout/AddTransactionLayout";
+import AddTransaction from "../AddTransactionLayout/AddTransactionLayout";
 import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 
 export function HeaderAndAddTransaction({

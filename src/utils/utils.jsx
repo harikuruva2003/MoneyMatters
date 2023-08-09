@@ -64,7 +64,11 @@ export function totalCreditAndDebitDataAPI({
     });
 }
 
-export function addTransactionDataAPI(formData, setIsModalOpen) {
+export function addTransactionDataAPI(
+  formData,
+  setIsModalOpen,
+  transactionsStoreContext
+) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/add-transaction", {
     method: "POST",
     headers: {
@@ -86,7 +90,7 @@ export function addTransactionDataAPI(formData, setIsModalOpen) {
     .then((data) => data.json())
     .then((data) => {
       setIsModalOpen(false);
-      console.log(data);
+      transactionsStoreContext.addTransactionToTransactionLIst(data);
     })
     .catch((err) => console.log(err));
 }

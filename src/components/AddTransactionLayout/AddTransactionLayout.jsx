@@ -1,10 +1,11 @@
 import Modal from "react-modal";
-import React from "react";
+import React, { useContext } from "react";
 import "./AddTransactionLayout.css";
 import { addTransactionDataAPI } from "../../utils/utils";
 import { useState } from "react";
 import { Oval as Loader } from "react-loader-spinner";
-
+import { TransactionsStoreContext } from "../../App";
+import { observer } from "mobx-react";
 const customStyles = {
   content: {
     width: "30%",
@@ -19,7 +20,9 @@ const customStyles = {
     alignItems: "center",
   },
 };
-export function AddTransaction({ isModalOpen, setIsModalOpen }) {
+function AddTransaction({ isModalOpen, setIsModalOpen }) {
+  let transactionsStoreContext = useContext(TransactionsStoreContext);
+
   let [formData, setFormData] = useState({
     name: "",
     type: "credit",
@@ -46,7 +49,7 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
   function onSubmitHandler(event) {
     event.preventDefault();
     setText(<Loader />);
-    addTransactionDataAPI(formData, setIsModalOpen);
+    addTransactionDataAPI(formData, setIsModalOpen, transactionsStoreContext);
   }
 
   return (
@@ -124,3 +127,5 @@ export function AddTransaction({ isModalOpen, setIsModalOpen }) {
     </Modal>
   );
 }
+
+export default observer(AddTransaction);

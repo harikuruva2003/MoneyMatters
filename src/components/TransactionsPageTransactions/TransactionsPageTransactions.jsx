@@ -6,8 +6,9 @@ import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardD
 import React from "react";
 import { allTransactionsDataAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
+import { observer } from "mobx-react";
 
-export function TransactionsPageTransactions() {
+function TransactionsPageTransactions() {
   const [allTransactionsError, setAllTransactionsError] = useState(false);
   const currentActivePage = useContext(ActivePageContext);
   const limit = 20;
@@ -67,3 +68,5 @@ export function TransactionsPageTransactions() {
     </div>
   );
 }
+
+export default observer(TransactionsPageTransactions);
