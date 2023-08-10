@@ -24,7 +24,7 @@ function LastTransaction() {
       setIsError,
     });
   }
-
+  //transactionsStoreContext.lastTransactionsList
   return (
     <div className="lastTransaction">
       <h1 className="lastTransactionHeading">Last Transaction</h1>

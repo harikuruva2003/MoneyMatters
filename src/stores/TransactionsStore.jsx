@@ -7,8 +7,8 @@ class TransactionsStore {
   lastTransactionsList;
 
   constructor() {
-    this.transactionsList = [];
-    this.lastTransactionsList = [];
+    this.transactionsList = null;
+    this.lastTransactionsList = null;
 
     this.debitTotalAmount = "";
     this.creditTotalAmount = "";
@@ -47,7 +47,7 @@ class TransactionsStore {
   }
 
   addTransactionDataToTransactionList(transactionsData) {
-    this.transactionsList = [...this.transactionsList, ...transactionsData];
+    this.transactionsList = [...transactionsData];
   }
 
   addTransactionToTransactionLIst(transaction) {
