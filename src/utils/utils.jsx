@@ -119,10 +119,11 @@ export function deleteTransactionAPI(
 ) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/delete-transaction", {
     method: "DELETE",
-    headers: deleteTransactionHeader,
-    body: { id: transactionID },
+    headers: headers,
+    body: JSON.stringify({ id: transactionID }),
   })
     .then((data) => {
+      console.log("Data status " + data);
       setIsDeleteTransactionModalOpen(false);
       transactionsStoreContext.deleteTransaction(transactionID);
     })
