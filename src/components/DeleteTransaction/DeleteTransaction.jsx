@@ -39,7 +39,7 @@ export const DeleteTransaction = ({
     <Modal isOpen={isDeleteTransactionModalOpen} style={customStyles}>
       <div className="deleteTransactionMainDiv">
         <div className="imageAndContentDiv">
-          <img alt="error" className="errorImage" src="images/Group 848.png" />
+          <img alt="error" className="errorImage" src="images/Group848.png" />
           <div>
             <div>
               <h1 className="topHeading">Are you sure you want to delete</h1>
