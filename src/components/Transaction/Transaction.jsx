@@ -19,7 +19,7 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         <TransactionUpArrow color={greenColor} />
       </span>
     );
-    arrowAndPrice.Amount = (
+    arrowAndPrice.amount = (
       <span style={{ color: "#16DBAA" }}>{"+" + transaction.amount}</span>
     );
   } else {
@@ -28,7 +28,7 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         <TransactionDownArrow color={redColor} />
       </span>
     );
-    arrowAndPrice.Amount = (
+    arrowAndPrice.amount = (
       <span style={{ color: "#FE5C73" }}>{"-" + transaction.amount}</span>
     );
   }
@@ -51,7 +51,7 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         <span className="date dataStyles">
           {transaction.date.substring(0, 10)}
         </span>
-        <span className="amount dataStyles">{arrowAndPrice.Amount}</span>
+        <span className="amount dataStyles">{arrowAndPrice.amount}</span>
         <div className="editOption dataStyles">
           <TransactionPencil />
         </div>

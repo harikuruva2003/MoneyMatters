@@ -1,7 +1,4 @@
-import {
-  deleteTransactionHeader,
-  headers,
-} from "../components/Constants/Constants";
+import { headers } from "../components/Constants/Constants";
 
 export function allTransactionsDataAPI({
   setAllTransactionsError,
@@ -123,7 +120,7 @@ export function deleteTransactionAPI(
     body: JSON.stringify({ id: transactionID }),
   })
     .then((data) => {
-      console.log("Data status " + data);
+      console.log("Data status " + data.status);
       setIsDeleteTransactionModalOpen(false);
       transactionsStoreContext.deleteTransaction(transactionID);
     })

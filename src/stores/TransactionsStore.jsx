@@ -1,10 +1,4 @@
-import {
-  observable,
-  makeObservable,
-  computed,
-  action,
-  transaction,
-} from "mobx";
+import { observable, makeObservable, computed, action } from "mobx";
 
 class TransactionsStore {
   transactionsList;
