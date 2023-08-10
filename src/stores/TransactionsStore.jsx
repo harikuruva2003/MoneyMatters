@@ -1,4 +1,10 @@
-import { observable, makeObservable, computed, action } from "mobx";
+import {
+  observable,
+  makeObservable,
+  computed,
+  action,
+  transaction,
+} from "mobx";
 
 class TransactionsStore {
   transactionsList;
@@ -66,11 +72,18 @@ class TransactionsStore {
     this.lastTransactionsList = [
       ...this.lastTransactionsList,
       ...lastTransactionsData,
-      console.log(lastTransactionsData),
     ];
   }
 
+  deleteTransaction(transactionId) {
+    let updatedTransactionsList = this.transactionsList.filter(
+      (transaction) => {
+        return transaction.id !== transactionId;
+      }
+    );
+    this.transactionsList = updatedTransactionsList;
+  }
+
   updateTransaction() {}
-  deleteTransaction() {}
 }
 export default TransactionsStore;

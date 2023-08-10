@@ -1,14 +1,15 @@
 import "./Transaction.css";
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import TransactionDownArrow from "../../icons/TransactionDownArrow/TransactionDownArrow";
 import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArrow";
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
 import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDelete";
-import { DeleteTransactionContext } from "../TransactionsPageTransactions/TransactionsPageTransactions";
+import { DeleteTransaction } from "../DeleteTransaction/DeleteTransaction";
 
 export function FinalData({ transaction, pageData, redColor, greenColor }) {
-  const deleteTransactionContext = useContext(DeleteTransactionContext);
-
+  const [isDeleteTransactionModalOpen, setIsDeleteTransactionModalOpen] =
+    useState(false);
+  const [transactionID, setTransactionID] = useState(null);
   let indexOfTransaction;
   indexOfTransaction = pageData.indexOf(transaction);
   let arrowAndPrice = {};
@@ -33,7 +34,8 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
   }
 
   function setDeleteTransactionContext() {
-    deleteTransactionContext.setIsTransactionDeleted(true);
+    setTransactionID(transaction.id);
+    setIsDeleteTransactionModalOpen(true);
   }
   return (
     <div>
@@ -62,6 +64,11 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
       ) : (
         ""
       )}
+      <DeleteTransaction
+        isDeleteTransactionModalOpen={isDeleteTransactionModalOpen}
+        setIsDeleteTransactionModalOpen={setIsDeleteTransactionModalOpen}
+        transactionID={transactionID}
+      />
     </div>
   );
 }

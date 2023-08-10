@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Modal from "react-modal";
 import "./DeleteTransaction.css";
-import { DeleteTransactionContext } from "../TransactionsPageTransactions/TransactionsPageTransactions";
+import { deleteTransactionAPI } from "../../utils/utils";
+import { TransactionsStoreContext } from "../../App";
 
 const customStyles = {
   content: {
@@ -18,21 +19,30 @@ const customStyles = {
     alignItems: "center",
   },
 };
-export const DeleteTransaction = () => {
-  const deleteTransaction = useContext(DeleteTransactionContext);
-
+export const DeleteTransaction = ({
+  isDeleteTransactionModalOpen,
+  setIsDeleteTransactionModalOpen,
+  transactionID,
+}) => {
+  const transactionsStoreContext = useContext(TransactionsStoreContext);
   function closeDeleteTransactionLayout() {
-    deleteTransaction.setIsTransactionDeleted(false);
+    setIsDeleteTransactionModalOpen(false);
   }
-
+  function yesDeleteTransactionHandler() {
+    deleteTransactionAPI(
+      transactionID,
+      transactionsStoreContext,
+      setIsDeleteTransactionModalOpen
+    );
+  }
   return (
-    <Modal isOpen={deleteTransaction.isTransactionDeleted} style={customStyles}>
+    <Modal isOpen={isDeleteTransactionModalOpen} style={customStyles}>
       <div className="deleteTransactionMainDiv">
         <div className="imageAndContentDiv">
           <img
+            alt="error image"
             className="errorImage"
             src="images/Group 848.png"
-            alt="error image"
           />
           <div>
             <div>
@@ -43,8 +53,18 @@ export const DeleteTransaction = () => {
               </p>
             </div>
             <div className="buttons">
-              <button className="yesDeleteButton">Yes, Delete</button>
-              <button className="noLeaveButton">No, Leave it</button>
+              <button
+                className="yesDeleteButton"
+                onClick={yesDeleteTransactionHandler}
+              >
+                Yes, Delete
+              </button>
+              <button
+                className="noLeaveButton"
+                onClick={closeDeleteTransactionLayout}
+              >
+                No, Leave it
+              </button>
             </div>
           </div>
         </div>

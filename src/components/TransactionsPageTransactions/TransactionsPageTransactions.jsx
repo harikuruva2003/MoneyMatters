@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Data } from "../TransactionPageData/TransactionPageData";
 import { TransactionsHeaders } from "../TransactionsDataHeaders/TransactionsDataHeaders";
 import "./TransactionsPageTransactions.css";
@@ -7,9 +7,6 @@ import React from "react";
 import { allTransactionsDataAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
-import { DeleteTransaction } from "../DeleteTransaction/DeleteTransaction";
-
-export const DeleteTransactionContext = createContext(null);
 
 function TransactionsPageTransactions() {
   const [allTransactionsError, setAllTransactionsError] = useState(false);
@@ -17,7 +14,6 @@ function TransactionsPageTransactions() {
   const limit = 20;
   const offSetValue = 0;
   const transactionsStoreContext = useContext(TransactionsStoreContext);
-  const [isTransactionDeleted, setIsTransactionDeleted] = useState(false);
 
   function getActivePageData() {
     switch (currentActivePage) {
@@ -59,22 +55,17 @@ function TransactionsPageTransactions() {
     });
   }
   return (
-    <DeleteTransactionContext.Provider
-      value={{ isTransactionDeleted, setIsTransactionDeleted }}
-    >
-      <div className="transactionsBG">
-        <TransactionsHeaders />
-        {!allTransactionsError ? (
-          <Data pageData={getActivePageData()} />
-        ) : (
-          <div>
-            <h1>Something went wrong</h1>
-            <button onClick={setError}>Try Again</button>
-          </div>
-        )}
-      </div>
-      <DeleteTransaction />
-    </DeleteTransactionContext.Provider>
+    <div className="transactionsBG">
+      <TransactionsHeaders />
+      {!allTransactionsError ? (
+        <Data pageData={getActivePageData()} />
+      ) : (
+        <div>
+          <h1>Something went wrong</h1>
+          <button onClick={setError}>Try Again</button>
+        </div>
+      )}
+    </div>
   );
 }
 
