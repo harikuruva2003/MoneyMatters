@@ -1,5 +1,8 @@
 import Modal from "react-modal";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { updateTransactionAPI } from "../../utils/utils";
+import { TransactionsStoreContext } from "../../App";
+
 const customStyles = {
   content: {
     width: "20%",
@@ -15,9 +18,11 @@ const customStyles = {
     alignItems: "center",
   },
 };
-export const UpdateTransaction = ({
+
+const UpdateTransaction = ({
   setIsUpdateTransactionModalOpen,
   isUpdateTransactionModalOpen,
+  updatingTransactionID,
 }) => {
   const [updatedTransactionData, setUpdatedTransactionData] = useState({
     name: "",
@@ -27,7 +32,17 @@ export const UpdateTransaction = ({
     date: "",
   });
 
-  function onSubmitHandler() {}
+  const transactionsStoreContext = useContext(TransactionsStoreContext);
+
+  function updateTransactionHandler(event) {
+    event.preventDefault();
+    setIsUpdateTransactionModalOpen(false);
+    updateTransactionAPI(
+      updatedTransactionData,
+      updatingTransactionID,
+      transactionsStoreContext
+    );
+  }
   function onChangeHandler(event) {
     const { name, value } = event.target;
     setUpdatedTransactionData((prevData) => {
@@ -52,7 +67,7 @@ export const UpdateTransaction = ({
           </button>
         </div>
 
-        <form onSubmit={onSubmitHandler} id="form">
+        <form onSubmit={updateTransactionHandler} id="form">
           <div className="inputDIv">
             <span className="fieldNames">Transaction Name</span>
             <input
@@ -117,3 +132,5 @@ export const UpdateTransaction = ({
     </Modal>
   );
 };
+
+export default UpdateTransaction;

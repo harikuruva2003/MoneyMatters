@@ -7,7 +7,6 @@ import { observer } from "mobx-react";
 
 function LastTransaction() {
   let [isError, setIsError] = useState(false);
-  const [lastTransactions, setLastTransactions] = useState(null);
   const transactionsStoreContext = useContext(TransactionsStoreContext);
 
   useEffect(() => {

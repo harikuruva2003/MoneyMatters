@@ -5,14 +5,15 @@ import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArro
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
 import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDelete";
 import { DeleteTransaction } from "../DeleteTransaction/DeleteTransaction";
-import { UpdateTransaction } from "../UpdateTransaction/UpdateTransaction";
+import UpdateTransaction from "../UpdateTransaction/UpdateTransaction";
 
 export function FinalData({ transaction, pageData, redColor, greenColor }) {
   const [isDeleteTransactionModalOpen, setIsDeleteTransactionModalOpen] =
     useState(false);
   const [isUpdateTransactionModalOpen, setIsUpdateTransactionModalOpen] =
     useState(false);
-  const [transactionID, setTransactionID] = useState(null);
+  const [deletingTransactionID, setDeletingTransactionID] = useState(null);
+  const [updatingTransactionID, setUpdatingTransactionID] = useState(null);
   let indexOfTransaction;
   indexOfTransaction = pageData.indexOf(transaction);
   let arrowAndPrice = {};
@@ -37,12 +38,14 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
   }
 
   function setDeleteTransactionContext() {
-    setTransactionID(transaction.id);
+    setDeletingTransactionID(transaction.id);
     setIsDeleteTransactionModalOpen(true);
   }
 
   function openUpdateTransactionModal() {
     setIsUpdateTransactionModalOpen(true);
+    setDeletingTransactionID(transaction.id);
+    setUpdatingTransactionID(transaction.id);
   }
 
   return (
@@ -78,11 +81,12 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
       <DeleteTransaction
         isDeleteTransactionModalOpen={isDeleteTransactionModalOpen}
         setIsDeleteTransactionModalOpen={setIsDeleteTransactionModalOpen}
-        transactionID={transactionID}
+        deletingTransactionID={deletingTransactionID}
       />
       <UpdateTransaction
         setIsUpdateTransactionModalOpen={setIsUpdateTransactionModalOpen}
         isUpdateTransactionModalOpen={isUpdateTransactionModalOpen}
+        updatingTransactionID={updatingTransactionID}
       />
     </div>
   );

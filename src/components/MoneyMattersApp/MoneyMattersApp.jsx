@@ -8,7 +8,6 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { TransactionBoardDataPage } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 import { ProfilePage } from "../ProfilePage/ProfilePage";
 import React from "react";
-import { allTransactionsDataAPI } from "../../utils/utils";
 import DashBoardPage from "../DashBoardPage/DashBoardPage";
 import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
 import { TransactionsStoreContext } from "../../App";
@@ -19,8 +18,6 @@ export const CurrentActiveBoardID = createContext(null);
 export const Error = createContext(null);
 
 function MoneyMattersApp() {
-  let limit = 20;
-  let offSetValue = 0;
   let activeBoardRef = useRef(null);
 
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");

@@ -62,10 +62,10 @@ export function totalCreditAndDebitDataAPI({
     .then((data) => data.json())
     .then((data) => {
       transactionsStoreContext.creditTotalAmountAction(
-        data.totals_credit_debit_transactions[0].sum
+        data.totals_credit_debit_transactions[1].sum
       );
       transactionsStoreContext.debitTotalAmountAction(
-        data.totals_credit_debit_transactions[1].sum
+        data.totals_credit_debit_transactions[0].sum
       );
       setIsLoading(false);
     })
@@ -121,6 +121,34 @@ export function deleteTransactionAPI(
       console.log("Data status " + data.status);
       setIsDeleteTransactionModalOpen(false);
       transactionsStoreContext.deleteTransaction(transactionID);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function updateTransactionAPI(
+  updatedTransactionData,
+  updatingTransactionID,
+  transactionsStoreContext
+) {
+  fetch("https://bursting-gelding-24.hasura.app/api/rest/update-transaction", {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({
+      id: updatingTransactionID,
+      name: updatedTransactionData.name,
+      type: updatedTransactionData.type,
+      category: updatedTransactionData.category,
+      amount: updatedTransactionData.amount,
+      date: updatedTransactionData.date,
+    }),
+  })
+    .then((data) => {
+      transactionsStoreContext.updateTransaction(
+        updatingTransactionID,
+        updatedTransactionData
+      );
     })
     .catch((err) => {
       console.log(err);

@@ -22,7 +22,7 @@ const customStyles = {
 export const DeleteTransaction = ({
   isDeleteTransactionModalOpen,
   setIsDeleteTransactionModalOpen,
-  transactionID,
+  deletingTransactionID,
 }) => {
   const transactionsStoreContext = useContext(TransactionsStoreContext);
   function closeDeleteTransactionLayout() {
@@ -30,7 +30,7 @@ export const DeleteTransaction = ({
   }
   function yesDeleteTransactionHandler() {
     deleteTransactionAPI(
-      transactionID,
+      deletingTransactionID,
       transactionsStoreContext,
       setIsDeleteTransactionModalOpen
     );
