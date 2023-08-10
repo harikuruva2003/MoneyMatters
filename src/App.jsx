@@ -12,7 +12,6 @@ function App() {
   return (
     <TransactionsStoreContext.Provider value={transactionStoreInstance}>
       <MoneyMattersApp />
-      <DeleteTransaction />
     </TransactionsStoreContext.Provider>
   );
 }

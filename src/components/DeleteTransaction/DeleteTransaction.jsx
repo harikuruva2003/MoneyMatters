@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Modal from "react-modal";
 import "./DeleteTransaction.css";
-import { DeleteTransactionContext } from "../TransactionPageData/TransactionPageData";
+import { DeleteTransactionContext } from "../TransactionsPageTransactions/TransactionsPageTransactions";
 
 const customStyles = {
   content: {
@@ -19,15 +19,16 @@ const customStyles = {
   },
 };
 export const DeleteTransaction = () => {
-  const deleteTransactionContext = useContext(DeleteTransactionContext);
+  const deleteTransaction = useContext(DeleteTransactionContext);
+
   function closeDeleteTransactionLayout() {
-    deleteTransactionContext.setDeleteTransaction(false);
+    deleteTransaction.setIsTransactionDeleted(false);
   }
 
   return (
-    <Modal isOpen={false} style={customStyles}>
+    <Modal isOpen={deleteTransaction.isTransactionDeleted} style={customStyles}>
       <div className="deleteTransactionMainDiv">
-        <div className="div">
+        <div className="imageAndContentDiv">
           <img
             className="errorImage"
             src="images/Group 848.png"

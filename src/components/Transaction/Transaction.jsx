@@ -1,11 +1,14 @@
 import "./Transaction.css";
-import React from "react";
+import React, { useContext } from "react";
 import TransactionDownArrow from "../../icons/TransactionDownArrow/TransactionDownArrow";
 import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArrow";
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
 import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDelete";
+import { DeleteTransactionContext } from "../TransactionsPageTransactions/TransactionsPageTransactions";
 
 export function FinalData({ transaction, pageData, redColor, greenColor }) {
+  const deleteTransactionContext = useContext(DeleteTransactionContext);
+
   let indexOfTransaction;
   indexOfTransaction = pageData.indexOf(transaction);
   let arrowAndPrice = {};
@@ -28,6 +31,10 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
       <span style={{ color: "#FE5C73" }}>{"-" + transaction.amount}</span>
     );
   }
+
+  function setDeleteTransactionContext() {
+    deleteTransactionContext.setIsTransactionDeleted(true);
+  }
   return (
     <div>
       <div className="transaction">
@@ -46,7 +53,7 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         <div className="editOption dataStyles">
           <TransactionPencil />
         </div>
-        <button className="trashBin">
+        <button className="trashBin" onClick={setDeleteTransactionContext}>
           {<TransactionDeleteIcon className="deleteIcon" />}{" "}
         </button>
       </div>
