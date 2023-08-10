@@ -3,14 +3,15 @@ import { Data } from "../TransactionPageData/TransactionPageData";
 import "./DashBoardPageLastTransaction.css";
 import { lastThreeTransactions } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
-export function LastTransaction() {
+import { observer } from "mobx-react";
+
+function LastTransaction() {
   let [isError, setIsError] = useState(false);
-  const [last, setLast] = useState(null);
+  const [lastTransactions, setLastTransactions] = useState(null);
   const transactionsStoreContext = useContext(TransactionsStoreContext);
 
   useEffect(() => {
     lastThreeTransactions({
-      setLast,
       transactionsStoreContext,
       setIsError,
     });
@@ -19,7 +20,6 @@ export function LastTransaction() {
   function setError() {
     setIsError(false);
     lastThreeTransactions({
-      setLast,
       transactionsStoreContext,
       setIsError,
     });
@@ -30,7 +30,11 @@ export function LastTransaction() {
       <h1 className="lastTransactionHeading">Last Transaction</h1>
       <div className="lastTransactionData">
         {!isError ? (
-          <Data pageData={last} redColor="#FE5C73" greenColor="#16DBAA" />
+          <Data
+            pageData={transactionsStoreContext.lastTransactionsList}
+            redColor="#FE5C73"
+            greenColor="#16DBAA"
+          />
         ) : (
           <div>
             <h1>Something went wrong</h1>
@@ -41,3 +45,4 @@ export function LastTransaction() {
     </div>
   );
 }
+export default observer(LastTransaction);

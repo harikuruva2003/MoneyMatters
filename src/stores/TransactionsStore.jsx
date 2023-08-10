@@ -63,10 +63,7 @@ class TransactionsStore {
   }
 
   addLastTransactionDataToLastTransactionList(lastTransactionsData) {
-    this.lastTransactionsList = [
-      ...this.lastTransactionsList,
-      ...lastTransactionsData,
-    ];
+    this.lastTransactionsList = [...lastTransactionsData];
   }
 
   deleteTransaction(transactionId) {

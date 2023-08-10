@@ -1,4 +1,4 @@
-import { LastTransaction } from "../DashBoardPageLastTransaction/DashBoardPageLastTransaction";
+import LastTransaction from "../DashBoardPageLastTransaction/DashBoardPageLastTransaction";
 import Card from "../DashBoardTotalAmountCards/DashBoardTotalAmountCards";
 import "./DashBoardPage.css";
 import { useContext, useEffect, useState } from "react";
@@ -6,8 +6,8 @@ import React from "react";
 import { totalCreditAndDebitDataAPI } from "../../utils/utils";
 import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
 import { TransactionsStoreContext } from "../../App";
-
-export function DashBoardPage() {
+import { observer } from "mobx-react";
+function DashBoardPage() {
   let [isLoading, setIsLoading] = useState(true);
   let [isLastTransactionsError, setIsLastTransactionsError] = useState(false);
   const transactionsStoreContext = useContext(TransactionsStoreContext);
@@ -87,3 +87,5 @@ export function DashBoardPage() {
     </>
   );
 }
+
+export default observer(DashBoardPage);

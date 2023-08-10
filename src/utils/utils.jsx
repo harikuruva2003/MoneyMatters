@@ -28,7 +28,6 @@ export function allTransactionsDataAPI({
 
 export function lastThreeTransactions({
   transactionsStoreContext,
-  setLast,
   setIsError,
 }) {
   fetch(
@@ -44,7 +43,6 @@ export function lastThreeTransactions({
       transactionsStoreContext.addLastTransactionDataToLastTransactionList(
         data.transactions
       );
-      setLast(data.transactions);
     })
 
     .catch((err) => {

@@ -9,7 +9,7 @@ import { observer } from "mobx-react";
 const customStyles = {
   content: {
     width: "20%",
-    height: "55%",
+    minHeight: "55%",
     top: "45%",
     left: "50%",
     right: "auto",

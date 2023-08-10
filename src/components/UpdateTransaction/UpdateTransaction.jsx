@@ -1,9 +1,9 @@
 import Modal from "react-modal";
-import React from "react";
+import React, { useState } from "react";
 const customStyles = {
   content: {
     width: "20%",
-    height: "55%",
+    minHeight: "55%",
     top: "45%",
     left: "50%",
     right: "auto",
@@ -19,12 +19,29 @@ export const UpdateTransaction = ({
   setIsUpdateTransactionModalOpen,
   isUpdateTransactionModalOpen,
 }) => {
+  const [updatedTransactionData, setUpdatedTransactionData] = useState({
+    name: "",
+    type: "credit",
+    category: "Youtube Premium",
+    amount: "",
+    date: "",
+  });
+
   function onSubmitHandler() {}
-  function onChangeHandler() {}
+  function onChangeHandler(event) {
+    const { name, value } = event.target;
+    setUpdatedTransactionData((prevData) => {
+      return {
+        ...prevData,
+        [name]: value,
+      };
+    });
+  }
 
   function closeModal() {
     setIsUpdateTransactionModalOpen(false);
   }
+
   return (
     <Modal isOpen={isUpdateTransactionModalOpen} style={customStyles}>
       <div>

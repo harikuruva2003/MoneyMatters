@@ -9,7 +9,7 @@ import { TransactionBoardDataPage } from "../TransactionBoardDataPage/Transactio
 import { ProfilePage } from "../ProfilePage/ProfilePage";
 import React from "react";
 import { allTransactionsDataAPI } from "../../utils/utils";
-import { DashBoardPage } from "../DashBoardPage/DashBoardPage";
+import DashBoardPage from "../DashBoardPage/DashBoardPage";
 import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
@@ -59,26 +59,26 @@ function MoneyMattersApp() {
   };
 
   useEffect(() => {
-    allTransactionsDataAPI({
-      setAllTransactionsError,
-      limit,
-      offSetValue,
-      transactionsStoreContext,
-    });
+    // allTransactionsDataAPI({
+    //   setAllTransactionsError,
+    //   limit,
+    //   offSetValue,
+    //   transactionsStoreContext,
+    // });
   }, []);
 
   function setError() {
-    setAllTransactionsError(false);
-    allTransactionsDataAPI({
-      setAllTransactionsError,
-      limit,
-      offSetValue,
-      transactionsStoreContext,
-    });
+    // setAllTransactionsError(false);
+    // allTransactionsDataAPI({
+    //   setAllTransactionsError,
+    //   limit,
+    //   offSetValue,
+    //   transactionsStoreContext,
+    // });
   }
 
   function currentBoardData() {
-    switch (activeBoardRef.current) {
+    switch (currentActiveBoardID) {
       case "DashBoard":
         return <DashBoardPage />;
 
