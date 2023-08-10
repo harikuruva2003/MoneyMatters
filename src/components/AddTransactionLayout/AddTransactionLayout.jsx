@@ -8,8 +8,9 @@ import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
 const customStyles = {
   content: {
-    width: "30%",
-    top: "40%",
+    width: "20%",
+    height: "55%",
+    top: "45%",
     left: "50%",
     right: "auto",
     bottom: "auto",
@@ -64,7 +65,7 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
 
         <form onSubmit={onSubmitHandler} id="form">
           <div className="inputDIv">
-            <span>Transaction Name</span>
+            <span className="fieldNames">Transaction Name</span>
             <input
               className="field"
               type="text"
@@ -75,7 +76,7 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
           </div>
 
           <div className="inputDIv">
-            <span>Transaction Type</span>
+            <span className="fieldNames">Transaction Type</span>
             <select className="field" name="type" onChange={onChangeHandler}>
               <option>credit</option>
               <option>debit</option>
@@ -83,7 +84,7 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
           </div>
 
           <div className="inputDIv">
-            <span>Category</span>
+            <span className="fieldNames">Category</span>
             <select
               className="field"
               name="category"
@@ -98,7 +99,7 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
           </div>
 
           <div className="inputDIv">
-            <span>Amount</span>
+            <span className="fieldNames">Amount</span>
             <input
               className="field"
               type="text"
@@ -109,7 +110,7 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
           </div>
 
           <div className="inputDIv">
-            <span>Date</span>
+            <span className="fieldNames">Date</span>
             <input
               className="field"
               type="date"

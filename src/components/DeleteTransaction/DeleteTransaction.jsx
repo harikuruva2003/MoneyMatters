@@ -6,7 +6,7 @@ import { TransactionsStoreContext } from "../../App";
 
 const customStyles = {
   content: {
-    width: "30%",
+    width: "25%",
     height: "20%",
     top: "45%",
     left: "50%",
