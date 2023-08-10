@@ -5,9 +5,12 @@ import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArro
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
 import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDelete";
 import { DeleteTransaction } from "../DeleteTransaction/DeleteTransaction";
+import { UpdateTransaction } from "../UpdateTransaction/UpdateTransaction";
 
 export function FinalData({ transaction, pageData, redColor, greenColor }) {
   const [isDeleteTransactionModalOpen, setIsDeleteTransactionModalOpen] =
+    useState(false);
+  const [isUpdateTransactionModalOpen, setIsUpdateTransactionModalOpen] =
     useState(false);
   const [transactionID, setTransactionID] = useState(null);
   let indexOfTransaction;
@@ -37,6 +40,11 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
     setTransactionID(transaction.id);
     setIsDeleteTransactionModalOpen(true);
   }
+
+  function openUpdateTransactionModal() {
+    setIsUpdateTransactionModalOpen(true);
+  }
+
   return (
     <div>
       <div className="transaction">
@@ -52,9 +60,12 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
           {transaction.date.substring(0, 10)}
         </span>
         <span className="amount dataStyles">{arrowAndPrice.amount}</span>
-        <div className="editOption dataStyles">
+        <button
+          className="editOption dataStyles"
+          onClick={openUpdateTransactionModal}
+        >
           <TransactionPencil />
-        </div>
+        </button>
         <button className="trashBin" onClick={setDeleteTransactionContext}>
           {<TransactionDeleteIcon className="deleteIcon" />}{" "}
         </button>
@@ -68,6 +79,10 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         isDeleteTransactionModalOpen={isDeleteTransactionModalOpen}
         setIsDeleteTransactionModalOpen={setIsDeleteTransactionModalOpen}
         transactionID={transactionID}
+      />
+      <UpdateTransaction
+        setIsUpdateTransactionModalOpen={setIsUpdateTransactionModalOpen}
+        isUpdateTransactionModalOpen={isUpdateTransactionModalOpen}
       />
     </div>
   );

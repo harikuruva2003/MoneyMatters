@@ -76,6 +76,13 @@ class TransactionsStore {
       }
     );
     this.transactionsList = updatedTransactionsList;
+
+    let updatedLastThreeTransactionsList = this.lastTransactionsList.filter(
+      (transaction) => {
+        return transaction.id !== transactionId;
+      }
+    );
+    this.lastTransactionsList = updatedLastThreeTransactionsList;
   }
 
   updateTransaction() {}

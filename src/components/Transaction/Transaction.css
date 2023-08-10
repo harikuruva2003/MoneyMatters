@@ -10,6 +10,9 @@
 .editOption {
   margin-right: 50px;
   cursor: pointer;
+  background-color: white;
+  border-color: white;
+  border-width: 0;
 }
 
 .iconAndTransactionName {
