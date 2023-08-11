@@ -10,13 +10,20 @@ import UpdateTransaction from "../UpdateTransaction/UpdateTransaction";
 export function FinalData({ transaction, pageData, redColor, greenColor }) {
   const [isDeleteTransactionModalOpen, setIsDeleteTransactionModalOpen] =
     useState(false);
+
   const [isUpdateTransactionModalOpen, setIsUpdateTransactionModalOpen] =
     useState(false);
+
   const [deletingTransactionID, setDeletingTransactionID] = useState(null);
+
   const [updatingTransactionID, setUpdatingTransactionID] = useState(null);
+
   let indexOfTransaction;
+
   indexOfTransaction = pageData.indexOf(transaction);
+
   let arrowAndPrice = {};
+
   if (transaction.type === "credit") {
     arrowAndPrice.arrow = (
       <span>
@@ -87,6 +94,7 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
         setIsUpdateTransactionModalOpen={setIsUpdateTransactionModalOpen}
         isUpdateTransactionModalOpen={isUpdateTransactionModalOpen}
         updatingTransactionID={updatingTransactionID}
+        transaction={transaction}
       />
     </div>
   );

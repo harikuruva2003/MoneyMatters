@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Data } from "../TransactionPageData/TransactionPageData";
+import Data from "../TransactionPageData/TransactionPageData";
 import { TransactionsHeaders } from "../TransactionsDataHeaders/TransactionsDataHeaders";
 import "./TransactionsPageTransactions.css";
 import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";

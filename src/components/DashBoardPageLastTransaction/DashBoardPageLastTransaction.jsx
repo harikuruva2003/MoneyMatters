@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Data } from "../TransactionPageData/TransactionPageData";
+import Data from "../TransactionPageData/TransactionPageData";
 import "./DashBoardPageLastTransaction.css";
 import { lastThreeTransactions } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";

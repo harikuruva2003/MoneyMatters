@@ -137,7 +137,7 @@ export function updateTransactionAPI(
     headers: headers,
     body: JSON.stringify({
       id: updatingTransactionID,
-      name: updatedTransactionData.name,
+      name: updatedTransactionData.transaction_name,
       type: updatedTransactionData.type,
       category: updatedTransactionData.category,
       amount: updatedTransactionData.amount,

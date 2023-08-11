@@ -90,22 +90,16 @@ class TransactionsStore {
     }
 
     this.transactionsList[indexOfTransaction] = updatedTransactionData;
-    // let newTransactionList = this.transactionsList;
-    // let transaction = newTransactionList.filter((transaction) => {
-    //   return updatingTransactionID === transaction.id;
-    // });
 
-    // let indexOfTransaction = newTransactionList.findIndex(checkTransaction);
-    // console.log(indexOfTransaction, " ", transaction);
+    let indexOfTransactionInLastTransactions =
+      this.lastTransactionsList.findIndex(checkTransactionInLastTransactions);
 
-    // newTransactionList.splice(indexOfTransaction - 1, transaction);
-    // newTransactionList.splice(
-    //   indexOfTransaction - 1,
-    //   0,
-    //   updatedTransactionData
-    // );
+    function checkTransactionInLastTransactions(transaction) {
+      return transaction.id === updatingTransactionID;
+    }
 
-    // this.transactionsList = newTransactionList;
+    this.lastTransactionsList[indexOfTransactionInLastTransactions] =
+      updatedTransactionData;
   }
 }
 export default TransactionsStore;

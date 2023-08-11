@@ -2,8 +2,9 @@ import "./TransactionPageData.css";
 import { FinalData } from "../Transaction/Transaction";
 import React from "react";
 import { Oval as Loader } from "react-loader-spinner";
+import { observer } from "mobx-react";
 
-export function Data({ pageData, redColor, greenColor }) {
+function Data({ pageData, redColor, greenColor }) {
   let data = [];
   pageData
     ? pageData.forEach((transaction) => {
@@ -20,3 +21,4 @@ export function Data({ pageData, redColor, greenColor }) {
 
   return data;
 }
+export default observer(Data);

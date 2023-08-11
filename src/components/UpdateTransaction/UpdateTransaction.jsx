@@ -23,17 +23,16 @@ const UpdateTransaction = ({
   setIsUpdateTransactionModalOpen,
   isUpdateTransactionModalOpen,
   updatingTransactionID,
+  transaction,
 }) => {
   const [updatedTransactionData, setUpdatedTransactionData] = useState({
-    name: "",
+    transaction_name: "",
     type: "credit",
     category: "Youtube Premium",
     amount: "",
     date: "",
   });
-
   const transactionsStoreContext = useContext(TransactionsStoreContext);
-
   function updateTransactionHandler(event) {
     event.preventDefault();
     setIsUpdateTransactionModalOpen(false);
@@ -74,14 +73,20 @@ const UpdateTransaction = ({
               className="field"
               type="text"
               placeholder="Enter Name"
-              name="name"
+              name="transaction_name"
+              value={transaction.transaction_name}
               onChange={onChangeHandler}
             />
           </div>
 
           <div className="inputDIv">
             <span className="fieldNames">Transaction Type</span>
-            <select className="field" name="type" onChange={onChangeHandler}>
+            <select
+              className="field"
+              name="type"
+              value={transaction.type}
+              onChange={onChangeHandler}
+            >
               <option>credit</option>
               <option>debit</option>
             </select>
@@ -92,6 +97,7 @@ const UpdateTransaction = ({
             <select
               className="field"
               name="category"
+              value={transaction.category}
               onChange={onChangeHandler}
             >
               <option>Youtube Premium</option>
@@ -108,6 +114,7 @@ const UpdateTransaction = ({
               className="field"
               type="text"
               name="amount"
+              value={transaction.amount}
               onChange={onChangeHandler}
               placeholder="Enter Your Amount"
             />
@@ -120,6 +127,7 @@ const UpdateTransaction = ({
               type="date"
               placeholder="Select Date"
               name="date"
+              value={transaction.date}
               onChange={onChangeHandler}
             />
           </div>
