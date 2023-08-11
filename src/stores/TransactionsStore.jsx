@@ -83,26 +83,29 @@ class TransactionsStore {
   }
 
   updateTransaction(updatingTransactionID, updatedTransactionData) {
-    let newTransactionList = this.transactionsList;
-    console.log(newTransactionList);
-    let transaction = newTransactionList.filter((transaction) => {
-      return updatingTransactionID === transaction.id;
-    });
-
-    let indexOfTransaction = newTransactionList.findIndex(checkTransaction);
-    console.log(indexOfTransaction, " ", transaction);
-
-    newTransactionList.splice(indexOfTransaction - 1, transaction);
-    newTransactionList.splice(
-      indexOfTransaction - 1,
-      0,
-      updatedTransactionData
-    );
+    let indexOfTransaction = this.transactionsList.findIndex(checkTransaction);
 
     function checkTransaction(transaction) {
       return transaction.id === updatingTransactionID;
     }
-    this.transactionsList = newTransactionList;
+
+    this.transactionsList[indexOfTransaction] = updatedTransactionData;
+    // let newTransactionList = this.transactionsList;
+    // let transaction = newTransactionList.filter((transaction) => {
+    //   return updatingTransactionID === transaction.id;
+    // });
+
+    // let indexOfTransaction = newTransactionList.findIndex(checkTransaction);
+    // console.log(indexOfTransaction, " ", transaction);
+
+    // newTransactionList.splice(indexOfTransaction - 1, transaction);
+    // newTransactionList.splice(
+    //   indexOfTransaction - 1,
+    //   0,
+    //   updatedTransactionData
+    // );
+
+    // this.transactionsList = newTransactionList;
   }
 }
 export default TransactionsStore;
