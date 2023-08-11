@@ -10,8 +10,9 @@ import { ProfilePage } from "../ProfilePage/ProfilePage";
 import React from "react";
 import DashBoardPage from "../DashBoardPage/DashBoardPage";
 import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
-import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
+import { TransactionsStoreContext } from "../../App";
+import { allTransactionsDataAPI } from "../../utils/utils";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
@@ -22,8 +23,10 @@ function MoneyMattersApp() {
 
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
   activeBoardRef.current = currentActiveBoardID;
-
+  const limit = 20;
+  const offSetValue = 0;
   const [allTransactionsError, setAllTransactionsError] = useState(false);
+
   const transactionsStoreContext = useContext(TransactionsStoreContext);
 
   const sideBarBoards = [

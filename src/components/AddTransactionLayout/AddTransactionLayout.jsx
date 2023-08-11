@@ -24,7 +24,7 @@ const customStyles = {
 function AddTransaction({ isModalOpen, setIsModalOpen }) {
   let transactionsStoreContext = useContext(TransactionsStoreContext);
 
-  let [formData, setFormData] = useState({
+  let [newTransactionData, setNewTransactionData] = useState({
     name: "",
     type: "credit",
     category: "Youtube Premium",
@@ -39,7 +39,7 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
 
   function onChangeHandler(event) {
     const { name, value } = event.target;
-    setFormData((prevData) => {
+    setNewTransactionData((prevData) => {
       return {
         ...prevData,
         [name]: value,
@@ -50,7 +50,11 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
   function onSubmitHandler(event) {
     event.preventDefault();
     setText(<Loader />);
-    addTransactionDataAPI(formData, setIsModalOpen, transactionsStoreContext);
+    addTransactionDataAPI(
+      newTransactionData,
+      setIsModalOpen,
+      transactionsStoreContext
+    );
   }
 
   return (

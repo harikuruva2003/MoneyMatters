@@ -10,18 +10,12 @@ function LastTransaction() {
   const transactionsStoreContext = useContext(TransactionsStoreContext);
 
   useEffect(() => {
-    lastThreeTransactions({
-      transactionsStoreContext,
-      setIsError,
-    });
+    lastThreeTransactions(transactionsStoreContext, setIsError);
   }, []);
 
   function setError() {
     setIsError(false);
-    lastThreeTransactions({
-      transactionsStoreContext,
-      setIsError,
-    });
+    lastThreeTransactions(transactionsStoreContext, setIsError);
   }
   //transactionsStoreContext.lastTransactionsList
   return (

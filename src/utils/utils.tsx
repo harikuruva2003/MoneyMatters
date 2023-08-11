@@ -1,11 +1,16 @@
 import { headers } from "../components/Constants/Constants";
+import TransactionsStore from "../stores/TransactionsStore";
+import {
+  NewTransactionDataType,
+  UpdatedTransactionDataType,
+} from "../types/types";
 
-export function allTransactionsDataAPI({
-  setAllTransactionsError,
-  limit,
-  offSetValue,
-  transactionsStoreContext,
-}) {
+export function allTransactionsDataAPI(
+  setIsAllTransactionsError: (isAllTransactionsError: boolean) => void,
+  limit: number,
+  offSetValue: number,
+  transactionsStoreContext: TransactionsStore
+) {
   fetch(
     `https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=${limit}&offset=${offSetValue}`,
     {
@@ -22,14 +27,14 @@ export function allTransactionsDataAPI({
     })
 
     .catch((err) => {
-      setAllTransactionsError(true);
+      setIsAllTransactionsError(true);
     });
 }
 
-export function lastThreeTransactions({
-  transactionsStoreContext,
-  setIsError,
-}) {
+export function lastThreeTransactions(
+  transactionsStoreContext: TransactionsStore,
+  setIsError: (isError: boolean) => void
+) {
   fetch(
     "https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=3&offset=0",
     {
@@ -50,11 +55,11 @@ export function lastThreeTransactions({
     });
 }
 
-export function totalCreditAndDebitDataAPI({
-  transactionsStoreContext,
-  setIsLoading,
-  setIsLastTransactionsError,
-}) {
+export function totalCreditAndDebitDataAPI(
+  transactionsStoreContext: TransactionsStore,
+  setIsLoading: (isLoading: boolean) => void,
+  setIsLastTransactionsError: (isLastTransactionsError: boolean) => void
+) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/credit-debit-totals", {
     method: "GET",
     headers: headers,
@@ -75,9 +80,9 @@ export function totalCreditAndDebitDataAPI({
 }
 
 export function addTransactionDataAPI(
-  formData,
-  setIsModalOpen,
-  transactionsStoreContext
+  newTransactionData: NewTransactionDataType,
+  setIsModalOpen: (isModalOpen: boolean) => void,
+  transactionsStoreContext: TransactionsStore
 ) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/add-transaction", {
     method: "POST",
@@ -89,11 +94,11 @@ export function addTransactionDataAPI(
       "x-hasura-user-id": "1",
     },
     body: JSON.stringify({
-      name: formData.name,
-      type: formData.type,
-      category: formData.category,
-      amount: formData.amount,
-      date: formData.date,
+      name: newTransactionData.name,
+      type: newTransactionData.type,
+      category: newTransactionData.category,
+      amount: newTransactionData.amount,
+      date: newTransactionData.date,
       user_id: 1,
     }),
   })
@@ -108,9 +113,11 @@ export function addTransactionDataAPI(
 }
 
 export function deleteTransactionAPI(
-  transactionID,
-  transactionsStoreContext,
-  setIsDeleteTransactionModalOpen
+  transactionID: number,
+  transactionsStoreContext: TransactionsStore,
+  setIsDeleteTransactionModalOpen: (
+    isDeleteTransactionModalOpen: boolean
+  ) => void
 ) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/delete-transaction", {
     method: "DELETE",
@@ -128,9 +135,9 @@ export function deleteTransactionAPI(
 }
 
 export function updateTransactionAPI(
-  updatedTransactionData,
-  updatingTransactionID,
-  transactionsStoreContext
+  updatedTransactionData: UpdatedTransactionDataType,
+  updatingTransactionID: number,
+  transactionsStoreContext: TransactionsStore
 ) {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/update-transaction", {
     method: "POST",

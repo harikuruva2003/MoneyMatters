@@ -9,7 +9,7 @@ import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
 
 function TransactionsPageTransactions() {
-  const [allTransactionsError, setAllTransactionsError] = useState(false);
+  const [isAllTransactionsError, setIsAllTransactionsError] = useState(false);
   const currentActivePage = useContext(ActivePageContext);
   const limit = 20;
   const offSetValue = 0;
@@ -37,27 +37,27 @@ function TransactionsPageTransactions() {
   }
 
   useEffect(() => {
-    allTransactionsDataAPI({
-      setAllTransactionsError,
+    allTransactionsDataAPI(
+      setIsAllTransactionsError,
       limit,
       offSetValue,
-      transactionsStoreContext,
-    });
+      transactionsStoreContext
+    );
   }, []);
 
   function setError() {
-    setAllTransactionsError(false);
-    allTransactionsDataAPI({
-      setAllTransactionsError,
+    setIsAllTransactionsError(false);
+    allTransactionsDataAPI(
+      setIsAllTransactionsError,
       limit,
       offSetValue,
-      transactionsStoreContext,
-    });
+      transactionsStoreContext
+    );
   }
   return (
     <div className="transactionsBG">
       <TransactionsHeaders />
-      {!allTransactionsError ? (
+      {!isAllTransactionsError ? (
         <Data pageData={getActivePageData()} />
       ) : (
         <div>

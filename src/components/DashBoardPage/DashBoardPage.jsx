@@ -30,11 +30,11 @@ function DashBoardPage() {
   ];
 
   useEffect(() => {
-    totalCreditAndDebitDataAPI({
+    totalCreditAndDebitDataAPI(
       transactionsStoreContext,
       setIsLoading,
-      setIsLastTransactionsError,
-    });
+      setIsLastTransactionsError
+    );
   }, []);
 
   function returnCard() {
@@ -56,11 +56,11 @@ function DashBoardPage() {
 
   function setTotalAmountAPIError() {
     setIsLastTransactionsError(false);
-    totalCreditAndDebitDataAPI({
+    totalCreditAndDebitDataAPI(
       transactionsStoreContext,
       setIsLoading,
-      setIsLastTransactionsError,
-    });
+      setIsLastTransactionsError
+    );
   }
 
   return (
