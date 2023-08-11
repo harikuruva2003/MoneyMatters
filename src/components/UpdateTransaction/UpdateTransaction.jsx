@@ -29,8 +29,8 @@ const UpdateTransaction = ({
     transaction_name: "",
     type: "credit",
     category: "Youtube Premium",
-    amount: "",
-    date: "",
+    amount: null,
+    date: null,
   });
   const transactionsStoreContext = useContext(TransactionsStoreContext);
   function updateTransactionHandler(event) {

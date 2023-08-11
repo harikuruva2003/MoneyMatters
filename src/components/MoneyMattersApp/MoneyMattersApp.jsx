@@ -59,22 +59,22 @@ function MoneyMattersApp() {
   };
 
   useEffect(() => {
-    // allTransactionsDataAPI({
+    // allTransactionsDataAPI(
     //   setAllTransactionsError,
     //   limit,
     //   offSetValue,
-    //   transactionsStoreContext,
-    // });
+    //   transactionsStoreContext
+    // );
   }, []);
 
   function setError() {
     // setAllTransactionsError(false);
-    // allTransactionsDataAPI({
+    // allTransactionsDataAPI(
     //   setAllTransactionsError,
     //   limit,
     //   offSetValue,
-    //   transactionsStoreContext,
-    // });
+    //   transactionsStoreContext
+    // );
   }
 
   function currentBoardData() {

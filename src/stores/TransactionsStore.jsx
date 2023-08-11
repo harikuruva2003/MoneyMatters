@@ -91,15 +91,17 @@ class TransactionsStore {
 
     this.transactionsList[indexOfTransaction] = updatedTransactionData;
 
-    let indexOfTransactionInLastTransactions =
-      this.lastTransactionsList.findIndex(checkTransactionInLastTransactions);
+    let indexOfTransactionInLastTransactions = this.lastTransactionsList.findIndex(
+      checkTransactionInLastTransactions
+    );
 
     function checkTransactionInLastTransactions(transaction) {
       return transaction.id === updatingTransactionID;
     }
 
-    this.lastTransactionsList[indexOfTransactionInLastTransactions] =
-      updatedTransactionData;
+    this.lastTransactionsList[
+      indexOfTransactionInLastTransactions
+    ] = updatedTransactionData;
   }
 }
 export default TransactionsStore;

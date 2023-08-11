@@ -6,6 +6,9 @@ import { useState } from "react";
 import { Oval as Loader } from "react-loader-spinner";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
+import { NewTransactionDataType } from "../../types/types";
+import TransactionsStore from "../../stores/TransactionsStore";
+
 const customStyles = {
   content: {
     width: "20%",
@@ -21,23 +24,27 @@ const customStyles = {
     alignItems: "center",
   },
 };
-function AddTransaction({ isModalOpen, setIsModalOpen }) {
+
+function AddTransaction(
+  isModalOpen: boolean,
+  setIsModalOpen: (isModalOpen: boolean) => void
+) {
   let transactionsStoreContext = useContext(TransactionsStoreContext);
 
   let [newTransactionData, setNewTransactionData] = useState({
     name: "",
     type: "credit",
     category: "Youtube Premium",
-    amount: "",
-    date: "",
+    amount: null,
+    date: null,
   });
   let [text, setText] = useState("Add Transaction");
 
-  function closeModal() {
+  function closeModal(): void {
     setIsModalOpen(false);
   }
 
-  function onChangeHandler(event) {
+  function onChangeHandler(event: any): void {
     const { name, value } = event.target;
     setNewTransactionData((prevData) => {
       return {
@@ -47,9 +54,10 @@ function AddTransaction({ isModalOpen, setIsModalOpen }) {
     });
   }
 
-  function onSubmitHandler(event) {
+  function onSubmitHandler(event: any): void {
     event.preventDefault();
     setText(<Loader />);
+
     addTransactionDataAPI(
       newTransactionData,
       setIsModalOpen,
