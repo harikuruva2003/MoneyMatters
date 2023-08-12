@@ -16,6 +16,7 @@ function HeaderAndAddTransaction(
         transactionHeading={transactionHeading}
         addTransactionButton={addTransactionButton}
       />
+
       <AddTransaction
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
