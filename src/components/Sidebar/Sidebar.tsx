@@ -3,13 +3,13 @@ import { Profile } from "../SideBarProfile/SIdeBarProfile";
 import "./Sidebar.css";
 import React from "react";
 
-export function SideBar({
+export function SideBar(
   sideBarBoards,
   logo,
   profile,
-  setCurrentActiveBoardID,
-}) {
-  function Logo({ logoMoneyMatters }) {
+  setCurrentActiveBoardID: string
+): {} {
+  function Logo(logoMoneyMatters) {
     return (
       <div className="logo">
         <span>{logoMoneyMatters.logo}</span>

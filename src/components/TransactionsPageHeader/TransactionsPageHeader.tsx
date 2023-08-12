@@ -3,18 +3,21 @@ import "./TransactionsPageHeader.css";
 import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 import React from "react";
 import { TransactionPage } from "../TransactionBoardPage/TransactionsBoardpage";
-import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
+import HeaderAndAddTransaction from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
+import { TransactionPagesType } from "../../types/types";
 
 const TractionsHeaderArray = ["Transactions", "+ Add Transaction"];
 
-const transactionPages = [
+const transactionPages: TransactionPagesType[] = [
   { transactionPageName: "All Transactions", id: "AllTransactions" },
   { transactionPageName: "Debit", id: "Debit" },
   { transactionPageName: "Credit", id: "Credit" },
 ];
 
-export function TransactionHeader({ setCurrentActivePageID }) {
-  let onChangePage = (pageID) => {
+export function TransactionHeader(
+  setCurrentActivePageID: (currentActivePageID: string) => void
+) {
+  let onChangePage = (pageID: string) => {
     setCurrentActivePageID(pageID);
   };
   const currentActivePage = useContext(ActivePageContext);

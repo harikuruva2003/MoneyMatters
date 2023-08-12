@@ -1,6 +1,6 @@
 import "./ProfileBoardHeader.css";
 import React from "react";
-import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
+import HeaderAndAddTransaction from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
 
 export function ProfilePageHeader() {
   return (

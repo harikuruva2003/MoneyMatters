@@ -1,5 +1,5 @@
 import "./Transaction.css";
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import TransactionDownArrow from "../../icons/TransactionDownArrow/TransactionDownArrow";
 import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArrow";
 import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
@@ -7,12 +7,21 @@ import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDele
 import { DeleteTransaction } from "../DeleteTransaction/DeleteTransaction";
 import UpdateTransaction from "../UpdateTransaction/UpdateTransaction";
 
-export function FinalData({ transaction, pageData, redColor, greenColor }) {
-  const [isDeleteTransactionModalOpen, setIsDeleteTransactionModalOpen] =
-    useState(false);
+export function FinalData(
+  transaction,
+  pageData,
+  redColor: string,
+  greenColor: string
+) {
+  const [
+    isDeleteTransactionModalOpen,
+    setIsDeleteTransactionModalOpen,
+  ] = useState(false);
 
-  const [isUpdateTransactionModalOpen, setIsUpdateTransactionModalOpen] =
-    useState(false);
+  const [
+    isUpdateTransactionModalOpen,
+    setIsUpdateTransactionModalOpen,
+  ] = useState(false);
 
   const [deletingTransactionID, setDeletingTransactionID] = useState(null);
 
@@ -44,12 +53,12 @@ export function FinalData({ transaction, pageData, redColor, greenColor }) {
     );
   }
 
-  function setDeleteTransactionContext() {
+  function setDeleteTransactionContext(): void {
     setDeletingTransactionID(transaction.id);
     setIsDeleteTransactionModalOpen(true);
   }
 
-  function openUpdateTransactionModal() {
+  function openUpdateTransactionModal(): void {
     setIsUpdateTransactionModalOpen(true);
     setDeletingTransactionID(transaction.id);
     setUpdatingTransactionID(transaction.id);

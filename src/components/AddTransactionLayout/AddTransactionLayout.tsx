@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import React, { useContext } from "react";
+import React, { ChangeEventHandler, ReactElement, useContext } from "react";
 import "./AddTransactionLayout.css";
 import { addTransactionDataAPI } from "../../utils/utils";
 import { useState } from "react";
@@ -29,22 +29,28 @@ function AddTransaction(
   isModalOpen: boolean,
   setIsModalOpen: (isModalOpen: boolean) => void
 ) {
-  let transactionsStoreContext = useContext(TransactionsStoreContext);
+  const transactionsStoreContext = useContext<TransactionsStore | null>(
+    TransactionsStoreContext
+  );
 
-  let [newTransactionData, setNewTransactionData] = useState({
+  const [newTransactionData, setNewTransactionData] = useState<
+    NewTransactionDataType
+  >({
     name: "",
     type: "credit",
     category: "Youtube Premium",
     amount: null,
     date: null,
   });
-  let [text, setText] = useState("Add Transaction");
+  let [text, setText] = useState<string | ReactElement>("Add Transaction");
 
   function closeModal(): void {
     setIsModalOpen(false);
   }
 
-  function onChangeHandler(event: any): void {
+  function onChangeHandler(
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ): void {
     const { name, value } = event.target;
     setNewTransactionData((prevData) => {
       return {
@@ -54,7 +60,7 @@ function AddTransaction(
     });
   }
 
-  function onSubmitHandler(event: any): void {
+  function onSubmitHandler(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     setText(<Loader />);
 

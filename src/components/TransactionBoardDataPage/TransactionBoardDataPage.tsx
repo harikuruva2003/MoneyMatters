@@ -6,8 +6,9 @@ import { TransactionHeader } from "../TransactionsPageHeader/TransactionsPageHea
 export const ActivePageContext = createContext(null);
 
 export function TransactionBoardDataPage() {
-  const [currentActivePageID, setCurrentActivePageID] =
-    useState("AllTransactions");
+  const [currentActivePageID, setCurrentActivePageID] = useState(
+    "AllTransactions"
+  );
   return (
     <div>
       <ActivePageContext.Provider value={currentActivePageID}>

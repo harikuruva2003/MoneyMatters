@@ -9,7 +9,7 @@ export function allTransactionsDataAPI(
   setIsAllTransactionsError: (isAllTransactionsError: boolean) => void,
   limit: number,
   offSetValue: number,
-  transactionsStoreContext: TransactionsStore
+  transactionsStoreContext: TransactionsStore | null
 ): void {
   fetch(
     `https://bursting-gelding-24.hasura.app/api/rest/all-transactions?limit=${limit}&offset=${offSetValue}`,
@@ -21,7 +21,7 @@ export function allTransactionsDataAPI(
     .then((data) => data.json())
 
     .then((data) => {
-      transactionsStoreContext.addTransactionDataToTransactionList(
+      transactionsStoreContext?.addTransactionDataToTransactionList(
         data.transactions
       );
     })
@@ -32,7 +32,7 @@ export function allTransactionsDataAPI(
 }
 
 export function lastThreeTransactions(
-  transactionsStoreContext: TransactionsStore,
+  transactionsStoreContext: TransactionsStore | null,
   setIsError: (isError: boolean) => void
 ): void {
   fetch(
@@ -45,7 +45,7 @@ export function lastThreeTransactions(
     .then((data) => data.json())
 
     .then((data) => {
-      transactionsStoreContext.addLastTransactionDataToLastTransactionList(
+      transactionsStoreContext?.addLastTransactionDataToLastTransactionList(
         data.transactions
       );
     })
@@ -56,7 +56,7 @@ export function lastThreeTransactions(
 }
 
 export function totalCreditAndDebitDataAPI(
-  transactionsStoreContext: TransactionsStore,
+  transactionsStoreContext: TransactionsStore | null,
   setIsLoading: (isLoading: boolean) => void,
   setIsLastTransactionsError: (isLastTransactionsError: boolean) => void
 ): void {
@@ -66,10 +66,10 @@ export function totalCreditAndDebitDataAPI(
   })
     .then((data) => data.json())
     .then((data) => {
-      transactionsStoreContext.creditTotalAmountAction(
+      transactionsStoreContext?.creditTotalAmountAction(
         data.totals_credit_debit_transactions[1].sum
       );
-      transactionsStoreContext.debitTotalAmountAction(
+      transactionsStoreContext?.debitTotalAmountAction(
         data.totals_credit_debit_transactions[0].sum
       );
       setIsLoading(false);
@@ -136,7 +136,7 @@ export function deleteTransactionAPI(
 export function updateTransactionAPI(
   updatedTransactionData: UpdatedTransactionDataType,
   updatingTransactionID: number,
-  transactionsStoreContext: TransactionsStore
+  transactionsStoreContext: TransactionsStore | null
 ): void {
   fetch("https://bursting-gelding-24.hasura.app/api/rest/update-transaction", {
     method: "POST",
@@ -151,7 +151,7 @@ export function updateTransactionAPI(
     }),
   })
     .then((data) => {
-      transactionsStoreContext.updateTransaction(
+      transactionsStoreContext?.updateTransaction(
         updatingTransactionID,
         updatedTransactionData
       );

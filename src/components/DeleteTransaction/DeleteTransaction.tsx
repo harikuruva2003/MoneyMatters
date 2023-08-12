@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import "./DeleteTransaction.css";
 import { deleteTransactionAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
+import TransactionsStore from "../../stores/TransactionsStore";
 
 const customStyles = {
   content: {
@@ -19,16 +20,21 @@ const customStyles = {
     alignItems: "center",
   },
 };
-export const DeleteTransaction = ({
-  isDeleteTransactionModalOpen,
-  setIsDeleteTransactionModalOpen,
-  deletingTransactionID,
-}) => {
-  const transactionsStoreContext = useContext(TransactionsStoreContext);
-  function closeDeleteTransactionLayout() {
+export const DeleteTransaction = (
+  isDeleteTransactionModalOpen: boolean,
+  setIsDeleteTransactionModalOpen: (
+    isDeleteTransactionModalOpen: boolean
+  ) => void,
+  deletingTransactionID: number
+) => {
+  const transactionsStoreContext: TransactionsStore | null = useContext(
+    TransactionsStoreContext
+  );
+
+  function closeDeleteTransactionLayout(): void {
     setIsDeleteTransactionModalOpen(false);
   }
-  function yesDeleteTransactionHandler() {
+  function yesDeleteTransactionHandler(): void {
     deleteTransactionAPI(
       deletingTransactionID,
       transactionsStoreContext,

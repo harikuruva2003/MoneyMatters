@@ -1,11 +1,11 @@
 import "./TransactionsBoardPage.css";
 import React from "react";
-export function TransactionPage({
+export function TransactionPage(
   transactionPage,
-  currentActivePageID,
-  transactionPageID,
-  onChangePage,
-}) {
+  currentActivePageID: string,
+  transactionPageID: string,
+  onChangePage
+) {
   return (
     <>
       {currentActivePageID === transactionPageID ? (

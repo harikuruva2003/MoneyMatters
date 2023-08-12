@@ -1,5 +1,7 @@
 import React from "react";
 import "./Board.css";
+import { SidebarBoardNameAndIconType } from "../../types/types";
+// import { SidebarBoardNameAndIcon } from "../../types/types";
 
 export function SidebarBoardNameAndIcon({
   boardID,
@@ -7,7 +9,7 @@ export function SidebarBoardNameAndIcon({
   boardName,
   currentActiveBoardID,
   onChangeTab,
-}) {
+}: SidebarBoardNameAndIconType) {
   return (
     <>
       {boardID === currentActiveBoardID ? (

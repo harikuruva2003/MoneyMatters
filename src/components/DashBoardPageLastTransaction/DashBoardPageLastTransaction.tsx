@@ -4,10 +4,13 @@ import "./DashBoardPageLastTransaction.css";
 import { lastThreeTransactions } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
+import TransactionsStore from "../../stores/TransactionsStore";
 
 function LastTransaction() {
   let [isError, setIsError] = useState(false);
-  const transactionsStoreContext = useContext(TransactionsStoreContext);
+  const transactionsStoreContext: TransactionsStore | null = useContext(
+    TransactionsStoreContext
+  );
 
   useEffect(() => {
     lastThreeTransactions(transactionsStoreContext, setIsError);
@@ -24,7 +27,7 @@ function LastTransaction() {
       <div className="lastTransactionData">
         {!isError ? (
           <Data
-            pageData={transactionsStoreContext.lastTransactionsList}
+            pageData={transactionsStoreContext?.lastTransactionsList}
             redColor="#FE5C73"
             greenColor="#16DBAA"
           />

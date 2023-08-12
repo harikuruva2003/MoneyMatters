@@ -3,7 +3,7 @@ import "./DashBoardTotalAmountCards.css";
 import React from "react";
 import { Oval as Loader } from "react-loader-spinner";
 
-function Card({ amount, text, image }) {
+function Card(amount: number, text: string, image: string) {
   return (
     <div className="creditAndDebitCards">
       <div className="creditedMoneyAndCreditText">

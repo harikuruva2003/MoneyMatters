@@ -3,11 +3,11 @@ import React from "react";
 import AddTransaction from "../AddTransactionLayout/AddTransactionLayout";
 import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 
-export function HeaderAndAddTransaction({
-  transactionHeading,
-  addTransactionButton,
-}) {
-  let [isModalOpen, setIsModalOpen] = useState(false);
+function HeaderAndAddTransaction(
+  transactionHeading: String,
+  addTransactionButton: String
+) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div>
@@ -23,3 +23,5 @@ export function HeaderAndAddTransaction({
     </div>
   );
 }
+
+export default HeaderAndAddTransaction;

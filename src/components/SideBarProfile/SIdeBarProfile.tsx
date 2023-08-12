@@ -1,7 +1,7 @@
 import "./SideBarProfile.css";
 import React from "react";
 
-export function Profile({ profile }) {
+export function Profile(profile) {
   return (
     <div className="profileContainer">
       <div className="profilePicAndLogOutButton">

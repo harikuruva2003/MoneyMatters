@@ -13,23 +13,29 @@ import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
 import { observer } from "mobx-react";
 import { TransactionsStoreContext } from "../../App";
 import { allTransactionsDataAPI } from "../../utils/utils";
+import TransactionsStore from "../../stores/TransactionsStore";
+import { SideBarBoardsType } from "../../types/types";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
 export const Error = createContext(null);
 
 function MoneyMattersApp() {
-  let activeBoardRef = useRef(null);
+  const [currentActiveBoardID, setCurrentActiveBoardID] = useState<
+    string | null
+  >("DashBoard");
 
-  const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
-  activeBoardRef.current = currentActiveBoardID;
-  const limit = 20;
-  const offSetValue = 0;
-  const [allTransactionsError, setAllTransactionsError] = useState(false);
+  const limit: number = 20;
+  const offSetValue: number = 0;
+  const [allTransactionsError, setAllTransactionsError] = useState<boolean>(
+    false
+  );
 
-  const transactionsStoreContext = useContext(TransactionsStoreContext);
+  const transactionsStoreContext: TransactionsStore | null = useContext(
+    TransactionsStoreContext
+  );
 
-  const sideBarBoards = [
+  const sideBarBoards: SideBarBoardsType = [
     {
       id: "DashBoard",
       boardName: "Dashboard",
@@ -67,14 +73,14 @@ function MoneyMattersApp() {
     // );
   }, []);
 
-  function setError() {
-    // setAllTransactionsError(false);
-    // allTransactionsDataAPI(
-    //   setAllTransactionsError,
-    //   limit,
-    //   offSetValue,
-    //   transactionsStoreContext
-    // );
+  function setError(): void {
+    setAllTransactionsError(false);
+    allTransactionsDataAPI(
+      setAllTransactionsError,
+      limit,
+      offSetValue,
+      transactionsStoreContext
+    );
   }
 
   function currentBoardData() {

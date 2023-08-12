@@ -10,7 +10,7 @@ import { observer } from "mobx-react";
 
 function TransactionsPageTransactions() {
   const [isAllTransactionsError, setIsAllTransactionsError] = useState(false);
-  const currentActivePage = useContext(ActivePageContext);
+  const currentActivePage: string | null = useContext(ActivePageContext);
   const limit = 20;
   const offSetValue = 0;
   const transactionsStoreContext = useContext(TransactionsStoreContext);

@@ -4,7 +4,7 @@ import React from "react";
 import { Oval as Loader } from "react-loader-spinner";
 import { observer } from "mobx-react";
 
-function Data({ pageData, redColor, greenColor }) {
+function Data(pageData, redColor: string, greenColor: string) {
   let data = [];
   pageData
     ? pageData.forEach((transaction) => {

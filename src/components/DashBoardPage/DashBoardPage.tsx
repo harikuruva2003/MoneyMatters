@@ -4,25 +4,33 @@ import "./DashBoardPage.css";
 import { useContext, useEffect, useState } from "react";
 import React from "react";
 import { totalCreditAndDebitDataAPI } from "../../utils/utils";
-import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
+import HeaderAndAddTransaction from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
-function DashBoardPage() {
-  let [isLoading, setIsLoading] = useState(true);
-  let [isLastTransactionsError, setIsLastTransactionsError] = useState(false);
-  const transactionsStoreContext = useContext(TransactionsStoreContext);
+import TransactionsStore from "../../stores/TransactionsStore";
+import { CreditAndDebitCardsDataType } from "../../types/types";
 
-  const creditAndDebitCardsData = [
+function DashBoardPage() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const [isLastTransactionsError, setIsLastTransactionsError] = useState<
+    boolean
+  >(false);
+  const transactionsStoreContext: TransactionsStore | null = useContext(
+    TransactionsStoreContext
+  );
+
+  const creditAndDebitCardsData: CreditAndDebitCardsDataType[] = [
     {
       money: !isLoading
-        ? `$ ${transactionsStoreContext.creditTotalAmount} `
+        ? `$ ${transactionsStoreContext?.creditTotalAmount}`
         : "",
       text: "Credit",
       image: "/images/image1.png",
     },
     {
       money: !isLoading
-        ? `$ ${transactionsStoreContext.debitTotalAmount} `
+        ? `$ ${transactionsStoreContext?.debitTotalAmount}`
         : "",
       text: "Debit",
       image: "/images/image2.png",
@@ -54,7 +62,7 @@ function DashBoardPage() {
     );
   }
 
-  function setTotalAmountAPIError() {
+  function setTotalAmountAPIError(): void {
     setIsLastTransactionsError(false);
     totalCreditAndDebitDataAPI(
       transactionsStoreContext,

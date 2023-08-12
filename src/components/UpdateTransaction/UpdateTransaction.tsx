@@ -2,6 +2,8 @@ import Modal from "react-modal";
 import React, { useContext, useState } from "react";
 import { updateTransactionAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
+import TransactionsStore from "../../stores/TransactionsStore";
+import { UpdatedTransactionDataType } from "../../types/types";
 
 const customStyles = {
   content: {
@@ -19,12 +21,14 @@ const customStyles = {
   },
 };
 
-const UpdateTransaction = ({
-  setIsUpdateTransactionModalOpen,
-  isUpdateTransactionModalOpen,
-  updatingTransactionID,
-  transaction,
-}) => {
+const UpdateTransaction = (
+  setIsUpdateTransactionModalOpen: (
+    isUpdateTransactionModalOpen: boolean
+  ) => void,
+  isUpdateTransactionModalOpen: boolean,
+  updatingTransactionID: number,
+  transaction: UpdatedTransactionDataType
+) => {
   const [updatedTransactionData, setUpdatedTransactionData] = useState({
     transaction_name: "",
     type: "credit",
@@ -33,7 +37,7 @@ const UpdateTransaction = ({
     date: null,
   });
   const transactionsStoreContext = useContext(TransactionsStoreContext);
-  function updateTransactionHandler(event) {
+  function updateTransactionHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsUpdateTransactionModalOpen(false);
     updateTransactionAPI(
@@ -42,7 +46,9 @@ const UpdateTransaction = ({
       transactionsStoreContext
     );
   }
-  function onChangeHandler(event) {
+  function onChangeHandler(
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) {
     const { name, value } = event.target;
     setUpdatedTransactionData((prevData) => {
       return {

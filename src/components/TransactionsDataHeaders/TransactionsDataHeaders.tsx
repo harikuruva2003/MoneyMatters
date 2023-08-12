@@ -2,7 +2,12 @@ import "./TransactionsDataHeaders.css";
 import React from "react";
 
 export function TransactionsHeaders() {
-  const transactionFields = ["Transaction Name", "Category", "Date", "Amount"];
+  const transactionFields: string[] = [
+    "Transaction Name",
+    "Category",
+    "Date",
+    "Amount",
+  ];
   return (
     <div className="transactionsFieldsContainer">
       <span className="spanElements transactionName">
