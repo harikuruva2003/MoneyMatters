@@ -3,11 +3,16 @@ import { FinalData } from "../Transaction/Transaction";
 import React from "react";
 import { Oval as Loader } from "react-loader-spinner";
 import { observer } from "mobx-react";
+import { TransactionDataType } from "../../types/types";
 
-function Data(pageData, redColor: string, greenColor: string) {
+function Data(
+  pageData: TransactionDataType[],
+  redColor: string,
+  greenColor: string
+) {
   let data = [];
   pageData
-    ? pageData.forEach((transaction) => {
+    ? pageData.forEach((transaction: TransactionDataType) => {
         data.push(
           <FinalData
             transaction={transaction}

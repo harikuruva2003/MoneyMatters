@@ -2,21 +2,27 @@ import { useContext, useEffect, useState } from "react";
 import Data from "../TransactionPageData/TransactionPageData";
 import { TransactionsHeaders } from "../TransactionsDataHeaders/TransactionsDataHeaders";
 import "./TransactionsPageTransactions.css";
-import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
+import { ActivePageIDContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 import React from "react";
 import { allTransactionsDataAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
+import { TransactionDataType } from "../../types/types";
+import TransactionsStore from "../../stores/TransactionsStore";
 
 function TransactionsPageTransactions() {
-  const [isAllTransactionsError, setIsAllTransactionsError] = useState(false);
-  const currentActivePage: string | null = useContext(ActivePageContext);
-  const limit = 20;
-  const offSetValue = 0;
-  const transactionsStoreContext = useContext(TransactionsStoreContext);
+  const [isAllTransactionsError, setIsAllTransactionsError] = useState<boolean>(
+    false
+  );
+  const currentActivePageID: string | null = useContext(ActivePageIDContext);
+  const limit: number = 20;
+  const offSetValue: number = 0;
+  const transactionsStoreContext: TransactionsStore | null = useContext(
+    TransactionsStoreContext
+  );
 
-  function getActivePageData() {
-    switch (currentActivePage) {
+  function getActivePageData(): TransactionDataType[] | null {
+    switch (currentActivePageID) {
       case "AllTransactions":
         return transactionsStoreContext
           ? transactionsStoreContext.transactionsList
@@ -36,7 +42,7 @@ function TransactionsPageTransactions() {
     }
   }
 
-  useEffect(() => {
+  useEffect((): void => {
     allTransactionsDataAPI(
       setIsAllTransactionsError,
       limit,
@@ -45,7 +51,7 @@ function TransactionsPageTransactions() {
     );
   }, []);
 
-  function setError() {
+  function setError(): void {
     setIsAllTransactionsError(false);
     allTransactionsDataAPI(
       setIsAllTransactionsError,

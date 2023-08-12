@@ -2,8 +2,8 @@ import Modal from "react-modal";
 import React, { useContext, useState } from "react";
 import { updateTransactionAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
+import { TransactionDataType } from "../../types/types";
 import TransactionsStore from "../../stores/TransactionsStore";
-import { UpdatedTransactionDataType } from "../../types/types";
 
 const customStyles = {
   content: {
@@ -27,17 +27,25 @@ const UpdateTransaction = (
   ) => void,
   isUpdateTransactionModalOpen: boolean,
   updatingTransactionID: number,
-  transaction: UpdatedTransactionDataType
+  transaction: TransactionDataType
 ) => {
-  const [updatedTransactionData, setUpdatedTransactionData] = useState({
+  const [updatedTransactionData, setUpdatedTransactionData] = useState<
+    TransactionDataType
+  >({
+    id: null,
     transaction_name: "",
     type: "credit",
     category: "Youtube Premium",
-    amount: null,
-    date: null,
+    amount: 0,
+    date: "",
   });
-  const transactionsStoreContext = useContext(TransactionsStoreContext);
-  function updateTransactionHandler(event: React.FormEvent<HTMLFormElement>) {
+
+  const transactionsStoreContext = useContext<TransactionsStore | null>(
+    TransactionsStoreContext
+  );
+  function updateTransactionHandler(
+    event: React.FormEvent<HTMLFormElement>
+  ): void {
     event.preventDefault();
     setIsUpdateTransactionModalOpen(false);
     updateTransactionAPI(
@@ -46,19 +54,22 @@ const UpdateTransaction = (
       transactionsStoreContext
     );
   }
+
   function onChangeHandler(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) {
+  ): void {
     const { name, value } = event.target;
-    setUpdatedTransactionData((prevData) => {
-      return {
-        ...prevData,
-        [name]: value,
-      };
-    });
+    setUpdatedTransactionData(
+      (prevData): TransactionDataType => {
+        return {
+          ...prevData,
+          [name]: value,
+        };
+      }
+    );
   }
 
-  function closeModal() {
+  function closeModal(): void {
     setIsUpdateTransactionModalOpen(false);
   }
 

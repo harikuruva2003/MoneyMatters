@@ -1,7 +1,8 @@
+import { BottomProfile } from "../../types/types";
 import "./SideBarProfile.css";
 import React from "react";
 
-export function Profile(profile) {
+export function Profile(profile: BottomProfile) {
   return (
     <div className="profileContainer">
       <div className="profilePicAndLogOutButton">

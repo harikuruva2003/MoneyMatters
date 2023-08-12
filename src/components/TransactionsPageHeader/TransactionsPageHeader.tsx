@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./TransactionsPageHeader.css";
-import { ActivePageContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
+import { ActivePageIDContext } from "../TransactionBoardDataPage/TransactionBoardDataPage";
 import React from "react";
 import { TransactionPage } from "../TransactionBoardPage/TransactionsBoardpage";
 import HeaderAndAddTransaction from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
@@ -17,21 +17,23 @@ const transactionPages: TransactionPagesType[] = [
 export function TransactionHeader(
   setCurrentActivePageID: (currentActivePageID: string) => void
 ) {
-  let onChangePage = (pageID: string) => {
+  const onChangePage = (pageID: string) => {
     setCurrentActivePageID(pageID);
   };
-  const currentActivePage = useContext(ActivePageContext);
+  const currentActivePageID: string | null = useContext(ActivePageIDContext);
 
-  let formattedTransactionPages = transactionPages.map((transactionPage) => {
-    return (
-      <TransactionPage
-        transactionPage={transactionPage}
-        currentActivePageID={currentActivePage}
-        transactionPageID={transactionPage.id}
-        onChangePage={onChangePage}
-      />
-    );
-  });
+  const formattedTransactionPages = transactionPages.map(
+    (transactionPage: TransactionPagesType) => {
+      return (
+        <TransactionPage
+          transactionPage={transactionPage}
+          currentActivePageID={currentActivePageID}
+          transactionPageID={transactionPage.id}
+          onChangePage={onChangePage}
+        />
+      );
+    }
+  );
 
   return (
     <div className="transactionHeader">

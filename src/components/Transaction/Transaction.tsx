@@ -6,28 +6,33 @@ import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
 import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDelete";
 import { DeleteTransaction } from "../DeleteTransaction/DeleteTransaction";
 import UpdateTransaction from "../UpdateTransaction/UpdateTransaction";
+import { TransactionDataType, TransactionPagesType } from "../../types/types";
 
 export function FinalData(
-  transaction,
-  pageData,
+  transaction: TransactionDataType,
+  pageData: TransactionDataType[],
   redColor: string,
   greenColor: string
 ) {
   const [
     isDeleteTransactionModalOpen,
     setIsDeleteTransactionModalOpen,
-  ] = useState(false);
+  ] = useState<boolean>(false);
 
   const [
     isUpdateTransactionModalOpen,
     setIsUpdateTransactionModalOpen,
-  ] = useState(false);
+  ] = useState<boolean>(false);
 
-  const [deletingTransactionID, setDeletingTransactionID] = useState(null);
+  const [deletingTransactionID, setDeletingTransactionID] = useState<
+    number | null
+  >(null);
 
-  const [updatingTransactionID, setUpdatingTransactionID] = useState(null);
+  const [updatingTransactionID, setUpdatingTransactionID] = useState<
+    number | null
+  >(null);
 
-  let indexOfTransaction;
+  let indexOfTransaction: number;
 
   indexOfTransaction = pageData.indexOf(transaction);
 

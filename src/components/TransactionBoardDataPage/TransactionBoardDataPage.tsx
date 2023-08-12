@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 import TransactionsPageTransactions from "../TransactionsPageTransactions/TransactionsPageTransactions";
 import { TransactionHeader } from "../TransactionsPageHeader/TransactionsPageHeader";
 
-export const ActivePageContext = createContext(null);
+export const ActivePageIDContext = createContext(null);
 
 export function TransactionBoardDataPage() {
   const [currentActivePageID, setCurrentActivePageID] = useState(
@@ -11,10 +11,10 @@ export function TransactionBoardDataPage() {
   );
   return (
     <div>
-      <ActivePageContext.Provider value={currentActivePageID}>
+      <ActivePageIDContext.Provider value={currentActivePageID}>
         <TransactionHeader setCurrentActivePageID={setCurrentActivePageID} />
         <TransactionsPageTransactions />
-      </ActivePageContext.Provider>
+      </ActivePageIDContext.Provider>
     </div>
   );
 }

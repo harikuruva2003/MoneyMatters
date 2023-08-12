@@ -1,12 +1,13 @@
+import { BottomProfile } from "../../types/types";
 import { SidebarItem } from "../SideBarItems/SideBarItems";
 import { Profile } from "../SideBarProfile/SIdeBarProfile";
 import "./Sidebar.css";
-import React from "react";
+import React, { ReactElement } from "react";
 
 export function SideBar(
   sideBarBoards,
-  logo,
-  profile,
+  logo: ReactElement,
+  profile: BottomProfile,
   setCurrentActiveBoardID: string
 ): {} {
   function Logo(logoMoneyMatters) {

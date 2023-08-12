@@ -36,6 +36,7 @@ function AddTransaction(
   const [newTransactionData, setNewTransactionData] = useState<
     NewTransactionDataType
   >({
+    id: null,
     name: "",
     type: "credit",
     category: "Youtube Premium",

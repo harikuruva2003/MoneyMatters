@@ -1,9 +1,6 @@
 import { headers } from "../components/Constants/Constants";
 import TransactionsStore from "../stores/TransactionsStore";
-import {
-  NewTransactionDataType,
-  UpdatedTransactionDataType,
-} from "../types/types";
+import { NewTransactionDataType, TransactionDataType } from "../types/types";
 
 export function allTransactionsDataAPI(
   setIsAllTransactionsError: (isAllTransactionsError: boolean) => void,
@@ -134,7 +131,7 @@ export function deleteTransactionAPI(
 }
 
 export function updateTransactionAPI(
-  updatedTransactionData: UpdatedTransactionDataType,
+  updatedTransactionData: TransactionDataType,
   updatingTransactionID: number,
   transactionsStoreContext: TransactionsStore | null
 ): void {

@@ -1,19 +1,22 @@
-import { ReactElement } from "react";
+import { type } from "os";
+import React, { ReactElement } from "react";
 
-export interface UpdatedTransactionDataType {
+export interface TransactionDataType {
+  id: number | null;
   transaction_name: string;
   type: string;
   category: string;
-  amount: number | null;
-  date: Date | null;
+  amount: number | string;
+  date: string | number;
 }
 
 export interface NewTransactionDataType {
+  id: number | null;
   name: string;
   type: string;
   category: string;
-  amount: number | null;
-  date: Date | null;
+  amount: number | string;
+  date: string | number;
 }
 export interface SidebarBoardNameAndIconType {
   boardID: string;
@@ -43,4 +46,11 @@ export interface SideBarBoardsType {
   id: string;
   boardName: string;
   icon: ReactElement;
+}
+
+export interface BottomProfile {
+  profilePic: ReactElement;
+  profileName: string;
+  profileMail: string;
+  logOutIcon: ReactElement;
 }
