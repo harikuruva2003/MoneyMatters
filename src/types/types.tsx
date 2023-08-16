@@ -15,8 +15,8 @@ export interface NewTransactionDataType {
   name: string;
   type: string;
   category: string;
-  amount: number | string;
-  date: string | number;
+  amount: number | string | null;
+  date: string | number | null;
 }
 export interface SidebarBoardNameAndIconType {
   boardID: string;
