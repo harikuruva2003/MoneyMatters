@@ -1,4 +1,4 @@
-import { headers } from "../components/Constants/Constants";
+import { headers } from "../constants/Constants";
 import TransactionsStore from "../stores/TransactionsStore";
 import { NewTransactionDataType, TransactionDataType } from "../types/types";
 

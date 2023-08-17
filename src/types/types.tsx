@@ -54,3 +54,7 @@ export interface BottomProfile {
   profileMail: string;
   logOutIcon: ReactElement;
 }
+
+export interface IconsType {
+  fill: string;
+}

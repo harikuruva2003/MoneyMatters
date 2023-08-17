@@ -1,15 +1,10 @@
 import * as React from "react";
+import { IconsType } from "../../types/types";
 
-const HomeIcon = (props) => {
-  const { fill = "#5B73A0" } = props;
+const HomeIcon = (iconProps: IconsType) => {
+  const { fill = "#5B73A0" } = iconProps;
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={25}
-      height={25}
-      fill="none"
-      {...props}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width={25} height={25} fill="none">
       <g clipPath="url(#a)">
         <path
           fill={fill}

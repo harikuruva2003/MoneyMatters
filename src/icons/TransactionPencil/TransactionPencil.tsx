@@ -1,12 +1,7 @@
-import * as React from "react"
-const TransactionPencil = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={20}
-    height={20}
-    fill="none"
-    {...props}
-  >
+import * as React from "react";
+import { IconsType } from "../../types/types";
+const TransactionPencil = (props: IconsType) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none">
     <g clipPath="url(#a)">
       <path
         stroke="#2D60FF"
@@ -22,5 +17,5 @@ const TransactionPencil = (props) => (
       </clipPath>
     </defs>
   </svg>
-)
-export default TransactionPencil
+);
+export default TransactionPencil;

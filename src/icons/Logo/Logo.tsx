@@ -1,12 +1,7 @@
-import * as React from "react"
-const Logo = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={44}
-    height={38}
-    fill="none"
-    {...props}
-  >
+import * as React from "react";
+import { IconsType } from "../../types/types";
+const Logo = (props: IconsType) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={44} height={38} fill="none">
     <path
       fill="#60C7CA"
       d="M30.35 11.137A48.19 48.19 0 0 0 27.69 0a45.7 45.7 0 0 1-6.271.714 47.447 47.447 0 0 1-8.05-.33 35.944 35.944 0 0 1 2.57 5.07c.328.799.61 1.57.854 2.312l-1.037-5.117a92.127 92.127 0 0 0 10.432-.046 51.96 51.96 0 0 1 1.684 4.863 50.233 50.233 0 0 1 1.863 17.926 45.254 45.254 0 0 0 .616-14.256Z"
@@ -36,5 +31,5 @@ const Logo = (props) => (
       d="M4.75 9.5c-.778 1.601-2.225 5.17-1.649 9.693.946 7.421 6.59 11.575 7.667 12.337l1.32-1.683a20.98 20.98 0 0 1-4.122-4.005C7.049 24.664 5.582 21.724 4.75 18c-.887-3.97.218-7.308.75-9l-.75.5ZM13.096 30.404l-1.291 1.676a8.767 8.767 0 0 0 3.737 1.594l.88-2.144a35.48 35.48 0 0 1-3.325-1.126Z"
     />
   </svg>
-)
-export default Logo
+);
+export default Logo;
