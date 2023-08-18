@@ -34,9 +34,6 @@ function MoneyMattersApp() {
     CompanyDataStoreInstanceContext
   );
 
-  const { loading, error, data } = useQuery(Company);
-  console.log(data);
-
   const sideBarBoards = [
     {
       id: "DashBoard",
@@ -65,6 +62,11 @@ function MoneyMattersApp() {
     profileMail: "harikuruva2003@gmail.com",
     logOutIcon: <LogOutIcon />,
   };
+
+  const { loading, error, data } = useQuery(Company);
+  if (loading) return "loading ...";
+  if (error) return `error ${error.message}`;
+  companyDataStoreInstanceContext.getCompanyData(data);
 
   useEffect(() => {
     // allTransactionsDataAPI({

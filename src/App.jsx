@@ -25,9 +25,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <TransactionsStoreContext.Provider value={transactionStoreInstance}>
-        <CompanyDataStoreInstanceContext>
+        <CompanyDataStoreInstanceContext.Provider value={companyStoreInstance}>
           <MoneyMattersApp />
-        </CompanyDataStoreInstanceContext>
+        </CompanyDataStoreInstanceContext.Provider>
       </TransactionsStoreContext.Provider>
     </ApolloProvider>
   );
