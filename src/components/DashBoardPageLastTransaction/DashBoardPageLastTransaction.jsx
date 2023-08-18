@@ -4,17 +4,26 @@ import "./DashBoardPageLastTransaction.css";
 import { lastThreeTransactions } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
+import { useQuery } from "@apollo/client";
+import { Company } from "../../graphQL/GraphQLQueries";
+import { CompanyDataStoreContext } from "../../App";
 
 function LastTransaction() {
   let [isError, setIsError] = useState(false);
   const transactionsStoreContext = useContext(TransactionsStoreContext);
+  const companyDataStoreContext = useContext(CompanyDataStoreContext);
 
-  useEffect(() => {
-    lastThreeTransactions({
-      transactionsStoreContext,
-      setIsError,
-    });
-  }, []);
+  // useEffect(() => {
+  //   lastThreeTransactions({
+  //     transactionsStoreContext,
+  //     setIsError,
+  //   });
+  // }, []);
+
+  const { loading, error, data } = useQuery(Company);
+  if (loading) return "loading ...";
+  if (error) return `error ${error.message}`;
+  companyDataStoreContext.getCompanyData(data);
 
   function setError() {
     setIsError(false);

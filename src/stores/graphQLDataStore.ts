@@ -14,7 +14,6 @@ class CompanyDataStore {
 
   getCompanyData(data: CompanyData): void {
     this.companyData = data;
-    console.log(this.companyData);
   }
 }
 

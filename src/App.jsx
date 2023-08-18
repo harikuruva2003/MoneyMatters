@@ -17,7 +17,7 @@ const client = new ApolloClient({
 });
 
 export const TransactionsStoreContext = createContext(null);
-export const CompanyDataStoreInstanceContext = createContext(null);
+export const CompanyDataStoreContext = createContext(null);
 
 function App() {
   const companyStoreInstance = new CompanyDataStore();
@@ -25,9 +25,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <TransactionsStoreContext.Provider value={transactionStoreInstance}>
-        <CompanyDataStoreInstanceContext.Provider value={companyStoreInstance}>
+        <CompanyDataStoreContext.Provider value={companyStoreInstance}>
           <MoneyMattersApp />
-        </CompanyDataStoreInstanceContext.Provider>
+        </CompanyDataStoreContext.Provider>
       </TransactionsStoreContext.Provider>
     </ApolloProvider>
   );
