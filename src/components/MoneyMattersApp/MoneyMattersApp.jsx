@@ -38,7 +38,9 @@ const MoneyMattersApp = () => {
     // });
   }, []);
 
-  const { loading, error, data } = useQuery(CompanyDetails);
+  const { loading, error, data } = useQuery(CompanyDetails, {
+    variables: { distinctOn: [], orderBy: [] },
+  });
   if (loading) return "loading ...";
   if (error) return `error ${error.message}`;
   companyDataStoreContext.getCompanyData(data);
