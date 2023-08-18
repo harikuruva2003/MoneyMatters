@@ -38,10 +38,10 @@ const MoneyMattersApp = () => {
     // });
   }, []);
 
-  // const { loading, error, data } = useQuery(Company);
-  // if (loading) return "loading ...";
-  // if (error) return `error ${error.message}`;
-  // companyDataStoreContext.getCompanyData(data);
+  const { loading, error, data } = useQuery(Company);
+  if (loading) return "loading ...";
+  if (error) return `error ${error.message}`;
+  companyDataStoreContext.getCompanyData(data);
 
   const sideBarBoards = [
     {

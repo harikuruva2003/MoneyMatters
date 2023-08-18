@@ -13,17 +13,12 @@ function LastTransaction() {
   const transactionsStoreContext = useContext(TransactionsStoreContext);
   const companyDataStoreContext = useContext(CompanyDataStoreContext);
 
-  // useEffect(() => {
-  //   lastThreeTransactions({
-  //     transactionsStoreContext,
-  //     setIsError,
-  //   });
-  // }, []);
-
-  const { loading, error, data } = useQuery(Company);
-  if (loading) return "loading ...";
-  if (error) return `error ${error.message}`;
-  companyDataStoreContext.getCompanyData(data);
+  useEffect(() => {
+    lastThreeTransactions({
+      transactionsStoreContext,
+      setIsError,
+    });
+  }, []);
 
   function setError() {
     setIsError(false);

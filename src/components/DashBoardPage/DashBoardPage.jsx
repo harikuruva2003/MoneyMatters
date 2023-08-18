@@ -5,12 +5,13 @@ import { useContext, useEffect, useState } from "react";
 import React from "react";
 import { totalCreditAndDebitDataAPI } from "../../utils/utils";
 import { HeaderAndAddTransaction } from "../HeaderAndAddTransaction/HeaderAndAddTransaction";
-import { TransactionsStoreContext } from "../../App";
+import { CompanyDataStoreContext, TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
 function DashBoardPage() {
   let [isLoading, setIsLoading] = useState(true);
   let [isLastTransactionsError, setIsLastTransactionsError] = useState(false);
   const transactionsStoreContext = useContext(TransactionsStoreContext);
+  const companyDataStoreContext = useContext(CompanyDataStoreContext);
 
   const creditAndDebitCardsData = [
     {
@@ -83,6 +84,17 @@ function DashBoardPage() {
       </div>
       <div>
         <LastTransaction />
+      </div>
+      <div>
+        <h1>SPACE X Company Details</h1>
+        <p>CEO : {companyDataStoreContext.companyData.company.ceo}</p>
+        <p>COO : {companyDataStoreContext.companyData.company.coo}</p>
+        <p>
+          EMPLOYEES : {companyDataStoreContext.companyData.company.employees}
+        </p>
+        <p>
+          VALUATION : {companyDataStoreContext.companyData.company.valuation}
+        </p>
       </div>
     </>
   );
