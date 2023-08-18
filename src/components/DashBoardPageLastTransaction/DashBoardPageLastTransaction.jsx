@@ -4,8 +4,6 @@ import "./DashBoardPageLastTransaction.css";
 import { lastThreeTransactions } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
-import { useQuery } from "@apollo/client";
-import { Company } from "../../graphQL/GraphQLQueries";
 import { CompanyDataStoreContext } from "../../App";
 
 function LastTransaction() {

@@ -95,6 +95,7 @@ function DashBoardPage() {
         <p>
           VALUATION : {companyDataStoreContext.companyData.company.valuation}
         </p>
+        <button>Update Details</button>
       </div>
     </>
   );

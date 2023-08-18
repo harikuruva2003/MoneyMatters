@@ -13,7 +13,7 @@ import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
 import { CompanyDataStoreContext, TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
 import { useQuery } from "@apollo/client";
-import { Company } from "../../graphQL/GraphQLQueries";
+import { CompanyDetails } from "../../graphQL/GraphQLQueries";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
@@ -38,7 +38,7 @@ const MoneyMattersApp = () => {
     // });
   }, []);
 
-  const { loading, error, data } = useQuery(Company);
+  const { loading, error, data } = useQuery(CompanyDetails);
   if (loading) return "loading ...";
   if (error) return `error ${error.message}`;
   companyDataStoreContext.getCompanyData(data);
