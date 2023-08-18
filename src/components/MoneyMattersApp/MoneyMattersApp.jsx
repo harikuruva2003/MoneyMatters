@@ -12,12 +12,17 @@ import DashBoardPage from "../DashBoardPage/DashBoardPage";
 import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
+import { useQuery } from "@apollo/client";
+import { Company } from "../../graphQL/GraphQLQueries";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
 export const Error = createContext(null);
 
 function MoneyMattersApp() {
+  const { loading, error, data } = useQuery(Company);
+  console.log(data);
+
   let activeBoardRef = useRef(null);
 
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
