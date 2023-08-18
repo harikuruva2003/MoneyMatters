@@ -11,7 +11,7 @@ export const Company = gql`
       ceo
       coo
       employees
-      founded
+      valuation
     }
   }
 `;

@@ -10,7 +10,10 @@ import { ProfilePage } from "../ProfilePage/ProfilePage";
 import React from "react";
 import DashBoardPage from "../DashBoardPage/DashBoardPage";
 import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
-import { TransactionsStoreContext } from "../../App";
+import {
+  CompanyDataStoreInstanceContext,
+  TransactionsStoreContext,
+} from "../../App";
 import { observer } from "mobx-react";
 import { useQuery } from "@apollo/client";
 import { Company } from "../../graphQL/GraphQLQueries";
@@ -20,9 +23,6 @@ export const CurrentActiveBoardID = createContext(null);
 export const Error = createContext(null);
 
 function MoneyMattersApp() {
-  const { loading, error, data } = useQuery(Company);
-  console.log(data);
-
   let activeBoardRef = useRef(null);
 
   const [currentActiveBoardID, setCurrentActiveBoardID] = useState("DashBoard");
@@ -30,6 +30,12 @@ function MoneyMattersApp() {
 
   const [allTransactionsError, setAllTransactionsError] = useState(false);
   const transactionsStoreContext = useContext(TransactionsStoreContext);
+  const companyDataStoreInstanceContext = useContext(
+    CompanyDataStoreInstanceContext
+  );
+
+  const { loading, error, data } = useQuery(Company);
+  console.log(data);
 
   const sideBarBoards = [
     {
