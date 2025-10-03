@@ -5,6 +5,9 @@ import { deleteTransactionAPI } from "../../utils/utils";
 import { TransactionsStoreContext } from "../../App";
 import TransactionsStore from "../../stores/TransactionsStore";
 
+// Type assertion to fix React 18 compatibility issue with react-modal
+const ReactModal = Modal as any;
+
 const customStyles = {
   content: {
     width: "25%",
@@ -20,13 +23,17 @@ const customStyles = {
     alignItems: "center",
   },
 };
-export const DeleteTransaction = (
-  isDeleteTransactionModalOpen: boolean,
-  setIsDeleteTransactionModalOpen: (
-    isDeleteTransactionModalOpen: boolean
-  ) => void,
-  deletingTransactionID: number
-) => {
+interface DeleteTransactionProps {
+  isDeleteTransactionModalOpen: boolean;
+  setIsDeleteTransactionModalOpen: (isDeleteTransactionModalOpen: boolean) => void;
+  deletingTransactionID: number | null;
+}
+
+export const DeleteTransaction = ({
+  isDeleteTransactionModalOpen,
+  setIsDeleteTransactionModalOpen,
+  deletingTransactionID
+}: DeleteTransactionProps) => {
   const transactionsStoreContext: TransactionsStore | null = useContext(
     TransactionsStoreContext
   );
@@ -42,7 +49,7 @@ export const DeleteTransaction = (
     );
   }
   return (
-    <Modal isOpen={isDeleteTransactionModalOpen} style={customStyles}>
+    <ReactModal isOpen={isDeleteTransactionModalOpen} style={customStyles}>
       <div className="deleteTransactionMainDiv">
         <div className="imageAndContentDiv">
           <img alt="error" className="errorImage" src="images/Group848.png" />
@@ -50,7 +57,7 @@ export const DeleteTransaction = (
             <div>
               <h1 className="topHeading">Are you sure you want to delete</h1>
               <p className="para">
-                This transaction will be deleted immediately. You can’t undo
+                This transaction will be deleted immediately. You can't undo
                 this action.
               </p>
             </div>
@@ -74,6 +81,6 @@ export const DeleteTransaction = (
           X
         </button>
       </div>
-    </Modal>
+    </ReactModal>
   );
 };

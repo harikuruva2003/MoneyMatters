@@ -5,6 +5,9 @@ import { TransactionsStoreContext } from "../../App";
 import { TransactionDataType } from "../../types/types";
 import TransactionsStore from "../../stores/TransactionsStore";
 
+// Type assertion to fix React 18 compatibility issue with react-modal
+const ReactModal = Modal as any;
+
 const customStyles = {
   content: {
     width: "20%",
@@ -21,14 +24,19 @@ const customStyles = {
   },
 };
 
-const UpdateTransaction = (
-  setIsUpdateTransactionModalOpen: (
-    isUpdateTransactionModalOpen: boolean
-  ) => void,
-  isUpdateTransactionModalOpen: boolean,
-  updatingTransactionID: number,
-  transaction: TransactionDataType
-) => {
+interface UpdateTransactionProps {
+  setIsUpdateTransactionModalOpen: (isUpdateTransactionModalOpen: boolean) => void;
+  isUpdateTransactionModalOpen: boolean;
+  updatingTransactionID: number | null;
+  transaction: TransactionDataType;
+}
+
+const UpdateTransaction = ({
+  setIsUpdateTransactionModalOpen,
+  isUpdateTransactionModalOpen,
+  updatingTransactionID,
+  transaction
+}: UpdateTransactionProps) => {
   const [updatedTransactionData, setUpdatedTransactionData] = useState<
     TransactionDataType
   >({
@@ -74,7 +82,7 @@ const UpdateTransaction = (
   }
 
   return (
-    <Modal isOpen={isUpdateTransactionModalOpen} style={customStyles}>
+    <ReactModal isOpen={isUpdateTransactionModalOpen} style={customStyles}>
       <div>
         <div className="head">
           <h1 className="transactionHeading">Update Transaction</h1>
@@ -154,7 +162,7 @@ const UpdateTransaction = (
           </button>
         </form>
       </div>
-    </Modal>
+    </ReactModal>
   );
 };
 

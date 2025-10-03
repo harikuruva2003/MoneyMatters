@@ -1,5 +1,5 @@
 import "./MoneyMattersApp.css";
-import { SideBar } from "../Sidebar/Sidebar";
+
 import HomeIcon from "../../icons/HomeIcon/HomeIcon";
 import TransactionsIcon from "../../icons/TransactionIcon/Transaction";
 import ProfileIcon from "../../icons/ProfileIcon/profileIcon";
@@ -15,6 +15,8 @@ import { TransactionsStoreContext } from "../../App";
 import { allTransactionsDataAPI } from "../../utils/utils";
 import TransactionsStore from "../../stores/TransactionsStore";
 import { SideBarBoardsType } from "../../types/types";
+import SideBar from "../Sidebar/Sidebar"
+
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
@@ -35,33 +37,34 @@ function MoneyMattersApp() {
     TransactionsStoreContext
   );
 
-  const sideBarBoards: SideBarBoardsType = [
+  const sideBarBoards: SideBarBoardsType[] = [
     {
       id: "DashBoard",
       boardName: "Dashboard",
-      icon: HomeIcon,
+      icon: <HomeIcon fill={"#2D60FF"}/>  ,
     },
     {
       id: "TransactionsBoard",
       boardName: "Transactions",
-      icon: TransactionsIcon,
+      icon: <TransactionsIcon fill={"#2D60FF"}/>,
     },
     {
       id: "ProfileBoard",
       boardName: "Profile",
-      icon: ProfileIcon,
+      icon: <ProfileIcon fill={"#2D60FF"}/>,
     },
-  ];
+  ]
+
   const logoMoneyMatters = {
-    logo: <Logo />,
+    logo: <Logo fill={"#2D60FF"} />,
     money: "Money",
     matters: "Matters",
   };
   const profile = {
-    profilePic: <ProfileIcon />,
+    profilePic: <ProfileIcon fill={"#2D60FF"} />,
     profileName: "Hari Kuruva",
     profileMail: "harikuruva2003@gmail.com",
-    logOutIcon: <LogOutIcon />,
+    logOutIcon: <LogOutIcon fill={"#2D60FF"} />,
   };
 
   useEffect(() => {

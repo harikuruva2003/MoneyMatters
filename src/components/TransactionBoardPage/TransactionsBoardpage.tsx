@@ -1,11 +1,20 @@
 import "./TransactionsBoardPage.css";
 import React from "react";
-export function TransactionPage(
+import { TransactionPagesType } from "../../types/types";
+
+interface TransactionPageProps {
+  transactionPage: TransactionPagesType;
+  currentActivePageID: string | null;
+  transactionPageID: string;
+  onChangePage: (pageID: string) => void;
+}
+
+export function TransactionPage({
   transactionPage,
-  currentActivePageID: string,
-  transactionPageID: string,
+  currentActivePageID,
+  transactionPageID,
   onChangePage
-) {
+}: TransactionPageProps) {
   return (
     <>
       {currentActivePageID === transactionPageID ? (

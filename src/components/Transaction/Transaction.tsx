@@ -1,19 +1,27 @@
-import "./Transaction.css";
-import React, { ReactElement, useState } from "react";
-import TransactionDownArrow from "../../icons/TransactionDownArrow/TransactionDownArrow";
-import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArrow";
-import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
+
+import { observer } from "mobx-react";
+import React, { useState } from "react";
+
 import TransactionDeleteIcon from "../../icons/TransactionDelete/TransactionDelete";
+import TransactionDownArrow from "../../icons/TransactionDownArrow/TransactionDownArrow";
+import TransactionPencil from "../../icons/TransactionPencil/TransactionPencil";
+import TransactionUpArrow from "../../icons/TransactionUpArrow/TransactionUpArrow";
+import { TransactionDataType } from "../../types/types";
+
 import { DeleteTransaction } from "../DeleteTransaction/DeleteTransaction";
 import UpdateTransaction from "../UpdateTransaction/UpdateTransaction";
-import { TransactionDataType, TransactionPagesType } from "../../types/types";
 
-export function FinalData(
-  transaction: TransactionDataType,
-  pageData: TransactionDataType[],
-  redColor: string,
-  greenColor: string
-) {
+import "./Transaction.css";
+
+interface FinalDataProps {
+  transaction: TransactionDataType;
+  pageData: TransactionDataType[];
+  redColor: string;
+  greenColor: string;
+}
+
+const  FinalData = (props: FinalDataProps):React.ReactElement => {
+  const {transaction,pageData,redColor,greenColor} = props
   const [
     isDeleteTransactionModalOpen,
     setIsDeleteTransactionModalOpen,
@@ -36,12 +44,21 @@ export function FinalData(
 
   indexOfTransaction = pageData.indexOf(transaction);
 
-  let arrowAndPrice = {};
+  let arrowAndPrice : {arrow : React.ReactNode, amount : React.ReactNode} = {
+    arrow: (
+      <span>
+        <TransactionUpArrow fill={greenColor} />
+      </span>
+    ),
+    amount: (
+      <span style={{ color: "#16DBAA" }}>{"+" + transaction.amount}</span>
+    )
+  };
 
   if (transaction.type === "credit") {
     arrowAndPrice.arrow = (
       <span>
-        <TransactionUpArrow color={greenColor} />
+        <TransactionUpArrow fill={greenColor} />
       </span>
     );
     arrowAndPrice.amount = (
@@ -50,7 +67,7 @@ export function FinalData(
   } else {
     arrowAndPrice.arrow = (
       <span>
-        <TransactionDownArrow color={redColor} />
+        <TransactionDownArrow fill={redColor} />
       </span>
     );
     arrowAndPrice.amount = (
@@ -81,17 +98,17 @@ export function FinalData(
 
         <span className="category dataStyles">{transaction.category}</span>
         <span className="date dataStyles">
-          {transaction.date.substring(0, 10)}
+          {transaction.date.toString().substring(0, 10)}
         </span>
         <span className="amount dataStyles">{arrowAndPrice.amount}</span>
         <button
           className="editOption dataStyles"
           onClick={openUpdateTransactionModal}
         >
-          <TransactionPencil />
+          <TransactionPencil fill={"#2D60FF"} />
         </button>
         <button className="trashBin" onClick={setDeleteTransactionContext}>
-          {<TransactionDeleteIcon className="deleteIcon" />}{" "}
+          <TransactionDeleteIcon fill={"#2D60FF"} />
         </button>
       </div>
       {indexOfTransaction !== pageData.length - 1 ? (
@@ -113,3 +130,5 @@ export function FinalData(
     </div>
   );
 }
+
+export default observer(FinalData);

@@ -37,7 +37,7 @@ export interface HeaderAndAddTransactionPropsType {
 }
 
 export interface CreditAndDebitCardsDataType {
-  money: boolean | string;
+  money: string
   text: string;
   image: string;
 }

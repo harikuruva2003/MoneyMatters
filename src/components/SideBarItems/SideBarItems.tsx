@@ -1,14 +1,26 @@
 import { useContext } from "react";
 import "./SideBarItems.css";
-import { SidebarBoardNameAndIcon } from "../Board/Board";
+
 import React from "react";
 import { CurrentActiveBoardID } from "../MoneyMattersApp/MoneyMattersApp";
 import { SideBarBoardsType } from "../../types/types";
+import { observer } from "mobx-react";
+import Board from "../Board/Board";
 
-export function SidebarItem(
-  sideBarBoards: SideBarBoardsType,
-  setCurrentActiveBoardID: string
-) {
+
+interface Props {
+  sideBarBoards: SideBarBoardsType[],
+  setCurrentActiveBoardID: (value : string)=>void
+}
+
+
+const SidebarItems = (
+  props : Props
+):React.ReactElement=>  {
+
+  const {sideBarBoards,setCurrentActiveBoardID} = props
+
+
   let iconAndBoardName = [];
   let currentActiveBoardID = useContext(CurrentActiveBoardID);
 
@@ -18,12 +30,10 @@ export function SidebarItem(
 
   sideBarBoards.forEach((board) => {
     iconAndBoardName.push(
-      <SidebarBoardNameAndIcon
-        boardID={board.id}
-        icon={board.icon}
-        boardName={board.boardName}
-        key={board.boardName}
-        currentActiveBoardID={currentActiveBoardID}
+      <Board
+      key={board.boardName}
+        board={board}
+        currentActiveBoardId={currentActiveBoardID}
         onChangeTab={onChangeTab}
       />
     );
@@ -31,3 +41,5 @@ export function SidebarItem(
 
   return <div className="boardContainer">{iconAndBoardName}</div>;
 }
+
+export default observer(SidebarItems)

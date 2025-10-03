@@ -3,7 +3,17 @@ import "./DashBoardTotalAmountCards.css";
 import React from "react";
 import { Oval as Loader } from "react-loader-spinner";
 
-function Card(amount: number, text: string, image: string) {
+
+interface Props {
+  amount : string
+  text : string
+  image : string 
+
+}
+
+const Card = (props : Props):React.ReactElement => {
+  const  {amount, text, image} = props 
+
   return (
     <div className="creditAndDebitCards">
       <div className="creditedMoneyAndCreditText">
@@ -16,4 +26,5 @@ function Card(amount: number, text: string, image: string) {
     </div>
   );
 }
+
 export default observer(Card);

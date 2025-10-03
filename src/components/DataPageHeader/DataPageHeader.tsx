@@ -1,11 +1,17 @@
 import "./DataPageHeader.css";
 import React from "react";
 
-export function DataPageHeader(
-  transactionHeading: string,
-  addTransactionButton: string,
-  setIsModalOpen: (isModalOpen: boolean) => void
-) {
+interface DataPageHeaderProps {
+  transactionHeading: string;
+  addTransactionButton: string;
+  setIsModalOpen: (isModalOpen: boolean) => void;
+}
+
+export function DataPageHeader({
+  transactionHeading,
+  addTransactionButton,
+  setIsModalOpen
+}: DataPageHeaderProps) {
   function openModal() {
     setIsModalOpen(true);
   }

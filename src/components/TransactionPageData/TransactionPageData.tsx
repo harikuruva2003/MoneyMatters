@@ -1,29 +1,37 @@
 import "./TransactionPageData.css";
-import { FinalData } from "../Transaction/Transaction";
 import React from "react";
-import { Oval as Loader } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 import { observer } from "mobx-react";
 import { TransactionDataType } from "../../types/types";
+import FinalData from "../Transaction/Transaction";
 
-function Data(
-  pageData: TransactionDataType[],
-  redColor: string,
-  greenColor: string
-) {
-  let data = [];
-  pageData
-    ? pageData.forEach((transaction: TransactionDataType) => {
-        data.push(
-          <FinalData
-            transaction={transaction}
-            pageData={pageData}
-            redColor={redColor}
-            greenColor={greenColor}
-          />
-        );
-      })
-    : data.push(<Loader />);
+interface DataProps {
+  pageData: TransactionDataType[];
+  redColor?: string;
+  greenColor?: string;
+}
 
-  return data;
+function Data({ pageData, redColor = "#FE5C73", greenColor = "#16DBAA" }: DataProps) {
+  if (!pageData || pageData.length === 0) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+        <Oval height={40} width={40} color="#4fa94d" />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {pageData.map((transaction: TransactionDataType) => (
+        <FinalData
+          key={transaction.id}
+          transaction={transaction}
+          pageData={pageData}
+          redColor={redColor}
+          greenColor={greenColor}
+        />
+      ))}
+    </>
+  );
 }
 export default observer(Data);

@@ -1,8 +1,15 @@
+import { observer } from "mobx-react";
 import { BottomProfile } from "../../types/types";
-import "./SideBarProfile.css";
+import "./Profile.css";
 import React from "react";
 
-export function Profile(profile: BottomProfile) {
+interface Props {
+  profile: BottomProfile;
+}
+
+const Profile=(props: Props):React.ReactElement=> {
+  const { profile } = props
+
   return (
     <div className="profileContainer">
       <div className="profilePicAndLogOutButton">
@@ -18,3 +25,5 @@ export function Profile(profile: BottomProfile) {
     </div>
   );
 }
+
+export default observer(Profile)

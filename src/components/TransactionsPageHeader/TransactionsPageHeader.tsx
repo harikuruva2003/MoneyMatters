@@ -14,9 +14,11 @@ const transactionPages: TransactionPagesType[] = [
   { transactionPageName: "Credit", id: "Credit" },
 ];
 
-export function TransactionHeader(
-  setCurrentActivePageID: (currentActivePageID: string) => void
-) {
+interface TransactionHeaderProps {
+  setCurrentActivePageID: (currentActivePageID: string) => void;
+}
+
+export function TransactionHeader({ setCurrentActivePageID }: TransactionHeaderProps) {
   const onChangePage = (pageID: string) => {
     setCurrentActivePageID(pageID);
   };

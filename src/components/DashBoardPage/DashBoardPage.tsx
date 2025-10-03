@@ -51,10 +51,10 @@ function DashBoardPage() {
         {creditAndDebitCardsData.map((card, index) => {
           return (
             <Card
+            key={card.text + index.toString()}
               amount={card.money}
               text={card.text}
               image={card.image}
-              key={card.text + index.toString()}
             />
           );
         })}

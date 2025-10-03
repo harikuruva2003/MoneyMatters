@@ -3,11 +3,14 @@ import React, { ChangeEventHandler, ReactElement, useContext } from "react";
 import "./AddTransactionLayout.css";
 import { addTransactionDataAPI } from "../../utils/utils";
 import { useState } from "react";
-import { Oval as Loader } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 import { TransactionsStoreContext } from "../../App";
 import { observer } from "mobx-react";
 import { NewTransactionDataType } from "../../types/types";
 import TransactionsStore from "../../stores/TransactionsStore";
+
+// Type assertion to fix React 18 compatibility issue with react-modal
+const ReactModal = Modal as any;
 
 const customStyles = {
   content: {
@@ -17,7 +20,6 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
-    marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     borderRadius: "20px",
     justifyContent: "center",
@@ -25,10 +27,12 @@ const customStyles = {
   },
 };
 
-function AddTransaction(
-  isModalOpen: boolean,
-  setIsModalOpen: (isModalOpen: boolean) => void
-) {
+interface AddTransactionProps {
+  isModalOpen: boolean;
+  setIsModalOpen: (isModalOpen: boolean) => void;
+}
+
+function AddTransaction({ isModalOpen, setIsModalOpen }: AddTransactionProps) {
   const transactionsStoreContext = useContext<TransactionsStore | null>(
     TransactionsStoreContext
   );
@@ -63,7 +67,7 @@ function AddTransaction(
 
   function onSubmitHandler(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
-    setText(<Loader />);
+    setText(<Oval height={20} width={20} color="#4fa94d" />);
 
     addTransactionDataAPI(
       newTransactionData,
@@ -73,7 +77,7 @@ function AddTransaction(
   }
 
   return (
-    <Modal isOpen={isModalOpen} style={customStyles}>
+    <ReactModal isOpen={isModalOpen} style={customStyles}>
       <div>
         <div className="head">
           <h1 className="transactionHeading">Add Transaction</h1>
@@ -144,7 +148,7 @@ function AddTransaction(
           </button>
         </form>
       </div>
-    </Modal>
+    </ReactModal>
   );
 }
 

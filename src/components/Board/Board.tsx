@@ -1,24 +1,28 @@
-import React from "react";
+import { observer } from "mobx-react";
+import { SideBarBoardsType } from "../../types/types";
 import "./Board.css";
-import { SidebarBoardNameAndIconType } from "../../types/types";
 // import { SidebarBoardNameAndIcon } from "../../types/types";
 
-export function SidebarBoardNameAndIcon({
-  boardID,
-  icon: Icon,
-  boardName,
-  currentActiveBoardID,
-  onChangeTab,
-}: SidebarBoardNameAndIconType) {
+
+interface Props {
+  board : SideBarBoardsType
+  currentActiveBoardId : string
+  onChangeTab : (id : string) => void
+}
+
+
+const  SidebarBoardNameAndIcon = (props : Props) => {
+  const {board,currentActiveBoardId,onChangeTab} = props
+
   return (
     <>
-      {boardID === currentActiveBoardID ? (
+      {board.id === currentActiveBoardId ? (
         <button className="boardNameButtons">
           <div className="boardHighLighter"></div>
           <div className="boardName selectedBoardStyling">
-            <Icon fill="#2D60FF" />
+            {board.icon}
             <span className="boardNameText" style={{ color: "#2D60FF" }}>
-              {boardName}
+              {board.boardName}
             </span>
           </div>
         </button>
@@ -26,15 +30,17 @@ export function SidebarBoardNameAndIcon({
         <button
           className="boardNameButtons"
           onClick={() => {
-            onChangeTab(boardID);
+            onChangeTab(board.id);
           }}
         >
           <div className="boardName">
-            <Icon />
-            <span className="boardNameText">{boardName}</span>
+          {board.icon}
+            <span className="boardNameText">{board.boardName}</span>
           </div>
         </button>
       )}
     </>
   );
 }
+
+export default observer(SidebarBoardNameAndIcon)

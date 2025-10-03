@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 import TransactionsPageTransactions from "../TransactionsPageTransactions/TransactionsPageTransactions";
 import { TransactionHeader } from "../TransactionsPageHeader/TransactionsPageHeader";
 
-export const ActivePageIDContext = createContext(null);
+export const ActivePageIDContext = createContext<string | null>(null);
 
 export function TransactionBoardDataPage() {
   const [currentActivePageID, setCurrentActivePageID] = useState(
