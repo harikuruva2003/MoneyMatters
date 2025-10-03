@@ -10,7 +10,7 @@ interface DataPageHeaderProps {
 export function DataPageHeader({
   transactionHeading,
   addTransactionButton,
-  setIsModalOpen
+  setIsModalOpen,
 }: DataPageHeaderProps) {
   function openModal() {
     setIsModalOpen(true);

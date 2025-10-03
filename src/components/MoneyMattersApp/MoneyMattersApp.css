@@ -4,7 +4,7 @@
 }
 
 .sidBar {
-  width: 18%;
+  width: fit-content;
 }
 
 .transactionPage {

@@ -10,23 +10,16 @@ interface HeaderAndAddTransactionProps {
 
 function HeaderAndAddTransaction({
   transactionHeading,
-  addTransactionButton
+  addTransactionButton,
 }: HeaderAndAddTransactionProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div>
-      <DataPageHeader
-        setIsModalOpen={setIsModalOpen}
-        transactionHeading={transactionHeading}
-        addTransactionButton={addTransactionButton}
-      />
-
-      <AddTransaction
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
-    </div>
+    <DataPageHeader
+      setIsModalOpen={setIsModalOpen}
+      transactionHeading={transactionHeading}
+      addTransactionButton={addTransactionButton}
+    />
   );
 }
 

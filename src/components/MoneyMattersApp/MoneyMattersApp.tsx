@@ -1,22 +1,22 @@
-import "./MoneyMattersApp.css";
-
-import HomeIcon from "../../icons/HomeIcon/HomeIcon";
-import TransactionsIcon from "../../icons/TransactionIcon/Transaction";
-import ProfileIcon from "../../icons/ProfileIcon/profileIcon";
-import Logo from "../../icons/Logo/Logo";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { TransactionBoardDataPage } from "../TransactionBoardDataPage/TransactionBoardDataPage";
-import { ProfilePage } from "../ProfilePage/ProfilePage";
-import React from "react";
-import DashBoardPage from "../DashBoardPage/DashBoardPage";
-import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
 import { observer } from "mobx-react";
+import { createContext, useContext, useState } from "react";
+
 import { TransactionsStoreContext } from "../../App";
-import { allTransactionsDataAPI } from "../../utils/utils";
+import HomeIcon from "../../icons/HomeIcon/HomeIcon";
+import Logo from "../../icons/Logo/Logo";
+import LogOutIcon from "../../icons/LogOutIcon/logoutIcon";
+import ProfileIcon from "../../icons/ProfileIcon/profileIcon";
+import TransactionsIcon from "../../icons/TransactionIcon/Transaction";
 import TransactionsStore from "../../stores/TransactionsStore";
 import { SideBarBoardsType } from "../../types/types";
-import SideBar from "../Sidebar/Sidebar"
+import { allTransactionsDataAPI } from "../../utils/utils";
 
+import DashBoardPage from "../DashBoardPage/DashBoardPage";
+import { ProfilePage } from "../ProfilePage/ProfilePage";
+import SideBar from "../Sidebar/Sidebar";
+import { TransactionBoardDataPage } from "../TransactionBoardDataPage/TransactionBoardDataPage";
+
+import "./MoneyMattersApp.css";
 
 export const ActivePageContext = createContext(null);
 export const CurrentActiveBoardID = createContext(null);
@@ -29,9 +29,8 @@ function MoneyMattersApp() {
 
   const limit: number = 20;
   const offSetValue: number = 0;
-  const [allTransactionsError, setAllTransactionsError] = useState<boolean>(
-    false
-  );
+  const [allTransactionsError, setAllTransactionsError] =
+    useState<boolean>(false);
 
   const transactionsStoreContext: TransactionsStore | null = useContext(
     TransactionsStoreContext
@@ -41,25 +40,26 @@ function MoneyMattersApp() {
     {
       id: "DashBoard",
       boardName: "Dashboard",
-      icon: <HomeIcon fill={"#2D60FF"}/>  ,
+      icon: <HomeIcon fill={"#2D60FF"} />,
     },
     {
       id: "TransactionsBoard",
       boardName: "Transactions",
-      icon: <TransactionsIcon fill={"#2D60FF"}/>,
+      icon: <TransactionsIcon fill={"#2D60FF"} />,
     },
     {
       id: "ProfileBoard",
       boardName: "Profile",
-      icon: <ProfileIcon fill={"#2D60FF"}/>,
+      icon: <ProfileIcon fill={"#2D60FF"} />,
     },
-  ]
+  ];
 
   const logoMoneyMatters = {
     logo: <Logo fill={"#2D60FF"} />,
     money: "Money",
     matters: "Matters",
   };
+
   const profile = {
     profilePic: <ProfileIcon fill={"#2D60FF"} />,
     profileName: "Hari Kuruva",
@@ -67,24 +67,16 @@ function MoneyMattersApp() {
     logOutIcon: <LogOutIcon fill={"#2D60FF"} />,
   };
 
-  useEffect(() => {
-    // allTransactionsDataAPI(
-    //   setAllTransactionsError,
-    //   limit,
-    //   offSetValue,
-    //   transactionsStoreContext
-    // );
-  }, []);
-
-  function setError(): void {
+  const setError = (): void => {
     setAllTransactionsError(false);
+
     allTransactionsDataAPI(
       setAllTransactionsError,
       limit,
       offSetValue,
       transactionsStoreContext
     );
-  }
+  };
 
   function currentBoardData() {
     switch (currentActiveBoardID) {
