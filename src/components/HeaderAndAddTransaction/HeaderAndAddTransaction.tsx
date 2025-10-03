@@ -1,6 +1,6 @@
-import { useState } from "react";
-import React from "react";
-import AddTransaction from "../AddTransactionLayout/AddTransactionLayout";
+import React, { useState } from "react";
+
+import AddTransactionLayout from "../AddTransactionLayout/AddTransactionLayout";
 import { DataPageHeader } from "../DataPageHeader/DataPageHeader";
 
 interface HeaderAndAddTransactionProps {
@@ -11,15 +11,22 @@ interface HeaderAndAddTransactionProps {
 function HeaderAndAddTransaction({
   transactionHeading,
   addTransactionButton,
-}: HeaderAndAddTransactionProps) {
+}: HeaderAndAddTransactionProps): React.ReactElement {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <DataPageHeader
-      setIsModalOpen={setIsModalOpen}
-      transactionHeading={transactionHeading}
-      addTransactionButton={addTransactionButton}
-    />
+    <>
+      <DataPageHeader
+        setIsModalOpen={setIsModalOpen}
+        transactionHeading={transactionHeading}
+        addTransactionButton={addTransactionButton}
+      />
+
+      <AddTransactionLayout
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
+    </>
   );
 }
 
