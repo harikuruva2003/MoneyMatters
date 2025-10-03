@@ -1,5 +1,4 @@
-import { type } from "os";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 export interface TransactionDataType {
   id: number | null;
@@ -19,10 +18,10 @@ export interface NewTransactionDataType {
   date: string | number | null;
 }
 export interface SidebarBoardNameAndIconType {
-  boardID: string;
+  boardId: string;
   icon: ReactElement;
   boardName: string;
-  currentActiveBoardID: string;
+  currentActiveBoardId: string;
   onChangeTab: (id: string) => void;
 }
 
@@ -37,7 +36,7 @@ export interface HeaderAndAddTransactionPropsType {
 }
 
 export interface CreditAndDebitCardsDataType {
-  money: string
+  money: string;
   text: string;
   image: string;
 }

@@ -1,4 +1,5 @@
 import { observable, makeObservable, computed, action } from "mobx";
+
 import { TransactionDataType } from "../types/types";
 
 class TransactionsStore {
